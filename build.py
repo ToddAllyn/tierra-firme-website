@@ -246,7 +246,8 @@ def jsonld(obj):
     return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>'
 
 def page(fname, title, desc, body, schema_extra=(), crumbs=None):
-    url = BASE + '/' + ('' if fname == 'index.html' else fname)
+    slug = '' if fname == 'index.html' else fname.replace('.html', '')
+    url = BASE + '/' + slug
     nav = ''.join(f'<a href="{h}"{" aria-current=page" if h == fname else ""}>{t}</a>' for h, t in NAV)
     graph = [
         {"@type": "WebSite", "@id": BASE + "/#website", "name": "Tierra Firme", "url": BASE + "/", "inLanguage": "en",
@@ -261,9 +262,9 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
     ]
     if crumbs:
         graph.append({"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + '/' + h} for i, (h, n) in enumerate(crumbs)]})
+            {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + '/' + h.replace('.html', '')} for i, (h, n) in enumerate(crumbs)]})
     graph.extend(schema_extra)
-    return f"""<!doctype html>
+    out = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -332,6 +333,10 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
 </body>
 </html>
 """
+    for a, b in [('href="index.html"', 'href="/"'), ('href="members.html"', 'href="/members"'), ('href="the-show.html"', 'href="/the-show"'), ('href="join.html"', 'href="/join"')]:
+        out = out.replace(a, b)
+    return out
+
 
 def signup_block(dark=True, btn='Join the list'):
     return f"""<form class="signup" id="signup" novalidate>
@@ -521,8 +526,8 @@ members_body = f"""
 ep_rows = ''.join(f"""
    <article class="ep"><div class="n">{i+1:02d}</div><div><div class="meta">{seat}</div><h3>{html.escape(t)}</h3><p>{html.escape(d)}</p></div></article>""" for i, (seat, t, d) in enumerate(EPISODES))
 
-show_schema = {"@type": "PodcastSeries", "@id": BASE + "/the-show.html#series", "name": "Tierra Firme",
-               "url": BASE + "/the-show.html", "inLanguage": ["en", "es"], "genre": ["Investing", "Business", "Economics"],
+show_schema = {"@type": "PodcastSeries", "@id": BASE + "/the-show#series", "name": "Tierra Firme",
+               "url": BASE + "/the-show", "inLanguage": ["en", "es"], "genre": ["Investing", "Business", "Economics"],
                "description": "A free show from the Tierra Firme consortium on placing capital across borders, through real estate, business and country research.",
                "publisher": {"@id": BASE + "/#org"},
                "actor": [{"@type": "Person", "name": m['name']} for m in MEMBERS]}
@@ -664,7 +669,7 @@ robots = 'User-agent: *\nAllow: /\n\n# Search and AI answer engines are welcome\
 open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-for p, pr in [('', '1.0'), ('members.html', '0.9'), ('the-show.html', '0.9'), ('join.html', '0.7')]:
+for p, pr in [('', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('join', '0.7')]:
     sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-10-16</lastmod><priority>{pr}</priority></url>\n'
 sm += '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
@@ -680,9 +685,9 @@ llms = f"""# Tierra Firme
 
 ## Pages
 - [Home]({BASE}/): what Tierra Firme is, the framework and FAQ.
-- [Members]({BASE}/members.html): full bios of the three members.
-- [The Show]({BASE}/the-show.html): Season One, twelve biweekly episodes in English and Spanish.
-- [Join the list]({BASE}/join.html): free list for episodes, research and seminar dates.
+- [Members]({BASE}/members): full bios of the three members.
+- [The Show]({BASE}/the-show): Season One, twelve biweekly episodes in English and Spanish.
+- [Join the list]({BASE}/join): free list for episodes, research and seminar dates.
 
 ## Notes
 - Sovereo Intelligence Research provides research to Tierra Firme and takes no deal fees, advisory fees or carry.
@@ -690,15 +695,14 @@ llms = f"""# Tierra Firme
 """
 open(os.path.join(OUT, 'llms.txt'), 'w').write(llms)
 
-redirects = """/the-seats.html /members.html 301
-/the-seats /members.html 301
-/get-the-read.html /join.html 301
-/get-the-read /join.html 301
+redirects = """/the-seats.html /members 301
+/the-seats /members 301
+/get-the-read.html /join 301
+/get-the-read /join 301
 /tierra-firme.html / 301
-/tierra-firme-episodes.html /the-show.html 301
-/tierra-firme-hosts.html /members.html 301
-/tierra-firme-subscribe.html /join.html 301
-/index.html / 301
+/tierra-firme-episodes.html /the-show 301
+/tierra-firme-hosts.html /members 301
+/tierra-firme-subscribe.html /join 301
 """
 open(os.path.join(OUT, '_redirects'), 'w').write(redirects)
 
