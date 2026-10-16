@@ -47,4 +47,4 @@ Allow: /
 User-agent: MistralAI-User
 Allow: /
 
-Sitemap: https://tierrafirme.com/sitemap.xml
+Sitemap: https://tierra-firme.pages.dev/sitemap.xml

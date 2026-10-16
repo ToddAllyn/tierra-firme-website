@@ -8,10 +8,10 @@
 - Todd Allyn, The Research (intelligence research): Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), former Dean of the College of Business at Chancellor University. Leads Tierra Firme research.
 
 ## Pages
-- [Home](https://tierrafirme.com/): what Tierra Firme is, the framework and FAQ.
-- [Members](https://tierrafirme.com/members): full bios of the three members.
-- [The Show](https://tierrafirme.com/the-show): Season One, twelve biweekly episodes in English and Spanish.
-- [Join the list](https://tierrafirme.com/join): free list for episodes, research and seminar dates.
+- [Home](https://tierra-firme.pages.dev/): what Tierra Firme is, the framework and FAQ.
+- [Members](https://tierra-firme.pages.dev/members): full bios of the three members.
+- [The Show](https://tierra-firme.pages.dev/the-show): Season One, twelve biweekly episodes in English and Spanish.
+- [Join the list](https://tierra-firme.pages.dev/join): free list for episodes, research and seminar dates.
 
 ## Notes
 - Sovereo Intelligence Research provides research to Tierra Firme and takes no deal fees, advisory fees or carry.
