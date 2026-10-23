@@ -137,6 +137,11 @@ section{padding:clamp(60px,8vw,88px) 0;position:relative}
 .hero-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
 .hero-card h3{color:#fff}.hero-card .checks li{color:rgba(255,255,255,.82)}
 .hero .checks li::before{border-color:var(--gold)}
+.trailer{background:#000;color:#fff;padding:clamp(56px,7vw,88px) 0}
+.trailer h2{color:#fff}.trailer .eyebrow{color:var(--gold)}
+.player{position:relative;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000}
+.player video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.trailer-fine{margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.55)}
 .note{font-size:.9rem;color:var(--muted);max-width:80ch;border-left:3px solid var(--gold);padding-left:16px}
 
 /* footer */
@@ -379,6 +384,21 @@ index_body = f"""
   </div>
   <p class="hero-fine">Education, not advice. No listings, no deals, no fees on what you buy.</p>
   <div class="meridian" aria-hidden="true"><span class="pt">Dallas · 32.78°N</span><span class="line"></span><span>Home to solid ground</span><span class="line"></span><span class="pt">Latin America</span></div>
+ </div>
+</section>
+
+<section class="trailer" id="trailer">
+ <div class="container">
+  <div class="section-head" style="margin-bottom:28px">
+   <span class="eyebrow">The trailer</span>
+   <h2>See the gap before the market does.</h2>
+  </div>
+  <div class="player">
+   <video controls playsinline preload="none" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
+    <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
+   </video>
+  </div>
+  <p class="trailer-fine">56 seconds. Footage from Bogotá, Cartagena, Medellín, Lima, Cusco, Montevideo, Santiago, Buenos Aires, Rio de Janeiro, São Paulo, Mexico City, Antigua, Panama City, Santo Domingo and Dallas.</p>
  </div>
 </section>
 
@@ -685,7 +705,10 @@ notfound_body = """
 PAGES = [
     ('index.html', 'Tierra Firme | Real Estate, Business and Research for Capital Abroad',
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
-     index_body, [faq_schema(FAQ)], None),
+     index_body, [faq_schema(FAQ), {"@type": "VideoObject", "name": "Tierra Firme trailer",
+        "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
+        "thumbnailUrl": BASE + "/media/trailer-poster.jpg", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
+        "uploadDate": "2026-10-23", "duration": "PT56S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None),
     ('members.html', 'Members | Tierra Firme',
      'Meet the Tierra Firme members: Murphy D. Cheatham II (commercial real estate, CBRE), Shawn Christopher Leamon (business and operations) and Todd Allyn (intelligence research, Sovereo).',
      members_body, [dict(m['person'], **{"memberOf": {"@id": BASE + "/#org"}}) for m in MEMBERS],
