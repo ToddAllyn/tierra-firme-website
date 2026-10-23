@@ -353,7 +353,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
  <div class="container nav-wrap">
   <a href="/" class="brand"><span class="brand-mark" aria-hidden="true">TF</span>Tierra Firme</a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
-  <nav class="main-nav" id="main-nav" aria-label="Main"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show" aria-current=page>The Show</a><a href="/join" class="btn btn-gold">Join the list</a></nav>
+  <nav class="main-nav" id="main-nav" aria-label="Main"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show" aria-current=page>The Show</a><a href="/membership">Membership</a><a href="/membership" class="btn btn-gold">Join the community</a></nav>
  </div>
 </header>
 <main>
@@ -428,7 +428,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
  <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
   <span class="eyebrow">Don't miss an episode</span>
   <h2>Get notified when each episode goes live.</h2>
-  <form class="signup" id="signup" novalidate>
+  <form class="signup" id="signup" novalidate data-ok="You&#x27;re on the list. New episodes, research and seminar dates come to you first.">
    <label class="sr" for="tf-email">Email address</label>
    <input id="tf-email" type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
    <button type="submit" class="btn btn-gold">Notify me</button>
@@ -442,7 +442,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
  <div class="container">
   <div class="footer-grid">
    <a href="/" class="brand"><span class="brand-mark" aria-hidden="true">TF</span>Tierra Firme</a>
-   <nav class="footer-nav" aria-label="Footer"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/join">Join the list</a></nav>
+   <nav class="footer-nav" aria-label="Footer"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/membership">Membership</a><a href="/join">Join the list</a></nav>
   </div>
   <p class="legal">Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing carries currency, country and tax risk. Each member runs an independent practice; any professional engagement with a member happens through that member's own firm, separate from Tierra Firme.</p>
   <p class="credit">&copy; 2026 Tierra Firme. Research by <a href="https://www.sovereo.com">Sovereo Intelligence Research</a>. Design by Sovereo Web Works.</p>
@@ -458,7 +458,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
    if(!i.value||!i.checkValidity()){s.textContent='Enter a valid email address.';i.focus();return;}
    var b=f.querySelector('button');b.disabled=true;s.textContent='Sending...';
    fetch('/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:i.value.trim(),source:location.pathname})})
-    .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw new Error(j.error||'');s.textContent="You're on the list. New episodes, research and seminar dates come to you first.";f.reset();});})
+    .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw new Error(j.error||'');s.textContent=f.getAttribute('data-ok');f.reset();});})
     .catch(function(err){s.textContent=(err&&err.message)||'That did not go through. Try again.';})
     .then(function(){b.disabled=false;});
   });

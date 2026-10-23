@@ -11,6 +11,7 @@
 - [Home](https://tierra-firme.pages.dev/): what Tierra Firme is, the framework and FAQ.
 - [Members](https://tierra-firme.pages.dev/members): full bios of the three members.
 - [The Show](https://tierra-firme.pages.dev/the-show): Season One, twelve biweekly episodes in English and Spanish.
+- [Membership](https://tierra-firme.pages.dev/membership): waitlist for the paid community (curriculum, office hours, forum), opening soon.
 - [Join the list](https://tierra-firme.pages.dev/join): free list for episodes, research and seminar dates.
 
 ## Notes

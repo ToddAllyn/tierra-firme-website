@@ -150,7 +150,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
 .credit a{color:rgba(255,255,255,.75)}
 """
 
-NAV = [('index.html', 'Home'), ('members.html', 'Members'), ('the-show.html', 'The Show')]
+NAV = [('index.html', 'Home'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('membership.html', 'Membership')]
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -168,7 +168,10 @@ FAQ = [
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
      "including households priced out of ownership at home and retirees stretching a fixed income."),
     ("Is Tierra Firme free?",
-     "Yes. The show and the email list are free. Seminars are paid and are announced to the list first."),
+     "The show and the email list are free. Seminars are paid and announced to the list first. A paid membership community is opening soon; join the waitlist for first access."),
+    ("What is the Tierra Firme membership?",
+     "A paid community opening soon: a structured curriculum on evaluating markets abroad, a members' forum, and live office hours with "
+     "Murphy, Shawn and Todd. It is education, not investment advice. The waitlist gets first access."),
     ("Does Tierra Firme sell property or broker deals?",
      "No. Tierra Firme teaches how to evaluate a market and a deal. It does not list property, broker transactions or take fees on what you buy."),
     ("Is anything from Tierra Firme investment advice?",
@@ -297,7 +300,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
  <div class="container nav-wrap">
   <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true">TF</span>Tierra Firme</a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
-  <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="join.html" class="btn btn-gold">Join the list</a></nav>
+  <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="membership.html" class="btn btn-gold">Join the community</a></nav>
  </div>
 </header>
 <main>
@@ -323,7 +326,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
    if(!i.value||!i.checkValidity()){{s.textContent='Enter a valid email address.';i.focus();return;}}
    var b=f.querySelector('button');b.disabled=true;s.textContent='Sending...';
    fetch('/subscribe',{{method:'POST',headers:{{'Content-Type':'application/json'}},body:JSON.stringify({{email:i.value.trim(),source:location.pathname}})}})
-    .then(function(r){{return r.json().catch(function(){{return {{}};}}).then(function(j){{if(!r.ok||!j.ok)throw new Error(j.error||'');s.textContent="You're on the list. New episodes, research and seminar dates come to you first.";f.reset();}});}})
+    .then(function(r){{return r.json().catch(function(){{return {{}};}}).then(function(j){{if(!r.ok||!j.ok)throw new Error(j.error||'');s.textContent=f.getAttribute('data-ok');f.reset();}});}})
     .catch(function(err){{s.textContent=(err&&err.message)||'That did not go through. Try again.';}})
     .then(function(){{b.disabled=false;}});
   }});
@@ -333,13 +336,13 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
 </body>
 </html>
 """
-    for a, b in [('href="index.html"', 'href="/"'), ('href="members.html"', 'href="/members"'), ('href="the-show.html"', 'href="/the-show"'), ('href="join.html"', 'href="/join"')]:
+    for a, b in [('href="index.html"', 'href="/"'), ('href="members.html"', 'href="/members"'), ('href="the-show.html"', 'href="/the-show"'), ('href="join.html"', 'href="/join"'), ('href="membership.html"', 'href="/membership"')]:
         out = out.replace(a, b)
     return out
 
 
-def signup_block(dark=True, btn='Join the list'):
-    return f"""<form class="signup" id="signup" novalidate>
+def signup_block(dark=True, btn='Join the list', ok="You're on the list. New episodes, research and seminar dates come to you first."):
+    return f"""<form class="signup" id="signup" novalidate data-ok="{html.escape(ok)}">
    <label class="sr" for="tf-email">Email address</label>
    <input id="tf-email" type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
    <button type="submit" class="btn btn-gold">{btn}</button>
@@ -371,8 +374,8 @@ index_body = f"""
   <h1>Any currency.<br>Solid ground.</h1>
   <p class="lede">Tierra Firme is a consortium of three practitioners in real estate, business and research. We produce a free show, research and seminars for people placing capital across borders, starting with Latin America.</p>
   <div class="btn-row" style="margin-top:28px">
-   <a href="join.html" class="btn btn-gold">Join the list, free</a>
-   <a href="members.html" class="btn btn-outline">Meet the members</a>
+   <a href="membership.html" class="btn btn-gold">Join the community</a>
+   <a href="join.html" class="btn btn-outline">Get the free list</a>
   </div>
   <p class="hero-fine">Education, not advice. No listings, no deals, no fees on what you buy.</p>
   <div class="meridian" aria-hidden="true"><span class="pt">Dallas · 32.78°N</span><span class="line"></span><span>Home to solid ground</span><span class="line"></span><span class="pt">Latin America</span></div>
@@ -445,6 +448,7 @@ index_body = f"""
    <div class="step"><div class="step-mark">1</div><div><h3>Watch the show <span class="pill on">Free</span></h3><p style="margin:0">The thesis, the framework and real stories from the ground, in English and Spanish.</p></div></div>
    <div class="step"><div class="step-mark">2</div><div><h3>Read the research <span class="pill on">Free</span></h3><p style="margin:0">A regular research note on currency, political and structural conditions, led by Sovereo Intelligence Research.</p></div></div>
    <div class="step"><div class="step-mark">3</div><div><h3>Attend a seminar <span class="pill">Dates to the list first</span></h3><p style="margin:0">Small-format sessions in Bogotá with lectures, case studies and time on the ground.</p></div></div>
+   <div class="step"><div class="step-mark">4</div><div><h3>Join the community <span class="pill">Opening soon</span></h3><p style="margin:0">Membership with a structured curriculum, a members' forum and live office hours with all three members. <a href="membership.html">Join the waitlist</a>.</p></div></div>
   </div>
  </div>
 </section>
@@ -625,6 +629,48 @@ join_body = f"""
 </section>
 """
 
+membership_body = f"""
+<section class="hero">
+ <div class="container grid-2" style="align-items:start">
+  <div>
+   <span class="eyebrow">Membership · Opening soon</span>
+   <h1>Join the community.</h1>
+   <p class="lede">A members' community for people serious about placing capital in Latin America. Learn the framework, ask the three members directly, and compare notes with others doing the same work.</p>
+   {signup_block(btn='Join the waitlist', ok="You're on the membership waitlist. You'll hear first when doors open.")}
+   <p class="hero-fine">Waitlist is free and commits you to nothing. Education, not investment advice.</p>
+  </div>
+  <div class="card hero-card">
+   <h3>What members get</h3>
+   <ul class="checks">
+    <li>A structured curriculum on evaluating a market abroad: currency, political and structural conditions</li>
+    <li>Live office hours with Murphy, Shawn and Todd</li>
+    <li>A members' forum to compare markets, questions and lessons</li>
+    <li>Research from Sovereo Intelligence Research, and first seats at seminars in Bogotá</li>
+   </ul>
+  </div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="section-head">
+   <span class="eyebrow">How it fits</span>
+   <h2>The next step after the show.</h2>
+   <p class="lede">The show and the list stay free. Membership is for people who want structure, direct access to the three members and a room of peers.</p>
+  </div>
+  <div class="grid-3">
+   <article class="card bar-ground"><span class="tag tag-ground">The asset</span><h3>Read the property</h3><p>How to judge value, title and management before anyone shows you a unit.</p></article>
+   <article class="card bar-build"><span class="tag tag-build">The operation</span><h3>Read the business</h3><p>What it costs to enter, run and staff a business on the ground.</p></article>
+   <article class="card bar-research"><span class="tag tag-research">The country</span><h3>Read the conditions</h3><p>The currency, policy and structural signals that set your real return.</p></article>
+  </div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <p class="note">Membership is educational. Tierra Firme does not list property, broker transactions or provide investment, tax or legal advice.</p>
+ </div>
+</section>
+"""
+
 notfound_body = """
 <section class="hero" style="min-height:60vh">
  <div class="container">
@@ -647,6 +693,9 @@ PAGES = [
     ('the-show.html', 'The Show | Tierra Firme Season One',
      'Tierra Firme Season One: twelve free episodes on placing capital abroad, from the currency math to a full case study. In English and Spanish.',
      show_body, [show_schema], [('', 'Home'), ('the-show.html', 'The Show')]),
+    ('membership.html', 'Membership | Join the Tierra Firme Community',
+     'Join the waitlist for the Tierra Firme membership community: a curriculum on evaluating markets abroad, live office hours with the three members, and a members forum.',
+     membership_body, [], [('', 'Home'), ('membership.html', 'Membership')]),
     ('join.html', 'Join the List | Tierra Firme',
      'Join the free Tierra Firme list for new episodes, research on currency and country conditions, and first access to seminar dates in Bogotá.',
      join_body, [], [('', 'Home'), ('join.html', 'Join the list')]),
@@ -669,7 +718,7 @@ robots = 'User-agent: *\nAllow: /\n\n# Search and AI answer engines are welcome\
 open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-for p, pr in [('', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('join', '0.7')]:
+for p, pr in [('', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('membership', '0.8'), ('join', '0.7')]:
     sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-10-16</lastmod><priority>{pr}</priority></url>\n'
 sm += '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
@@ -687,6 +736,7 @@ llms = f"""# Tierra Firme
 - [Home]({BASE}/): what Tierra Firme is, the framework and FAQ.
 - [Members]({BASE}/members): full bios of the three members.
 - [The Show]({BASE}/the-show): Season One, twelve biweekly episodes in English and Spanish.
+- [Membership]({BASE}/membership): waitlist for the paid community (curriculum, office hours, forum), opening soon.
 - [Join the list]({BASE}/join): free list for episodes, research and seminar dates.
 
 ## Notes
