@@ -415,7 +415,7 @@ index_body = f"""
    <h2>See the gap before the market does.</h2>
   </div>
   <div class="player" id="player">
-   <video id="tf-trailer" muted playsinline autoplay preload="auto" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
+   <video id="tf-trailer" muted playsinline preload="auto" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
     <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
    </video>
    <button type="button" class="sound" id="tf-sound" aria-label="Turn sound on">&#128266;&nbsp; Sound on</button>
