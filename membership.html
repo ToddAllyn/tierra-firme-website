@@ -23,7 +23,9 @@
 <meta name="twitter:image" content="https://tierra-firme.pages.dev/tierra-firme-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="preload" as="image" href="/img/logo-light.webp" fetchpriority="high">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -215,7 +217,7 @@ footer .brand img{height:64px}
 .main-nav a:hover,.main-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.08)}
 .main-nav a.btn{margin-left:10px;color:var(--navy)}
 .nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:1.3rem;line-height:1;padding:8px 12px;border-radius:4px;cursor:pointer}
-@media (max-width:900px){
+@media (max-width:1080px){
   .nav-toggle{display:block}
   .main-nav{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;gap:2px;background:var(--navy);padding:12px clamp(16px,4vw,32px) 18px;border-bottom:1px solid rgba(255,255,255,.1)}
   .main-nav.open{display:flex}
@@ -307,6 +309,7 @@ footer .brand img{height:64px}
 .hero-card h3{color:#fff}.hero-card .checks li{color:rgba(255,255,255,.82)}
 .hero .checks li::before{border-color:var(--gold)}
 .trailer{background:radial-gradient(ellipse at 50% 30%,#12355f 0%,#0a1f3d 45%,#061327 80%);color:#fff;padding:clamp(56px,7vw,88px) 0}
+.trailer{overflow:hidden}
 .trailer h2{color:#fff}.trailer .eyebrow{color:var(--gold)}
 .player{position:relative;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(233,168,37,.35),0 0 0 8px rgba(0,0,0,.35);border-radius:3px}
 .player::before{content:'';position:absolute;inset:-40px -60px;background:radial-gradient(ellipse at 50% 50%,rgba(233,168,37,.10),rgba(0,0,0,0) 60%);z-index:-1}
@@ -340,9 +343,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
 <body>
 <header class="site-header">
  <div class="container nav-wrap">
-  <a href="/" class="brand"><img src="/img/logo-light.png" alt="Tierra Firme" width="120" height="56"></a>
+  <a href="/" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
-  <nav class="main-nav" id="main-nav" aria-label="Main"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/membership" aria-current=page>Membership</a><a href="/membership" class="btn btn-gold">Join the community</a></nav>
+  <nav class="main-nav" id="main-nav" aria-label="Main"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/questions">Questions</a><a href="/membership" aria-current=page>Membership</a><a href="/membership" class="btn btn-gold">Join the community</a></nav>
  </div>
 </header>
 <main>
@@ -396,8 +399,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
 <footer>
  <div class="container">
   <div class="footer-grid">
-   <a href="/" class="brand"><img src="/img/logo-light.png" alt="Tierra Firme" width="120" height="56"></a>
-   <nav class="footer-nav" aria-label="Footer"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/membership">Membership</a><a href="/join">Join the list</a></nav>
+   <a href="/" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
+   <nav class="footer-nav" aria-label="Footer"><a href="/">Home</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/questions">Questions</a><a href="/membership">Membership</a><a href="/join">Join the list</a></nav>
   </div>
   <p class="legal">Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing carries currency, country and tax risk. Each member runs an independent practice; any professional engagement with a member happens through that member's own firm, separate from Tierra Firme.</p>
   <p class="credit">&copy; 2026 Tierra Firme. Research by <a href="https://www.sovereo.com">Sovereo Intelligence Research</a>. Design by Sovereo Web Works.</p>

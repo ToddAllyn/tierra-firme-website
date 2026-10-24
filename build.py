@@ -49,7 +49,7 @@ footer .brand img{height:64px}
 .main-nav a:hover,.main-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.08)}
 .main-nav a.btn{margin-left:10px;color:var(--navy)}
 .nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:1.3rem;line-height:1;padding:8px 12px;border-radius:4px;cursor:pointer}
-@media (max-width:900px){
+@media (max-width:1080px){
   .nav-toggle{display:block}
   .main-nav{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;gap:2px;background:var(--navy);padding:12px clamp(16px,4vw,32px) 18px;border-bottom:1px solid rgba(255,255,255,.1)}
   .main-nav.open{display:flex}
@@ -141,6 +141,7 @@ footer .brand img{height:64px}
 .hero-card h3{color:#fff}.hero-card .checks li{color:rgba(255,255,255,.82)}
 .hero .checks li::before{border-color:var(--gold)}
 .trailer{background:radial-gradient(ellipse at 50% 30%,#12355f 0%,#0a1f3d 45%,#061327 80%);color:#fff;padding:clamp(56px,7vw,88px) 0}
+.trailer{overflow:hidden}
 .trailer h2{color:#fff}.trailer .eyebrow{color:var(--gold)}
 .player{position:relative;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(233,168,37,.35),0 0 0 8px rgba(0,0,0,.35);border-radius:3px}
 .player::before{content:'';position:absolute;inset:-40px -60px;background:radial-gradient(ellipse at 50% 50%,rgba(233,168,37,.10),rgba(0,0,0,0) 60%);z-index:-1}
@@ -171,7 +172,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
 .credit a{color:rgba(255,255,255,.75)}
 """
 
-NAV = [('index.html', 'Home'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('membership.html', 'Membership')]
+NAV = [('index.html', 'Home'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('membership.html', 'Membership')]
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -313,14 +314,16 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
 <meta name="twitter:image" content="{SHARE}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="preload" as="image" href="/img/logo-light.webp" fetchpriority="high">
 {jsonld({"@context": "https://schema.org", "@graph": graph})}
 <style>{CSS}</style>
 </head>
 <body>
 <header class="site-header">
  <div class="container nav-wrap">
-  <a href="index.html" class="brand"><img src="/img/logo-light.png" alt="Tierra Firme" width="120" height="56"></a>
+  <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
   <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="membership.html" class="btn btn-gold">Join the community</a></nav>
  </div>
@@ -331,7 +334,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
 <footer>
  <div class="container">
   <div class="footer-grid">
-   <a href="index.html" class="brand"><img src="/img/logo-light.png" alt="Tierra Firme" width="120" height="56"></a>
+   <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
    <nav class="footer-nav" aria-label="Footer">{''.join(f'<a href="{h}">{t}</a>' for h, t in NAV)}<a href="join.html">Join the list</a></nav>
   </div>
   <p class="legal">{LEGAL}</p>
@@ -377,7 +380,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None):
 </body>
 </html>
 """
-    for a, b in [('href="index.html"', 'href="/"'), ('href="members.html"', 'href="/members"'), ('href="the-show.html"', 'href="/the-show"'), ('href="join.html"', 'href="/join"'), ('href="membership.html"', 'href="/membership"')]:
+    for a, b in [('href="index.html"', 'href="/"'), ('href="members.html"', 'href="/members"'), ('href="the-show.html"', 'href="/the-show"'), ('href="join.html"', 'href="/join"'), ('href="membership.html"', 'href="/membership"'), ('href="questions.html"', 'href="/questions"')]:
         out = out.replace(a, b)
     return out
 
@@ -411,7 +414,7 @@ index_body = f"""
 <section class="hero">
  <div class="globe" aria-hidden="true"></div>
  <div class="container">
-  <img class="hero-logo" src="/img/logo-light.png" alt="Tierra Firme" width="360" height="168">
+  <img class="hero-logo" fetchpriority="high" src="/img/logo-light.webp" alt="Tierra Firme" width="360" height="168">
   <ul class="disciplines" aria-label="Disciplines"><li>Commercial real estate</li><li>Business and family capital</li><li>Intelligence research</li></ul>
   <h1>Any currency.<br>Solid ground.</h1>
   <p class="lede">Tierra Firme is a consortium of three practitioners in real estate, business and research. We produce a free show, research and seminars for people placing capital across borders, starting with Latin America.</p>
@@ -431,7 +434,7 @@ index_body = f"""
    <h2>See the gap before the market does.</h2>
   </div>
   <div class="player" id="player">
-   <video id="tf-trailer" muted playsinline preload="auto" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
+   <video id="tf-trailer" muted playsinline preload="auto" poster="/media/trailer-poster.webp" width="1920" height="1080" aria-label="Tierra Firme trailer">
     <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
    </video>
    <button type="button" class="sound" id="tf-sound" aria-label="Turn sound on">&#128266;&nbsp; Sound on</button>
@@ -511,6 +514,18 @@ index_body = f"""
    <div class="step"><div class="step-mark">3</div><div><h3>Attend a seminar <span class="pill">Dates to the list first</span></h3><p style="margin:0">Small-format sessions in Bogotá with lectures, case studies and time on the ground.</p></div></div>
    <div class="step"><div class="step-mark">4</div><div><h3>Join the community <span class="pill">Opening soon</span></h3><p style="margin:0">Membership with a structured curriculum, a members' forum and live office hours with all three members. <a href="membership.html">Join the waitlist</a>.</p></div></div>
   </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="section-head">
+   <span class="eyebrow">Questions investors ask</span>
+   <h2>Sourced answers before you commit.</h2>
+   <p class="lede">Short answers on ownership, registration, taxes, the exchange rate and visas, each with the primary sources.</p>
+  </div>
+  <div class="qlist">QCARDS</div>
+  <div class="btn-row" style="margin-top:26px"><a href="questions.html" class="btn btn-ink">All questions</a></div>
  </div>
 </section>
 
@@ -748,7 +763,7 @@ PAGES = [
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
      index_body, [faq_schema(FAQ), {"@type": "VideoObject", "name": "Tierra Firme trailer",
         "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
-        "thumbnailUrl": BASE + "/media/trailer-poster.jpg", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
+        "thumbnailUrl": BASE + "/media/trailer-poster.webp", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
         "uploadDate": "2026-10-23", "duration": "PT1M3S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None),
     ('members.html', 'Members | Tierra Firme',
      'Meet the Tierra Firme members: Murphy D. Cheatham II (commercial real estate, CBRE), Shawn Christopher Leamon (business and operations) and Todd Allyn (intelligence research, Sovereo).',
@@ -774,6 +789,118 @@ nf = nf.replace('<link rel="canonical" href="https://tierrafirme.com/404.html">'
 with open(os.path.join(OUT, '404.html'), 'w') as f:
     f.write(nf)
 
+
+# ---------- questions ----------
+from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
+QMAP = {x['slug']: x for x in QUESTIONS}
+AUTHOR = {"@type": "Person", "name": "Todd Allyn", "url": "https://www.linkedin.com/in/toddallyn/",
+          "jobTitle": "Founding Director, Sovereo Intelligence Research"}
+Q_CSS_EXTRA = """
+.qa-answer{font-size:1.2rem;line-height:1.65;color:var(--ink);background:var(--surface);border-left:4px solid var(--gold);padding:22px 26px;margin:0 0 34px;max-width:820px}
+.qa-meta{font-size:.88rem;color:var(--muted-2);margin:-6px 0 26px}
+.qa h2{font-size:1.55rem;margin-top:34px}
+.qa p{max-width:72ch}
+.qa-src{font-size:.92rem}.qa-src li{margin-bottom:6px}
+.qlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media(max-width:760px){.qlist{grid-template-columns:1fr}}
+.qcard{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:22px 24px}
+.qcard:hover{border-color:var(--gold)}
+.qcard h3{margin:0 0 8px;font-size:1.15rem}.qcard p{margin:0;font-size:.95rem}
+"""
+import html as _h
+def q_page(x):
+    secs = ''.join(f"<h2>{_h.escape(t)}</h2><p>{_h.escape(b)}</p>" for t, b in x['sections'])
+    faqs = ''.join(f"<details><summary>{_h.escape(a)}</summary><p>{_h.escape(b)}</p></details>" for a, b in x['faqs'])
+    src = ''.join(f'<li><a href="{u}" rel="noopener">{_h.escape(t)}</a></li>' for t, u in x['sources'])
+    rel = ''.join(f'<a class="qcard" href="/questions/{s}"><h3>{_h.escape(QMAP[s]["q"])}</h3><p>{_h.escape(QMAP[s]["short"])}</p></a>' for s in x['related'])
+    body = f"""
+<section class="hero" style="padding-bottom:56px">
+ <div class="container">
+  <span class="eyebrow"><a href="/questions" style="color:inherit;text-decoration:none">Questions investors ask</a></span>
+  <h1 style="font-size:clamp(2.1rem,4.4vw,3.4rem)">{_h.escape(x['q'])}</h1>
+ </div>
+</section>
+<section class="qa">
+ <div class="container">
+  <p class="qa-meta">By Todd Allyn, research lead, Tierra Firme · Updated <time datetime="{UPDATED}">{UPDATED_TEXT}</time></p>
+  <p class="qa-answer">{_h.escape(x['answer'])}</p>
+  {secs}
+  <h2>More questions</h2>
+  <div class="faq">{faqs}</div>
+  {('<h2>Sources</h2><ul class="qa-src">' + src + '</ul>') if src else ''}
+  <p class="note" style="margin-top:30px">Educational content, not legal, tax or investment advice. Rules and amounts change; confirm with the primary source and a licensed professional before acting.</p>
+ </div>
+</section>
+<section class="alt">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">Related</span><h2>Keep reading.</h2></div>
+  <div class="qlist">{rel}</div>
+ </div>
+</section>
+<section class="dark">
+ <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
+  <span class="eyebrow">Episodes · Research · Seminars</span>
+  <h2>Get answers like this first.</h2>
+  {signup_block()}
+ </div>
+</section>
+"""
+    url = BASE + '/questions/' + x['slug']
+    schema = [
+        {"@type": "Article", "@id": url + "#article", "headline": x['q'], "description": x['short'], "datePublished": UPDATED,
+         "dateModified": UPDATED, "author": AUTHOR, "publisher": {"@id": BASE + "/#org"}, "mainEntityOfPage": url,
+         "image": SHARE, "inLanguage": "en", "about": ["Colombia", "Foreign investment", "Real estate"],
+         "citation": [u for t, u in x['sources']]},
+        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": x['q'], "acceptedAnswer": {"@type": "Answer", "text": x['answer']}}] +
+            [{"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in x['faqs']]},
+    ]
+    return body, schema
+
+os.makedirs(os.path.join(OUT, 'questions'), exist_ok=True)
+for x in QUESTIONS:
+    body, schema = q_page(x)
+    fname = 'questions/' + x['slug'] + '.html'
+    out = page(fname, x['q'] + ' | Tierra Firme', x['short'], body, schema,
+               [('', 'Home'), ('questions.html', 'Questions'), (fname, x['q'])])
+    out = out.replace('</style>', Q_CSS_EXTRA + '</style>', 1)
+    with open(os.path.join(OUT, fname), 'w') as f:
+        f.write(out)
+
+hub_cards = ''.join(f'<a class="qcard" href="/questions/{x["slug"]}"><h3>{_h.escape(x["q"])}</h3><p>{_h.escape(x["short"])}</p></a>' for x in QUESTIONS)
+hub_body = f"""
+<section class="hero">
+ <div class="container">
+  <span class="eyebrow">Questions investors ask</span>
+  <h1>Straight answers, with sources.</h1>
+  <p class="lede">Short, sourced answers to the questions people ask before placing capital in Colombia and Latin America. Each page opens with the answer, then the detail, then the primary sources.</p>
+ </div>
+</section>
+<section>
+ <div class="container"><div class="qlist">{hub_cards}</div>
+  <p class="note" style="margin-top:30px">Educational content, not legal, tax or investment advice. Updated {UPDATED_TEXT}.</p>
+ </div>
+</section>
+<section class="dark">
+ <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
+  <h2>Have a question we have not answered?</h2>
+  <p class="lede">Join the list and reply to any email. New answers go to the list first.</p>
+  {signup_block()}
+ </div>
+</section>
+"""
+hub_schema = [{"@type": "ItemList", "name": "Questions investors ask", "itemListElement": [
+    {"@type": "ListItem", "position": i + 1, "url": BASE + '/questions/' + x['slug'], "name": x['q']} for i, x in enumerate(QUESTIONS)]},
+    {"@type": "CollectionPage", "@id": BASE + "/questions#page", "name": "Questions investors ask", "dateModified": UPDATED}]
+hub = page('questions.html', 'Questions Investors Ask About Colombia | Tierra Firme',
+           'Sourced answers on buying property in Colombia as a foreigner, foreign investment registration, taxes, the exchange rate, investor visas and propiedad horizontal.',
+           hub_body, hub_schema, [('', 'Home'), ('questions.html', 'Questions')])
+hub = hub.replace('</style>', Q_CSS_EXTRA + '</style>', 1)
+open(os.path.join(OUT, 'questions.html'), 'w').write(hub)
+_ix = open(os.path.join(OUT, 'index.html')).read()
+_cards = ''.join(f'<a class="qcard" href="/questions/{x["slug"]}"><h3>{_h.escape(x["q"])}</h3><p>{_h.escape(x["short"])}</p></a>' for x in QUESTIONS[:4])
+_ix = _ix.replace('QCARDS', _cards).replace('href="questions.html"', 'href="/questions"').replace('</style>', Q_CSS_EXTRA + '</style>', 1)
+open(os.path.join(OUT, 'index.html'), 'w').write(_ix)
+
 # ---------- static files ----------
 bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'anthropic-ai',
         'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Applebot', 'Applebot-Extended', 'Bingbot',
@@ -782,8 +909,8 @@ robots = 'User-agent: *\nAllow: /\n\n# Search and AI answer engines are welcome\
 open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-for p, pr in [('', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('membership', '0.8'), ('join', '0.7')]:
-    sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-10-16</lastmod><priority>{pr}</priority></url>\n'
+for p, pr in [('', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('questions', '0.9')] + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('membership', '0.8'), ('join', '0.7')]:
+    sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-10-23</lastmod><priority>{pr}</priority></url>\n'
 sm += '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
 
@@ -803,6 +930,8 @@ llms = f"""# Tierra Firme
 - [Membership]({BASE}/membership): waitlist for the paid community (curriculum, office hours, forum), opening soon.
 - [Join the list]({BASE}/join): free list for episodes, research and seminar dates.
 
+## Questions investors ask (sourced answers)
+""" + ''.join(f"- [{x['q']}]({BASE}/questions/{x['slug']}): {x['short']}\n" for x in QUESTIONS) + f"""
 ## Notes
 - Sovereo Intelligence Research provides research to Tierra Firme and takes no deal fees, advisory fees or carry.
 - Nothing published by Tierra Firme is investment, tax or legal advice.
