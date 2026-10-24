@@ -308,7 +308,9 @@ footer .brand img{height:64px}
 .hero .checks li::before{border-color:var(--gold)}
 .trailer{background:#000;color:#fff;padding:clamp(56px,7vw,88px) 0}
 .trailer h2{color:#fff}.trailer .eyebrow{color:var(--gold)}
-.player{position:relative;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000}
+.player{position:relative;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.player::before{content:'';position:absolute;inset:-40px -60px;background:radial-gradient(ellipse at 50% 50%,rgba(233,168,37,.10),rgba(0,0,0,0) 60%);z-index:-1}
+.trailer .container{position:relative}
 .player video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
 .trailer-fine{margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.55)}
 .note{font-size:.9rem;color:var(--muted);max-width:80ch;border-left:3px solid var(--gold);padding-left:16px}

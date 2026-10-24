@@ -142,7 +142,9 @@ footer .brand img{height:64px}
 .hero .checks li::before{border-color:var(--gold)}
 .trailer{background:#000;color:#fff;padding:clamp(56px,7vw,88px) 0}
 .trailer h2{color:#fff}.trailer .eyebrow{color:var(--gold)}
-.player{position:relative;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.6);background:#000}
+.player{position:relative;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.player::before{content:'';position:absolute;inset:-40px -60px;background:radial-gradient(ellipse at 50% 50%,rgba(233,168,37,.10),rgba(0,0,0,0) 60%);z-index:-1}
+.trailer .container{position:relative}
 .player video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
 .trailer-fine{margin-top:16px;font-size:.88rem;color:rgba(255,255,255,.55)}
 .note{font-size:.9rem;color:var(--muted);max-width:80ch;border-left:3px solid var(--gold);padding-left:16px}
@@ -385,7 +387,7 @@ index_body = f"""
   <p class="lede">Tierra Firme is a consortium of three practitioners in real estate, business and research. We produce a free show, research and seminars for people placing capital across borders, starting with Latin America.</p>
   <div class="btn-row" style="margin-top:28px">
    <a href="membership.html" class="btn btn-gold">Join the community</a>
-   <a href="join.html" class="btn btn-outline">Get the free list</a>
+   <a href="#trailer" class="btn btn-outline">&#9654;&nbsp; Watch the trailer</a>
   </div>
   <p class="hero-fine">Education, not advice. No listings, no deals, no fees on what you buy.</p>
   <div class="meridian" aria-hidden="true"><span class="pt">Dallas · 32.78°N</span><span class="line"></span><span>Home to solid ground</span><span class="line"></span><span class="pt">Latin America</span></div>
@@ -395,15 +397,15 @@ index_body = f"""
 <section class="trailer" id="trailer">
  <div class="container">
   <div class="section-head" style="margin-bottom:28px">
-   <span class="eyebrow">The trailer</span>
+   <span class="eyebrow">Official trailer</span>
    <h2>See the gap before the market does.</h2>
   </div>
   <div class="player">
-   <video controls playsinline preload="none" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
+   <video controls playsinline preload="metadata" poster="/media/trailer-poster.jpg" width="1920" height="1080" aria-label="Tierra Firme trailer">
     <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
    </video>
   </div>
-  <p class="trailer-fine">56 seconds. Footage from Bogotá, Cartagena, Medellín, Lima, Cusco, Montevideo, Santiago, Buenos Aires, Rio de Janeiro, São Paulo, Mexico City, Antigua, Panama City, Santo Domingo and Dallas.</p>
+  <p class="trailer-fine">1 minute. Footage from Bogotá, Cartagena, Medellín, Lima, Cusco, Montevideo, Santiago, Buenos Aires, Rio de Janeiro, São Paulo, Mexico City, Antigua, Panama City, Santo Domingo and Dallas.</p>
  </div>
 </section>
 
@@ -713,7 +715,7 @@ PAGES = [
      index_body, [faq_schema(FAQ), {"@type": "VideoObject", "name": "Tierra Firme trailer",
         "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
         "thumbnailUrl": BASE + "/media/trailer-poster.jpg", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
-        "uploadDate": "2026-10-23", "duration": "PT56S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None),
+        "uploadDate": "2026-10-23", "duration": "PT1M3S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None),
     ('members.html', 'Members | Tierra Firme',
      'Meet the Tierra Firme members: Murphy D. Cheatham II (commercial real estate, CBRE), Shawn Christopher Leamon (business and operations) and Todd Allyn (intelligence research, Sovereo).',
      members_body, [dict(m['person'], **{"memberOf": {"@id": BASE + "/#org"}}) for m in MEMBERS],
