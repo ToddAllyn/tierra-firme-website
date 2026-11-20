@@ -258,9 +258,114 @@ a.card:hover h3{color:var(--gold-d)}
 .signup-wrap{width:100%;max-width:640px}
 .text-center .signup-wrap{margin:0 auto}
 .text-center .signup{margin-inline:auto}
+
+/* ===== Elite event layer ===== */
+:root{--ink-2:#040c1a;--line:rgba(233,168,37,.28)}
+section{padding:clamp(48px,6vw,76px) 0}
+.section-head{margin-bottom:28px}
+.lede{font-size:1.06rem}
+.event-bar{background:var(--ink-2);color:rgba(255,255,255,.78);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.event-bar .container{display:flex;align-items:center;justify-content:center;gap:8px 18px;flex-wrap:wrap;padding-block:9px;text-align:center}
+.event-bar b{color:var(--gold-l);font-weight:600}
+.event-bar a{color:#fff;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px}
+@media (max-width:640px){.event-bar .eb-long{display:none}.event-bar .container{gap:6px 10px;font-size:.66rem;letter-spacing:.1em}}
+.event-bar .pre{color:var(--gold);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+.card{border-radius:2px;transition:transform .2s,border-color .2s,box-shadow .2s}
+a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(6,19,39,.18);border-color:var(--gold)}
+.dark,.ink{background:var(--navy)}
+.ink{background:linear-gradient(180deg,var(--ink-2),var(--navy));color:#fff}
+.ink h2,.ink h3{color:#fff}.ink p{color:rgba(255,255,255,.74)}.ink .eyebrow{color:var(--gold)}
+.ink .card{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.12)}
+.ink .note{color:rgba(255,255,255,.7)}
+.ink .checks li{color:rgba(255,255,255,.8)}
+.ink a{color:var(--gold-l)}
+/* split hero */
+.hero-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:end}
+@media (max-width:980px){.hero-split{grid-template-columns:1fr}}
+.photo-hero{min-height:min(88vh,820px)}
+.photo-hero>.container{padding-top:clamp(90px,14vh,150px);padding-bottom:clamp(36px,5vw,64px)}
+.photo-hero h1{font-size:clamp(2.5rem,5.6vw,5rem)}
+.itin-card{background:rgba(4,12,26,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);padding:24px 24px 20px;color:#fff;min-width:0}
+.itin-card .ic-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+.itin-card .ic-top .pre{color:var(--gold);border:1px solid var(--line);padding:2px 8px;border-radius:999px}
+.ic-city{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(255,255,255,.12)}
+.ic-city .n{font-family:'Fraunces',serif;font-size:2.1rem;line-height:1;color:var(--gold-l)}
+.ic-city h3{margin:0;font-size:1.25rem;color:#fff}
+.ic-city .d{font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:.06em;text-align:right}
+.ic-city p{grid-column:2/4;margin:0;font-size:.9rem;color:rgba(255,255,255,.72)}
+.ic-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin:2px 0 16px}
+.ic-facts div{padding:12px 0;text-align:center;border-left:1px solid rgba(255,255,255,.1)}
+.ic-facts div:first-child{border-left:0}
+.ic-facts b{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;color:#fff}
+.ic-facts span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.itin-card .btn{width:100%}
+.itin-card .fine{font-size:.74rem;color:rgba(255,255,255,.5);margin:10px 0 0}
+/* in-page subnav */
+.subnav{position:sticky;top:79px;z-index:40;background:rgba(4,12,26,.96);border-bottom:1px solid var(--line)}
+.subnav .container{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:6px}
+.subnav .container::-webkit-scrollbar{display:none}
+.subnav a{flex:none;color:rgba(255,255,255,.78);text-decoration:none;font-size:.82rem;font-weight:500;padding:8px 12px;border-radius:2px;white-space:nowrap}
+.subnav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.subnav a.cta{color:var(--navy);background:var(--gold);margin-left:auto;font-weight:600}
+[id]{scroll-margin-top:140px}
+/* city tiles */
+.cities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.cities{grid-template-columns:1fr}}
+.city{position:relative;display:block;min-height:clamp(300px,36vw,460px);overflow:hidden;color:#fff;text-decoration:none;background:var(--navy)}
+.city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.city:hover img{transform:scale(1.04)}
+.city::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,26,.05) 30%,rgba(4,12,26,.92) 100%)}
+.city .c-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,3vw,30px)}
+.city .c-days{display:inline-block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:4px 10px;margin-bottom:12px}
+.city h3{font-size:clamp(1.8rem,3.2vw,2.6rem);color:#fff;margin:0 0 6px;font-weight:500}
+.city p{color:rgba(255,255,255,.8);margin:0;max-width:46ch;font-size:.95rem}
+.city .c-credit{position:absolute;top:8px;right:10px;z-index:2;font-size:.62rem;color:rgba(255,255,255,.5)}
+.city .c-credit a{color:inherit}
+/* itinerary */
+.itin{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,2.1fr);gap:18px}
+@media (max-width:980px){.itin{grid-template-columns:1fr}}
+.itin-col h3.city-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:1.5rem;padding-bottom:10px;border-bottom:2px solid var(--gold);margin-bottom:14px}
+.itin-col h3.city-h span{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);font-weight:700}
+.days{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.itin-col:last-child .days{grid-template-columns:1fr}
+@media (max-width:980px){.itin-col:last-child .days{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}}
+.dcard{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);padding:16px 16px 12px;min-width:0}
+.dcard.lane-research{border-top-color:var(--sky)}.dcard.lane-cre{border-top-color:var(--terracotta)}.dcard.lane-capital{border-top-color:var(--teal)}
+.dcard .dd{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
+.dcard h4{font-family:'Fraunces',serif;font-size:1.12rem;margin:4px 0 2px;color:var(--ink);font-weight:600;line-height:1.2}
+.dcard .by{font-size:.8rem;color:var(--muted);margin:0 0 8px}
+.dcard .by a{color:var(--gold-d)}
+.dcard dl{margin:0}
+.dcard dt{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-top:8px}
+.dcard dd{margin:2px 0 0;font-size:.88rem;line-height:1.5;color:var(--muted)}
+.prelim{display:flex;gap:12px;align-items:flex-start;background:#fff8e6;border:1px solid #edd9a3;color:#5c4400;padding:12px 16px;font-size:.9rem;margin:0 0 20px}
+.prelim b{white-space:nowrap}
+/* format strip */
+.format{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line)}
+.format div{padding:22px 24px;border-left:1px solid var(--line)}
+.format div:first-child{border-left:0}
+.format .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.format h3{margin:6px 0 6px;font-size:1.25rem}
+.format p{margin:0;font-size:.92rem}
+@media (max-width:760px){.format{grid-template-columns:1fr}.format div{border-left:0;border-top:1px solid var(--line)}.format div:first-child{border-top:0}}
+/* compact faq */
+.faq.cols{max-width:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.faq.cols details:last-child{border-bottom:0}
+.faq.cols details{border-bottom:1px solid var(--border);border-top:0}
+@media (max-width:860px){.faq.cols{grid-template-columns:1fr}}
+.ink .faq summary{color:#fff}.ink .faq details{border-color:rgba(255,255,255,.14)}.ink .faq details p{color:rgba(255,255,255,.72)}
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:18px 16px;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0}
+.stats b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;color:#fff;line-height:1.1}
+.stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+.signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
 
-NAV = [('index.html', 'Home'), ('bogota-2027.html', 'Bogotá 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('membership.html', 'Membership')]
+NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('membership.html', 'Membership')]
 
 DISCLAIMER = "Educational content. Not investment, tax or legal advice."
 
@@ -278,8 +383,9 @@ LANES = [
 LANE = {l['id']: l for l in LANES}
 
 # Event: Tierra Firme Investor Lab, Bogotá. Dates and seat count come from the 2027 Investor Lab draft.
-EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá', start='2027-03-07', end='2027-03-12',
+EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá and Medellín', start='2027-03-07', end='2027-03-12',
              dates='7 to 12 March 2027', short='March 2027', seats=30)
+PRELIM = 'Preliminary. Dates, cities and sessions may change while we put the program together.'
 
 # Photos: Wikimedia Commons. Licenses read on each File: page on 2026-11-20. BY and BY-SA need the credit line.
 PHOTOS = {
@@ -303,6 +409,11 @@ PHOTOS = {
                       title='Torre Colpatria at night', author='ProtoplasmaKid', lic='CC BY-SA 4.0',
                       lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
                       src='https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_Bogot%C3%A1_-_15_-_Torre_Colpatria.jpg'),
+    'medellin': dict(base='/img/bogota/medellin-towers', w=(1920, 960), ratio=(1920, 1280),
+                     alt='Residential and office towers of Medellín climbing the green slopes of the Aburrá Valley',
+                     title='Medellín', author='Mussi Katz', lic='CC0 1.0',
+                     lic_url='https://creativecommons.org/publicdomain/zero/1.0/',
+                     src='https://commons.wikimedia.org/wiki/File:Colombia_Medellin.jpg'),
     'general': dict(base='/img/bogota/bogota-general-view', w=(1600, 960), ratio=(1600, 1067),
                     alt='Wide view over Bogotá, its high-rise center and the flat savanna beyond',
                     title='Bogotá, general view', author='Raul Cuellar', lic='CC0 1.0',
@@ -348,6 +459,28 @@ def hero_preload(p):
     return (f'<link rel="preload" as="image" href="{x["base"]}-{small}.webp" imagesrcset="{x["base"]}-{small}.webp {small}w, '
             f'{x["base"]}-{big}.webp {big}w" imagesizes="100vw" fetchpriority="high">')
 
+def itin_card(cta='colombia-2027.html#invite'):
+    return f"""<aside class="itin-card" aria-label="Investor Lab 2027 at a glance">
+   <div class="ic-top"><span>Investor Lab 2027</span><span class="pre">Preliminary</span></div>
+   <div class="ic-city"><span class="n">3</span><h3>Bogotá</h3><span class="d">Sun 7 to Wed 10 March, morning</span><p>Arrival, then the country, property and business.</p></div>
+   <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Wed 10 evening to Fri 12 March</span><p>Field visits and culture, then the decision framework.</p></div>
+   <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3</b><span>Lanes</span></div></div>
+   <a href="{cta}" class="btn btn-gold">Get the information sheet</a>
+   <p class="fine">Dates, cities and sessions may change. The list hears first.</p>
+  </aside>"""
+
+def city_tile(p, city, days, text, href):
+    x = PHOTOS[p]
+    return (f'<a class="city lift" href="{href}">{img(p, "(max-width:760px) 100vw, 50vw")}'
+            f'<span class="c-credit">Photo: {html.escape(x["author"])}, {x["lic"]}</span><div class="c-body"><span class="c-days">{days}</span>'
+            f'<h3>{city}</h3><p>{text}</p></div></a>')
+
+def cities_html():
+    return ('<div class="cities">'
+            + city_tile('downtown', 'Bogotá', '3 days · 8 to 10 March, morning', 'The capital, where the rules are made: the central bank, the tax authority, notaries and ministries. Briefings on the country, property and business.', 'colombia-2027.html#itinerary')
+            + city_tile('medellin', 'Medellín', '2 days · 10 March evening to 12 March', "Colombia's second-largest city. Arrive Wednesday evening, then verified field visits and the decision framework before you fly home.", 'colombia-2027.html#itinerary')
+            + '</div>')
+
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
             '<div><b>30 seats</b><span>An intimate room</span></div><div><b>0</b><span>Properties for sale</span></div></div>')
@@ -364,8 +497,8 @@ FAQ = [
     ("Who is behind Tierra Firme?",
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
-    ("What is the Bogotá 2027 Investor Lab?",
-     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: short boardroom briefings each morning, verified field visits in the afternoon and cultural evenings, with Monday to Friday on Colombian commerce. "
+    ("What is the Investor Lab 2027?",
+     "A preliminary six-day, five-night program in Colombia for 30 people: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
      "It is a seminar, not a sales event. Details go to the waitlist first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -509,7 +642,8 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
 <style>{CSS}</style>
 </head>
 <body>
-{banner}<header class="site-header">
+{banner}<div class="event-bar"><div class="container"><span class="pre">Preliminary</span><span><b>Investor Lab 2027</b><span class="eb-long"> · Bogotá 3 days · Medellín 2 days</span> · 7 to 12 March</span><a href="/colombia-2027#invite">Get the information sheet</a></div></div>
+<header class="site-header">
  <div class="container nav-wrap">
   <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
@@ -579,7 +713,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
     return out
 
 
-def signup_block(dark=True, btn='Join the community', ok="You're on the waitlist. Bogotá 2027 details, new episodes and research come to you first.", source='', preset=()):
+def signup_block(dark=True, btn='Join the community', ok="You're on the waitlist. Investor Lab details, new episodes and research come to you first.", source='', preset=()):
     boxes = ''.join(f'<label><input type="checkbox" name="lanes" value="{l["id"]}"{" checked" if l["id"] in preset else ""}> {l["label"]}</label>' for l in LANES)
     return f"""<div class="signup-wrap"><form class="signup" id="signup" novalidate data-ok="{html.escape(ok)}" data-source="{html.escape(source)}">
    <label class="sr" for="tf-email">Email address</label>
@@ -651,17 +785,40 @@ def why_html(alt=False):
 # ---------- index ----------
 index_body = f"""
 {photo_hero('twilight', f'''
-  <span class="kicker">Tierra Firme Investor Lab<span class="rule"></span>Bogotá · 7 to 12 March 2027</span>
-  <h1>Any currency.<br>Solid ground.</h1>
-  <p class="lede">A private six-day seminar in Bogotá for people placing capital across borders. Commercial real estate, business and family capital, and country research, taught by the three members of Tierra Firme.</p>
-  <div class="btn-row" style="margin-top:30px">
-   <a href="bogota-2027.html#invite" class="btn btn-gold">Get the information sheet</a>
-   <a href="bogota-2027.html" class="btn btn-ghost">See the program</a>
-   <a href="#player" class="btn btn-ghost">&#9654;&nbsp; Watch the trailer</a>
+  <div class="hero-split">
+   <div>
+    <span class="kicker">Tierra Firme<span class="rule"></span>Any currency · Solid ground</span>
+    <h1>Read the country before you buy into it.</h1>
+    <p class="lede">A consortium of three practitioners in commercial real estate, business and family capital, and research. A private program in Colombia, a free show and sourced answers for people placing capital across borders.</p>
+    <div class="btn-row" style="margin-top:26px"><a href="colombia-2027.html#invite" class="btn btn-gold">Get the information sheet</a><a href="colombia-2027.html" class="btn btn-ghost">Investor Lab 2027</a><a href="#player" class="btn btn-ghost">&#9654;&nbsp; Trailer</a></div>
+    <p class="hero-fine">{DISCLAIMER} No listings, no sales, no fees on what you buy.</p>
+   </div>
+   {itin_card()}
   </div>
-  {event_strip()}
-  <p class="hero-fine">{DISCLAIMER} No listings, no sales, no fees on what you buy.</p>
 ''')}
+
+<section class="ink">
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Investor Lab 2027 · Preliminary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
+   <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
+  </div>
+  {cities_html()}
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b>0</b><span>Properties for sale</span></div></div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Three members · Three lanes</span><h2 style="margin:0">Practitioners, not promoters.</h2></div>
+   <a href="members.html" class="btn btn-ink">Meet the members</a>
+  </div>
+  {seat_cards()}
+ </div>
+</section>
+
+{why_html(alt=True)}
 
 <section class="trailer" id="trailer">
  <div class="container">
@@ -683,120 +840,30 @@ index_body = f"""
 </section>
 
 <section>
- <div class="container split">
-  {fig('towers', 'tall')}
-  <div>
-   <span class="eyebrow">Why Bogotá</span>
-   <h2>Where the rules are made.</h2>
-   <p class="lede">Medellín gets the attention. Bogotá holds the institutions every foreign buyer ends up dealing with: the central bank, the tax authority, the notaries, the law firms and the ministries.</p>
-   <p>We meet where the decisions that affect you are made, for six days of short boardroom briefings, verified field visits and cultural evenings.</p>
-   <div class="btn-row" style="margin-top:22px"><a href="bogota-2027.html" class="btn btn-ink">The Bogotá 2027 program</a></div>
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Questions investors ask</span><h2 style="margin:0">Sourced answers before you commit.</h2></div>
+   <a href="questions.html" class="btn btn-ink">All questions</a>
   </div>
+  <div class="qlist">QCARDS</div>
  </div>
 </section>
 
-{why_html(alt=True)}
-
-<section class="dark">
+<section class="alt">
  <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">Three lanes</span>
-   <h2>Three practitioners. Three lanes.</h2>
-   <p class="lede">Each member teaches his own discipline and runs an independent practice. Every episode, answer and seminar day belongs to a lane, so you can follow the one that fits you.</p>
-  </div>
-  {seat_cards()}
-  <div class="btn-row" style="margin-top:28px"><a href="members.html" class="btn btn-outline">Meet the members</a></div>
+  <div class="section-head"><span class="eyebrow">Straight answers</span><h2>Questions people ask first.</h2></div>
+  <div class="faq cols">{''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in FAQ)}</div>
  </div>
 </section>
 
 <section class="band-green">
- <div class="container split rev">
-  {fig('ballroom', 'wide')}
+ <div class="container signup-band">
   <div>
-   <span class="eyebrow">The room</span>
-   <h2>Thirty seats. Every question answered.</h2>
-   <p class="lede">The Investor Lab is small on purpose. One table of practitioners, Colombian counsel on property and tax, and a room small enough that nobody leaves with a question unasked.</p>
-   <ul class="checks" style="margin-top:18px">
-    <li style="color:rgba(255,255,255,.85)">An upscale hotel in north Bogotá, confirmed to registered attendees</li>
-    <li style="color:rgba(255,255,255,.85)">Short morning briefings, verified field visits, cultural evenings</li>
-    <li style="color:rgba(255,255,255,.85)">A welcome reception on the first evening</li>
-   </ul>
+   <span class="eyebrow">Investor Lab 2027 · Episodes · Research</span>
+   <h2>Know the ground before you stand on it.</h2>
+   <p class="lede">Get the Investor Lab information sheet and join the mailing list. Seats, new episodes and research go to the list first.</p>
   </div>
- </div>
-</section>
-
-<section>
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">The framework</span>
-   <h2>Three arbitrages, three risks.</h2>
-   <p class="lede">Every gap that makes a market cheaper is also a reason to be careful. We teach both sides.</p>
-  </div>
-  <div class="grid-3">
-   <article class="card"><div class="num">1</div><h3>Currency</h3><p>Your dollar, loonie or euro goes further abroad. It can also lose ground while you hold, so the exchange rate is part of your return.</p></article>
-   <article class="card"><div class="num">2</div><h3>Political</h3><p>Markets others avoid often price in more risk than exists. Sometimes they price in less. Research tells the difference.</p></article>
-   <article class="card"><div class="num">3</div><h3>Structural</h3><p>How a foreigner owns and operates: entities, title, tax and getting money home. These rules decide what you actually keep.</p></article>
-  </div>
- </div>
-</section>
-
-<section class="alt">
- <div class="container grid-2" style="align-items:start">
-  <div>
-   <span class="eyebrow">The thesis</span>
-   <h2>You're not broke. You're in the wrong market.</h2>
-  </div>
-  <div>
-   <p class="lede" style="margin-bottom:18px">Across the US, Canada and Europe, the entry point to owning something has moved out of reach: a first home, a rental, a small business. That holds even for people with solid incomes who did everything right.</p>
-   <p>But "out of reach" is local. Whether you are stretching a fixed income into retirement or still earning and ready to build a first real asset, the same savings can buy more abroad. Three forces explain why, and each carries its own risk.</p>
-  </div>
- </div>
-</section>
-
-<section>
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">How it works</span>
-   <h2>Learn at your own pace.</h2>
-   <p class="lede">No hard sell. We would rather you be ready than early.</p>
-  </div>
-  <div class="ladder">
-   <div class="step"><div class="step-mark">1</div><div><h3>Watch the show <span class="pill on">Free</span></h3><p style="margin:0">The thesis, the framework and real stories from the ground, in English and Spanish.</p></div></div>
-   <div class="step"><div class="step-mark">2</div><div><h3>Read the answers <span class="pill on">Free</span></h3><p style="margin:0">Sourced answers in each lane, from title and tax to the exchange rate. <a href="questions.html">Browse the questions</a>.</p></div></div>
-   <div class="step"><div class="step-mark">3</div><div><h3>Attend the Investor Lab <span class="pill">Bogotá · March 2027</span></h3><p style="margin:0">Six days, three lanes, thirty seats. <a href="bogota-2027.html">See the program</a>.</p></div></div>
-   <div class="step"><div class="step-mark">4</div><div><h3>Join the community <span class="pill">Opening soon</span></h3><p style="margin:0">Membership with a structured curriculum, a members' forum and live office hours with all three members. <a href="membership.html">Join the waitlist</a>.</p></div></div>
-  </div>
- </div>
-</section>
-
-<section>
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">Questions investors ask</span>
-   <h2>Sourced answers before you commit.</h2>
-   <p class="lede">Short answers on ownership, registration, taxes, the exchange rate and visas, each with the primary sources.</p>
-  </div>
-  <div class="qlist">QCARDS</div>
-  <div class="btn-row" style="margin-top:26px"><a href="questions.html" class="btn btn-ink">All questions</a></div>
- </div>
-</section>
-
-<section class="alt">
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">Straight answers</span>
-   <h2>Questions people ask first.</h2>
-  </div>
-  {faq_html(FAQ)}
- </div>
-</section>
-
-<section class="dark">
- <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
-  <span class="eyebrow">Bogotá 2027 · Episodes · Research</span>
-  <h2>Know the ground before you stand on it.</h2>
-  <p class="lede">Join the community waitlist. Investor Lab seats, new episodes and research go to the list first.</p>
-  {signup_block(source='home')}
+  <div>{signup_block(btn='Send me the information sheet', source='home')}</div>
  </div>
 </section>
 """
@@ -985,57 +1052,59 @@ notfound_body = """
 
 from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 # ---------- Bogotá 2027 Investor Lab ----------
-# Six days, five nights: arrive Sunday, depart Friday afternoon or Saturday morning depending on flights.
-# Format: short boardroom briefings in the morning, verified field visits in the afternoon, cultural evenings.
-# Sunday is arrival. Monday to Friday are Colombian commerce: short briefings and field work.
-# Each day: (lane id or None for a shared day, title, weekday, date, slots).
+# PRELIMINARY. Six days, five nights: 3 days in Bogotá, 2 in Medellín.
+# Arrive Bogotá Sunday; Monday, Tuesday and Wednesday morning in Bogotá; fly to Medellín Wednesday afternoon
+# (the move may instead be Tuesday); Medellín from Wednesday evening;
+# Thursday and Friday in Medellín; depart Friday afternoon or Saturday morning depending on flights.
+# Format: short boardroom briefings, verified field visits, cultural evenings.
+# Each day: (city, lane id or None, title, weekday, date, [(label, text)]).
 PROGRAM = [
-    (None, 'Arrival', 'Sunday', '7 March', [
-        ('Day', 'Arrive in Bogotá and settle in at the hotel in north Bogotá.'),
+    ('Bogotá', None, 'Arrival', 'Sunday', '7 March', [
+        ('Day', 'Arrive in Bogotá and settle in at the hotel.'),
         ('Evening', 'Welcome reception with the three members.'),
     ]),
-    ('research', 'Colombian commerce · Country', 'Monday', '8 March', [
-        ('Boardroom', 'Short briefing: Colombia in context. The economy, the political calendar and where policy is heading.'),
-        ('Afternoon', 'The peso. Earning in one currency and owning in another, and how the exchange rate changes what you keep.'),
-        ('Evening', 'Cultural evening in Bogotá.'),
+    ('Bogotá', 'research', 'The country', 'Monday', '8 March', [
+        ('Boardroom', 'Colombia in context: the economy, the political calendar and where policy is heading.'),
+        ('Afternoon', 'The peso: earning in one currency and owning in another.'),
+        ('Evening', 'Cultural evening.'),
     ]),
-    ('cre', 'Colombian commerce · Property', 'Tuesday', '9 March', [
-        ('Boardroom', 'Short briefing: how property is valued, titled and managed in Colombia, with Colombian counsel on propiedad horizontal and tax.'),
-        ('Field visit', 'A verified field visit to two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
-        ('Evening', 'Cultural evening in Bogotá.'),
+    ('Bogotá', 'cre', 'Property', 'Tuesday', '9 March', [
+        ('Boardroom', 'How property is valued, titled and managed, with Colombian counsel on propiedad horizontal and tax.'),
+        ('Field visit', 'Two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
+        ('Evening', 'Cultural evening.'),
     ]),
-    ('capital', 'Colombian commerce · Business', 'Wednesday', '10 March', [
-        ('Boardroom', 'Short briefing: building and holding a business in Colombia, from entities to registering foreign investment and getting money home.'),
-        ('Field visit', 'A verified field visit with an operator on site: what it really costs to run a business here.'),
-        ('Evening', 'Cultural evening in Bogotá.'),
+    ('Bogotá', 'capital', 'Business', 'Wednesday', '10 March · morning', [
+        ('Boardroom', 'Building and holding a business: entities, registering foreign investment and getting money home.'),
+        ('Afternoon', 'Short flight to Medellín. The move may be Tuesday instead, depending on planning.'),
     ]),
-    (None, 'Colombian commerce · Investment', 'Thursday', '11 March', [
-        ('Boardroom', 'Short briefing with all three members: Colombian commerce and investment, worked through a sample property and a sample business.'),
-        ('Field visit', 'A verified field visit, followed by small-group time with each member on your own questions.'),
-        ('Evening', 'Cultural evening in Bogotá.'),
+    ('Medellín', None, 'Arrival in Medellín', 'Wednesday', '10 March · evening', [
+        ('Evening', 'Check in, then a cultural evening in Medellín.'),
     ]),
-    (None, 'Colombian commerce · The decision', 'Friday', '12 March', [
-        ('Boardroom', 'The decision framework. Run your own question through it with the three members.'),
+    ('Medellín', None, 'Commerce on the ground', 'Thursday', '11 March', [
+        ('Boardroom', 'Medellín in context, with all three members.'),
+        ('Field visit', 'Verified field visits across the city, including an operator on site on what it really costs to run a business here, then small-group time with each member.'),
+        ('Evening', 'Cultural evening.'),
+    ]),
+    ('Medellín', None, 'The decision', 'Friday', '12 March', [
+        ('Boardroom', 'The decision framework: run your own question through it with the three members.'),
         ('Afternoon', 'Departures, or stay the night and fly out Saturday 13 March, depending on flights.'),
     ]),
 ]
 
+def _dcard(lane, title, dow, date, slots):
+    cls = f' lane-{LANE[lane]["key"]}' if lane else ''
+    by = (f'<p class="by">{LANE[lane]["label"]} · <a href="lanes/{LANE[lane]["slug"]}.html">{LANE[lane]["member"]}</a></p>' if lane
+          else '<p class="by">Travel day</p>' if title.startswith('Arrival') else '<p class="by">All three members</p>')
+    dl = ''.join(f'<dt>{t}</dt><dd>{html.escape(d)}</dd>' for t, d in slots)
+    return f'<article class="dcard{cls}"><span class="dd">{dow} · {date}</span><h4>{title}</h4>{by}<dl>{dl}</dl></article>'
+
 def program_html():
-    out = []
-    for lane, title, dow, date, slots in PROGRAM:
-        sl = ''.join(f'<div class="slot"><span class="t">{t}</span><p>{html.escape(d)}</p></div>' for t, d in slots)
-        if lane:
-            l = LANE[lane]
-            tag = f'<span class="tag tag-{l["key"]}">{l["seat"]}</span>'
-            head = f'<h3>{title or l["label"]}</h3><p style="margin-top:-6px">{l["label"]}, led by {l["member"]}. <a href="lanes/{l["slug"]}.html">About this lane</a></p>'
-        else:
-            tag = '<span class="tag">Together</span>'
-            head = f'<h3>{title}</h3>'
-        out.append(f"""<article class="day">
-   <div class="when">{dow}<b>{date}</b>{tag}</div>
-   <div>{head}{sl}</div>
-  </article>""")
-    return '<div class="program">' + ''.join(out) + '</div>'
+    cols = []
+    for city, label in (('Bogotá', 'Sun 7 to Wed 10 morning'), ('Medellín', 'Wed 10 evening to Fri 12')):
+        cards = ''.join(_dcard(*d[1:]) for d in PROGRAM if d[0] == city)
+        cols.append(f'<div class="itin-col"><h3 class="city-h">{city}<span>{label}</span></h3><div class="days">{cards}</div></div>')
+    return (f'<div class="prelim"><b>Preliminary.</b><span>{PRELIM[13:]} The information sheet and mailing list get every update first.</span></div>'
+            f'<div class="itin">{"".join(cols)}</div>')
 
 def faculty_html():
     return '<div class="faculty">' + ''.join(f"""<a class="card bar-{m['key']}" href="lanes/{LANE[m['lane']]['slug']}.html">
@@ -1043,174 +1112,150 @@ def faculty_html():
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
-     "Six days and five nights in Bogotá: arrive Sunday 7 March 2027, depart Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. The venue is an upscale hotel in north Bogotá, confirmed to registered attendees."),
+     "Six days and five nights in Colombia: arrive in Bogotá on Sunday 7 March 2027, Bogotá through Wednesday morning, then Medellín from Wednesday evening (the move may be Tuesday instead), departing Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. Hotels are confirmed to registered attendees."),
+    ("Is the program final?",
+     "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and the mailing list hears first."),
     ("Who is it for?",
-     "People who earn in dollars, euros or another currency and are weighing property or a small business in Colombia, and families thinking about how to hold what they build across borders."),
+     "People who earn in dollars, euros or another currency and are weighing property or a business in Colombia, and families thinking about how to hold what they build across borders."),
     ("How many seats are there?",
      "Thirty. The room is kept small so every question gets answered."),
     ("Will anyone sell me property or a business?",
      "No. There are no listings, no sponsors pitching from the stage and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
     ("How do I get the information sheet?",
-     "Leave your email at the bottom of this page. You will receive the information sheet and join the mailing list; the final schedule, seat details and pricing go to the list before anyone else."),
-    ("Is the schedule final?",
-     "No. The schedule is tentative while we put the program together. Dates, sessions and visits may change."),
+     "Leave your email on this page. You will receive the information sheet and join the mailing list; the final schedule, seat details and pricing go to the list before anyone else."),
 ]
 
 event_body = f"""
 {photo_hero('downtown', f'''
-  <span class="kicker">Investor Lab<span class="rule"></span>Bogotá · {EVENT['dates']}</span>
-  <h1>Six days on solid ground.</h1>
-  <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: short morning briefings, verified field visits and cultural evenings, a day for each lane.</p>
-  <div class="btn-row" style="margin-top:30px">
-   <a href="#invite" class="btn btn-gold">Get the information sheet</a>
-   <a href="#program" class="btn btn-ghost">Tentative schedule</a>
+  <div class="hero-split">
+   <div>
+    <span class="kicker">Investor Lab 2027<span class="rule"></span>Bogotá · Medellín · Preliminary</span>
+    <h1>Two cities. Six days. Solid ground.</h1>
+    <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, taught by the three members of Tierra Firme.</p>
+    <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get the information sheet</a><a href="#itinerary" class="btn btn-ghost">Preliminary itinerary</a></div>
+   </div>
+   {itin_card('#invite')}
   </div>
-  {event_strip()}
 ''')}
 
-<section>
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">The problem</span>
-   <h2>Most buyers study the property. The country decides the outcome.</h2>
-   <p class="lede">A good apartment in the wrong conditions is a poor decision. Three things move your real result more than the asset does, and most expat events skip all three.</p>
-  </div>
-  <div class="grid-3">
-   <article class="card bar-research"><span class="tag tag-research">Currency</span><h3>Two currencies</h3><p>You earn in one currency and own in another. The peso can add to what you keep or erase it before rent is ever collected.</p></article>
-   <article class="card bar-cre"><span class="tag tag-cre">Title and tax</span><h3>Who owns what</h3><p>How title and propiedad horizontal work, what you owe while you hold and what you owe when you sell.</p></article>
-   <article class="card bar-capital"><span class="tag tag-capital">Getting money out</span><h3>The way out</h3><p>Registering your investment correctly on the way in, so you can bring the money home on the way out.</p></article>
-  </div>
- </div>
-</section>
+<nav class="subnav" aria-label="On this page"><div class="container">
+ <a href="#itinerary">Itinerary</a><a href="#cities">Cities</a><a href="#format">Format</a><a href="#faculty">Faculty</a><a href="#why">Why Colombia</a><a href="#details">Details</a><a href="#faq">FAQ</a><a href="#invite" class="cta">Information sheet</a>
+</div></nav>
 
-{why_html(alt=False)}
-
-<section class="alt" id="program">
+<section id="itinerary">
  <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">Tentative schedule</span>
-   <h2>Six days. Three lanes.</h2>
-   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Arrive Sunday; Monday to Friday are Colombian commerce: short briefings and field work.</p>
-   <p class="note"><strong>Tentative.</strong> We are putting this program together now. Dates, sessions and visits may change; the information sheet and mailing list get every update first.</p>
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Preliminary itinerary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
+   <p style="margin:0;max-width:52ch">Arrive Sunday in Bogotá. Monday to Friday are Colombian commerce: boardroom mornings, field visits in the afternoon, culture in the evening.</p>
   </div>
   {program_html()}
  </div>
 </section>
 
-<section class="dark">
+<section class="ink" id="cities">
  <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">The setting</span>
-   <h2>A quiet room above Bogotá.</h2>
-   <p class="lede">An upscale hotel in north Bogotá, a working session in a high-floor boardroom and two afternoons out in the city.</p>
+  <div class="section-head"><span class="eyebrow">Two cities</span><h2>The capital and the second city.</h2></div>
+  {cities_html()}
+ </div>
+</section>
+
+<section class="ink" id="format" style="padding-top:0">
+ <div class="container">
+  <div class="format">
+   <div><span class="k">Mornings</span><h3>Boardroom briefings</h3><p>Short, focused sessions: the country, property, business and the decision.</p></div>
+   <div><span class="k">Afternoons</span><h3>Verified field visits</h3><p>Districts, operators and sites we have checked, in both cities. Places, not units for sale.</p></div>
+   <div><span class="k">Evenings</span><h3>Cultural evenings</h3><p>Colombia beyond the boardroom, with the members and the group.</p></div>
   </div>
+ </div>
+</section>
+
+<section class="alt">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">The setting</span><h2>Quiet rooms, small groups.</h2><p class="lede">Upscale hotels in both cities, a high-floor boardroom and time out in the city. Interior images are illustrations of the format; hotels are confirmed to registered attendees.</p></div>
   <div class="gallery">
    {fig('ballroom', 'wide', '(max-width:760px) 100vw, 66vw')}
    <div class="col">{fig('boardroom', 'wide', '(max-width:760px) 100vw, 33vw')}{fig('lobby', 'wide', '(max-width:760px) 100vw, 33vw')}</div>
   </div>
-  <p class="trailer-fine" style="margin-top:22px">Interior images are illustrations of the format. The venue is confirmed to registered attendees.</p>
  </div>
 </section>
 
-<section>
- <div class="container split">
-  <div>
-   <span class="eyebrow">The details</span>
-   <h2>Bogotá, March 2027.</h2>
-   <dl class="facts">
-    <div><dt>Dates</dt><dd>6 days, 5 nights: arrive Sunday 7 March, depart Friday 12 March afternoon or Saturday 13 March morning, depending on flights</dd></div>
-    <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
-    <div><dt>Venue</dt><dd>An upscale hotel in north Bogotá, confirmed to registered attendees</dd></div>
-    <div><dt>Airport</dt><dd>El Dorado International (BOG)</dd></div>
-    <div><dt>Included</dt><dd>All sessions, lunches and coffee, the welcome reception and transport for site visits</dd></div>
-    <div><dt>Seats and pricing</dt><dd>Sent to the waitlist first</dd></div>
-   </dl>
-  </div>
-  {fig('colpatria', 'tall', '(max-width:860px) 100vw, 45vw')}
- </div>
-</section>
-
-<section class="alt">
- <div class="container grid-2">
-  <div>
-   <span class="eyebrow">Who it is for</span>
-   <h2>Capital, and a question.</h2>
-   <ul class="checks">
-    <li>You are weighing property or a small business in Colombia.</li>
-    <li>You earn in dollars, euros or another currency and want to know what the peso does to you.</li>
-    <li>You want to understand the terms before anyone shows you a unit.</li>
-    <li>You would rather decide slowly than regret quickly.</li>
-   </ul>
-  </div>
-  <div>
-   <span class="eyebrow">What you leave with</span>
-   <h2>Tools you keep.</h2>
-   <ul class="checks">
-    <li>A decision framework, with your own question run through it</li>
-    <li>A written Colombia country briefing on the conditions your decision will live in</li>
-    <li>Every presentation from the week</li>
-   </ul>
-  </div>
- </div>
-</section>
-
-<section>
+<section class="ink" id="faculty">
  <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">What this is not</span>
-   <h2>Not a sales tour.</h2>
-   <p class="lede">Most investor events are funded by the people selling to you. This one is not, so we can tell you what we actually think.</p>
-  </div>
-  <div class="grid-2" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
-   <article class="card"><h3>No listings</h3><p>Site visits show places, not units for sale.</p></article>
-   <article class="card"><h3>No pitches</h3><p>No brokers in the room and no sponsors on the stage.</p></article>
-   <article class="card"><h3>No referral fees</h3><p>We earn nothing from what you buy or where.</p></article>
-   <article class="card"><h3>Education, not advice</h3><p>We teach you to evaluate. The decision stays yours.</p></article>
-  </div>
- </div>
-</section>
-
-<section class="alt">
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">Faculty</span>
-   <h2>The three members, plus local experts.</h2>
-   <p class="lede">Joined by Colombian counsel on property, tax and foreign investment law.</p>
-  </div>
+  <div class="section-head"><span class="eyebrow">Faculty</span><h2>The three members, plus local experts.</h2><p class="lede">Joined by Colombian counsel on property, tax and foreign investment law.</p></div>
   {faculty_html()}
  </div>
 </section>
 
-<section>
+{why_html(alt=False)}
+
+<section class="alt" id="details">
+ <div class="container grid-2" style="align-items:start">
+  <div>
+   <span class="eyebrow">The details</span>
+   <h2>Colombia, March 2027.</h2>
+   <dl class="facts">
+    <div><dt>Dates</dt><dd>Arrive Sunday 7 March in Bogotá. Depart Friday 12 March afternoon or Saturday 13 March morning from Medellín</dd></div>
+    <div><dt>Cities</dt><dd>Bogotá, Sunday to Wednesday morning. Medellín, Wednesday evening to Friday. The move may be Tuesday instead</dd></div>
+    <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
+    <div><dt>Hotels</dt><dd>Upscale hotels in both cities, confirmed to registered attendees</dd></div>
+    <div><dt>Airports</dt><dd>Arrive El Dorado, Bogotá (BOG). Depart José María Córdova, Medellín (MDE)</dd></div>
+    <div><dt>Seats and pricing</dt><dd>Sent to the mailing list first</dd></div>
+   </dl>
+   <p class="note" style="margin-top:18px">{PRELIM}</p>
+  </div>
+  <div>
+   <span class="eyebrow">What you leave with</span>
+   <ul class="checks" style="margin-bottom:26px">
+    <li>A decision framework, with your own question run through it</li>
+    <li>A written Colombia country briefing on the conditions your decision will live in</li>
+    <li>Every presentation from the week</li>
+   </ul>
+   <span class="eyebrow">What this is not</span>
+   <ul class="checks">
+    <li>No listings: field visits show places, not units for sale</li>
+    <li>No brokers in the room and no sponsors on the stage</li>
+    <li>No referral fees: we earn nothing from what you buy or where</li>
+    <li>Education, not advice: the decision stays yours</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="faq">
  <div class="container">
   <div class="section-head"><span class="eyebrow">Questions</span><h2>Before you ask.</h2></div>
-  {faq_html(EVENT_FAQ)}
+  <div class="faq cols">{''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in EVENT_FAQ)}</div>
  </div>
 </section>
 
 <section class="band-green" id="invite">
- <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
-  <span class="eyebrow">30 seats · Bogotá · March 2027</span>
-  <h2>Get the information sheet.</h2>
-  <p class="lede">Leave your email to receive the Bogotá 2027 information sheet and join the mailing list. Dates, the final schedule, seat details and pricing go to the list first.</p>
-  {signup_block(btn='Send me the information sheet', ok="Thank you. You're on the Bogotá 2027 list; the information sheet and every update come to you first.", source='bogota-2027')}
-  <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
+ <div class="container signup-band">
+  <div>
+   <span class="eyebrow">30 seats · Bogotá and Medellín · March 2027</span>
+   <h2>Get the information sheet.</h2>
+   <p class="lede">Leave your email to receive the information sheet and join the mailing list. The final itinerary, seat details and pricing go to the list first.</p>
+   <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
+  </div>
+  <div>{signup_block(btn='Send me the information sheet', ok="Thank you. You're on the Investor Lab 2027 list; the information sheet and every update come to you first.", source='colombia-2027')}</div>
  </div>
 </section>
 """
 
 event_schema = [
-    {"@type": "EducationEvent", "@id": BASE + "/bogota-2027#event", "name": "Tierra Firme Investor Lab, Bogotá 2027",
-     "description": "A six-day educational seminar in Bogotá on commercial real estate, business and family capital, and country research for people placing capital across borders.",
+    {"@type": "EducationEvent", "@id": BASE + "/colombia-2027#event", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín",
+     "description": "A six-day educational program in Bogotá and Medellín on commercial real estate, business and family capital, and country research for people placing capital across borders.",
      "startDate": EVENT['start'], "endDate": EVENT['end'], "eventStatus": "https://schema.org/EventScheduled",
      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "maximumAttendeeCapacity": EVENT['seats'],
-     "location": {"@type": "Place", "name": "North Bogotá (venue confirmed to registered attendees)",
-                  "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}},
+     "location": [{"@type": "Place", "name": "Bogotá (hotel confirmed to registered attendees)",
+                   "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}},
+                  {"@type": "Place", "name": "Medellín (hotel confirmed to registered attendees)",
+                   "address": {"@type": "PostalAddress", "addressLocality": "Medellín", "addressCountry": "CO"}}],
      "image": [BASE + PHOTOS['downtown']['base'] + '-1920.webp'],
      "organizer": {"@id": BASE + "/#org"}, "performer": [{"@type": "Person", "name": m['name']} for m in MEMBERS],
-     "inLanguage": "en", "url": BASE + "/bogota-2027"},
+     "inLanguage": "en", "url": BASE + "/colombia-2027"},
     faq_schema(EVENT_FAQ),
 ]
+event_schema[0]["eventStatus"] = "https://schema.org/EventScheduled"
 
 # ---------- lane pages ----------
 # Copy is a DRAFT in each member's voice. Set approved=True in LANES only after the member signs off.
@@ -1250,7 +1295,7 @@ LANE_COPY = {
 def lane_page(l):
     c = LANE_COPY[l['id']]
     m = next(x for x in MEMBERS if x['lane'] == l['id'])
-    day = next(p for p in PROGRAM if p[0] == l['id'])
+    day = next(p[1:] for p in PROGRAM if p[1] == l['id'])
     qs = [x for x in QUESTIONS if x['lane'] == l['id']]
     qhtml = ('<div class="qlist">' + ''.join(f'<a class="qcard" href="/questions/{x["slug"]}"><h3>{html.escape(x["q"])}</h3><p>{html.escape(x["short"])}</p></a>' for x in qs) + '</div>') if qs \
         else '<p>Answer pages for this lane are being written. Join the waitlist to hear when they publish.</p>'
@@ -1260,7 +1305,7 @@ def lane_page(l):
   <span class="kicker">{l['seat']}<span class="rule"></span>{l['label']} · {l['first']}</span>
   <h1>{c['h1']}</h1>
   <p class="lede">{m['show']}</p>
-  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/bogota-2027#program" class="btn btn-ghost">{day[2]} {day[3]} at the Investor Lab</a></div>
+  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/colombia-2027#itinerary" class="btn btn-ghost">{day[2]} {day[3]} at the Investor Lab</a></div>
 ''')}
 <section>
  <div class="container grid-2" style="align-items:start">
@@ -1331,13 +1376,13 @@ credits_body = f"""
 PAGES = [
     ('index.html', 'Tierra Firme | Real Estate, Business and Research for Capital Abroad',
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
-     index_body, [faq_schema(FAQ), {"@id": BASE + "/bogota-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab, Bogotá 2027", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/bogota-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme trailer",
+     index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme trailer",
         "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
         "thumbnailUrl": BASE + "/media/trailer-poster.webp", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
         "uploadDate": "2026-10-23", "duration": "PT1M3S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
-    ('bogota-2027.html', 'Bogotá 2027 Investor Lab | Tierra Firme · 7 to 12 March 2027',
-     'Tierra Firme Investor Lab: six days in Bogotá, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
-     event_body, event_schema, [('', 'Home'), ('bogota-2027.html', 'Bogotá 2027')], 'downtown'),
+    ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
+     'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
+     event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
     ('credits.html', 'Photo Credits | Tierra Firme', 'Credits and licenses for the photographs used on the Tierra Firme site.',
      credits_body, [], [('', 'Home'), ('credits.html', 'Photo credits')], None),
     ('members.html', 'Members | Tierra Firme',
@@ -1498,7 +1543,7 @@ robots = 'User-agent: *\nAllow: /\n\n# Search and AI answer engines are welcome\
 open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-for p, pr in ([('', '1.0'), ('bogota-2027', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('questions', '0.9')]
+for p, pr in ([('', '1.0'), ('colombia-2027', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('questions', '0.9')]
               + [('lanes/' + l['slug'], '0.8') for l in LANES if l['approved']]
               + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('membership', '0.8'), ('credits', '0.3')]):
     sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-11-20</lastmod><priority>{pr}</priority></url>\n'
@@ -1515,7 +1560,7 @@ llms = f"""# Tierra Firme
 - Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Bogotá.
 
 ## Event
-- [Tierra Firme Investor Lab, Bogotá 2027]({BASE}/bogota-2027): 6 days, 5 nights, 7 to 12 March 2027 (arrive Sunday, depart Friday afternoon or Saturday morning), Bogotá, 30 seats. A day for each lane. Education, not advice.
+- [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
 
 ## Pages
 - [Home]({BASE}/): what Tierra Firme is, the three lanes, the framework and FAQ.
@@ -1537,7 +1582,9 @@ redirects = """/the-seats.html /members 301
 /get-the-read /membership 301
 /join.html /membership 301
 /join /membership 301
-/investor-lab /bogota-2027 301
+/investor-lab /colombia-2027 301
+/bogota-2027 /colombia-2027 301
+/bogota-2027.html /colombia-2027 301
 /tierra-firme.html / 301
 /tierra-firme-episodes.html /the-show 301
 /tierra-firme-hosts.html /members 301
