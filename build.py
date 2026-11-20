@@ -380,7 +380,7 @@ FAQ = [
      "Todd Allyn leads Tierra Firme research: the economic, currency and country conditions behind each episode and seminar. "
      "Murphy and Shawn each lead their own lanes."),
     ("Where is Tierra Firme based?",
-     "Bogotá, Colombia, with members in Dallas and Bogotá. Bogotá holds the central bank, tax authority, notaries and ministries every foreign investor deals with."),
+     "Tierra Firme is based in Dallas and Bogotá, and we work globally. The first seminar is in Bogotá, which holds the central bank, tax authority, notaries and ministries every foreign investor deals with."),
 ]
 
 MEMBERS = [
@@ -461,7 +461,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
          "publisher": {"@id": BASE + "/#org"}},
         {"@type": "Organization", "@id": BASE + "/#org", "name": "Tierra Firme", "url": BASE + "/", "logo": BASE + "/img/logo-full.png",
          "description": "A consortium of three practitioners in commercial real estate, business and family capital, and intelligence research, producing a free show, research and seminars on placing capital across borders.",
-         "areaServed": ["Colombia", "Latin America"],
+         "areaServed": ["Worldwide", "Latin America", "Colombia"],
          "knowsAbout": ["Commercial real estate", "Family office", "Foreign investment in Colombia", "Currency risk", "Country risk", "Intelligence research"],
          "member": [m['person'] for m in MEMBERS]},
         {"@type": "WebPage", "@id": url + "#page", "url": url, "name": title, "description": desc,
@@ -1427,7 +1427,7 @@ open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
 
 llms = f"""# Tierra Firme
 
-> A consortium of three practitioners in commercial real estate, business and family capital, and research. Tierra Firme produces a free show, sourced answers and seminars for people placing capital across borders, starting with Latin America. Based in Bogotá, Colombia. Educational only: no listings, no transactions, no investment advice.
+> A consortium of three practitioners in commercial real estate, business and family capital, and research. Tierra Firme produces a free show, sourced answers and seminars for people placing capital across borders, starting with Latin America. Based in Dallas and Bogotá; works globally. Educational only: no listings, no transactions, no investment advice.
 
 ## Members and lanes
 - Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
