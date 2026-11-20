@@ -415,20 +415,16 @@ MEMBERS = [
                               {"@type": "CollegeOrUniversity", "name": "IE Business School"}],
                  "sameAs": ["https://lagrandeglobal.com/shawn-leamon/", "https://cielo.travel/meet-our-ceo-shawn-christopher-leamon/"]}),
     dict(key='research', lane='research', seat='The Country', area='Research', name='Todd Allyn', short='Todd Allyn',
-         role='Research lead · Founding Director, Sovereo Intelligence Research · Former Dean, College of Business, Chancellor University · Bogotá',
+         role='Research lead · Founding Director, Sovereo Intelligence Research · Bogotá',
          show='The country: the economic, currency and political conditions that decide what you keep, and the signals that they are changing.',
          bio=("Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, a research company that tracks how "
-              "geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo publishes a "
-              "daily SITREP, Country Dossiers and the Decision Forecast, a public record of forecasts scored against what actually happened. Its "
+              "geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo turns those "
+              "conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, "
+              "and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its "
               "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> tracks business deals worldwide from official "
-              "sources, with US$46 billion in verified deals logged in 2026. Before Sovereo he was Dean of the College of Business at Chancellor "
-              "University in Cleveland, where he helped build the Jack Welch Management Institute, and he spent 24 years teaching college economics, "
-              "finance and business. He hosted The Todd Allyn Show on iHeartRadio and holds a finance degree and dual master's degrees in finance and "
-              "international business from the University of Akron. He has lived in Bogotá since 2020."),
+              "sources, with US$46 billion in verified deals logged in 2026. He hosted The Todd Allyn Show on iHeartRadio and has lived in Bogotá since 2020."),
          person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director",
                  "worksFor": {"@type": "Organization", "name": "Sovereo Intelligence Research", "url": "https://www.sovereo.com"},
-                 "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Akron"},
-                 "hasOccupation": {"@type": "Occupation", "name": "Former Dean, College of Business, Chancellor University"},
                  "sameAs": ["https://www.linkedin.com/in/toddallyn/", "https://www.youtube.com/@sovereointel", "https://www.sovereo.com"]}),
 ]
 
@@ -1432,7 +1428,7 @@ llms = f"""# Tierra Firme
 ## Members and lanes
 - Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
 - Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
-- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Former Dean of the College of Business at Chancellor University. Bogotá.
+- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Bogotá.
 
 ## Event
 - [Tierra Firme Investor Lab, Bogotá 2027]({BASE}/bogota-2027): 10 to 12 March 2027, Bogotá, 30 seats. One day per lane. Education, not advice.
