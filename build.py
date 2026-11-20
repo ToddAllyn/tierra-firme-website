@@ -365,7 +365,7 @@ FAQ = [
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Bogotá 2027 Investor Lab?",
-     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: short boardroom briefings each morning, verified field visits in the afternoon and cultural evenings, with three days on Colombian commerce. "
+     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: short boardroom briefings each morning, verified field visits in the afternoon and cultural evenings, with Monday to Friday on Colombian commerce. "
      "It is a seminar, not a sales event. Details go to the waitlist first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -944,14 +944,14 @@ from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 # ---------- Bogotá 2027 Investor Lab ----------
 # Six days, five nights: arrive Sunday, depart Friday afternoon or Saturday morning depending on flights.
 # Format: short boardroom briefings in the morning, verified field visits in the afternoon, cultural evenings.
-# Days 3 to 5 (Tuesday to Thursday) are Colombian commerce: short briefings and field work.
+# Sunday is arrival. Monday to Friday are Colombian commerce: short briefings and field work.
 # Each day: (lane id or None for a shared day, title, weekday, date, slots).
 PROGRAM = [
     (None, 'Arrival', 'Sunday', '7 March', [
         ('Day', 'Arrive in Bogotá and settle in at the hotel in north Bogotá.'),
         ('Evening', 'Welcome reception with the three members.'),
     ]),
-    ('research', None, 'Monday', '8 March', [
+    ('research', 'Colombian commerce · Country', 'Monday', '8 March', [
         ('Boardroom', 'Short briefing: Colombia in context. The economy, the political calendar and where policy is heading.'),
         ('Afternoon', 'The peso. Earning in one currency and owning in another, and how the exchange rate changes what you keep.'),
         ('Evening', 'Cultural evening in Bogotá.'),
@@ -971,7 +971,7 @@ PROGRAM = [
         ('Field visit', 'A verified field visit, followed by small-group time with each member on your own questions.'),
         ('Evening', 'Cultural evening in Bogotá.'),
     ]),
-    (None, 'The decision', 'Friday', '12 March', [
+    (None, 'Colombian commerce · The decision', 'Friday', '12 March', [
         ('Boardroom', 'The decision framework. Run your own question through it with the three members.'),
         ('Afternoon', 'Departures, or stay the night and fly out Saturday 13 March, depending on flights.'),
     ]),
@@ -1043,7 +1043,7 @@ event_body = f"""
   <div class="section-head">
    <span class="eyebrow">The program · Draft</span>
    <h2>Six days. Three lanes.</h2>
-   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Tuesday to Thursday are three days of Colombian commerce: short briefings and field work. Sessions are a draft and may change as each member finalizes his day.</p>
+   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Arrive Sunday; Monday to Friday are Colombian commerce: short briefings and field work. Sessions are a draft and may change as each member finalizes his day.</p>
   </div>
   {program_html()}
  </div>
