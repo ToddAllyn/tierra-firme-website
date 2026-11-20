@@ -365,7 +365,7 @@ FAQ = [
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Bogotá 2027 Investor Lab?",
-     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: a day for each lane, a day with all three, and time in the city. "
+     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: short boardroom briefings each morning, verified field visits in the afternoon and cultural evenings, with three days on Colombian commerce. "
      "It is a seminar, not a sales event. Details go to the waitlist first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -648,7 +648,7 @@ index_body = f"""
    <span class="eyebrow">Why Bogotá</span>
    <h2>Where the rules are made.</h2>
    <p class="lede">Medellín gets the attention. Bogotá holds the institutions every foreign buyer ends up dealing with: the central bank, the tax authority, the notaries, the law firms and the ministries.</p>
-   <p>We meet where the decisions that affect you are made, for six days of lectures in the morning and the city in the afternoon.</p>
+   <p>We meet where the decisions that affect you are made, for six days of short boardroom briefings, verified field visits and cultural evenings.</p>
    <div class="btn-row" style="margin-top:22px"><a href="bogota-2027.html" class="btn btn-ink">The Bogotá 2027 program</a></div>
   </div>
  </div>
@@ -675,7 +675,7 @@ index_body = f"""
    <p class="lede">The Investor Lab is small on purpose. One table of practitioners, Colombian counsel on property and tax, and a room small enough that nobody leaves with a question unasked.</p>
    <ul class="checks" style="margin-top:18px">
     <li style="color:rgba(255,255,255,.85)">An upscale hotel in north Bogotá, confirmed to registered attendees</li>
-    <li style="color:rgba(255,255,255,.85)">Lectures, case studies and time on the ground</li>
+    <li style="color:rgba(255,255,255,.85)">Short morning briefings, verified field visits, cultural evenings</li>
     <li style="color:rgba(255,255,255,.85)">A welcome reception on the first evening</li>
    </ul>
   </div>
@@ -943,6 +943,8 @@ notfound_body = """
 from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 # ---------- Bogotá 2027 Investor Lab ----------
 # Six days, five nights: arrive Sunday, depart Friday afternoon or Saturday morning depending on flights.
+# Format: short boardroom briefings in the morning, verified field visits in the afternoon, cultural evenings.
+# Days 3 to 5 (Tuesday to Thursday) are Colombian commerce: short briefings and field work.
 # Each day: (lane id or None for a shared day, title, weekday, date, slots).
 PROGRAM = [
     (None, 'Arrival', 'Sunday', '7 March', [
@@ -950,23 +952,27 @@ PROGRAM = [
         ('Evening', 'Welcome reception with the three members.'),
     ]),
     ('research', None, 'Monday', '8 March', [
-        ('Morning', 'Colombia in context. The economy, the political calendar and where policy is heading.'),
+        ('Boardroom', 'Short briefing: Colombia in context. The economy, the political calendar and where policy is heading.'),
         ('Afternoon', 'The peso. Earning in one currency and owning in another, and how the exchange rate changes what you keep.'),
+        ('Evening', 'Cultural evening in Bogotá.'),
     ]),
-    ('cre', None, 'Tuesday', '9 March', [
-        ('Morning', 'How property is valued, titled and managed in Colombia: propiedad horizontal, taxes while you hold and when you sell, with Colombian counsel.'),
-        ('Afternoon', 'On the ground. A field read of two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
+    ('cre', 'Colombian commerce · Property', 'Tuesday', '9 March', [
+        ('Boardroom', 'Short briefing: how property is valued, titled and managed in Colombia, with Colombian counsel on propiedad horizontal and tax.'),
+        ('Field visit', 'A verified field visit to two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
+        ('Evening', 'Cultural evening in Bogotá.'),
     ]),
-    ('capital', None, 'Wednesday', '10 March', [
-        ('Morning', 'Building and holding a business abroad: entities, registering foreign investment and getting money home.'),
-        ('Afternoon', 'On the ground. An operator on site on what it really costs to run a business here.'),
+    ('capital', 'Colombian commerce · Business', 'Wednesday', '10 March', [
+        ('Boardroom', 'Short briefing: building and holding a business in Colombia, from entities to registering foreign investment and getting money home.'),
+        ('Field visit', 'A verified field visit with an operator on site: what it really costs to run a business here.'),
+        ('Evening', 'Cultural evening in Bogotá.'),
     ]),
-    (None, 'All three lanes', 'Thursday', '11 March', [
-        ('Morning', 'Teaching cases. A sample property and a sample business worked through by all three members, as a classroom exercise.'),
-        ('Afternoon', 'Office hours. Small-group time with each member on your own questions.'),
+    (None, 'Colombian commerce · Investment', 'Thursday', '11 March', [
+        ('Boardroom', 'Short briefing with all three members: Colombian commerce and investment, worked through a sample property and a sample business.'),
+        ('Field visit', 'A verified field visit, followed by small-group time with each member on your own questions.'),
+        ('Evening', 'Cultural evening in Bogotá.'),
     ]),
     (None, 'The decision', 'Friday', '12 March', [
-        ('Morning', 'The decision framework. Run your own question through it with the three members.'),
+        ('Boardroom', 'The decision framework. Run your own question through it with the three members.'),
         ('Afternoon', 'Departures, or stay the night and fly out Saturday 13 March, depending on flights.'),
     ]),
 ]
@@ -978,7 +984,7 @@ def program_html():
         if lane:
             l = LANE[lane]
             tag = f'<span class="tag tag-{l["key"]}">{l["seat"]}</span>'
-            head = f'<h3>{l["label"]}</h3><p style="margin-top:-6px">Led by {l["member"]}. <a href="lanes/{l["slug"]}.html">About this lane</a></p>'
+            head = f'<h3>{title or l["label"]}</h3><p style="margin-top:-6px">{l["label"]}, led by {l["member"]}. <a href="lanes/{l["slug"]}.html">About this lane</a></p>'
         else:
             tag = '<span class="tag">Together</span>'
             head = f'<h3>{title}</h3>'
@@ -1009,7 +1015,7 @@ event_body = f"""
 {photo_hero('downtown', f'''
   <span class="kicker">Investor Lab<span class="rule"></span>Bogotá · {EVENT['dates']}</span>
   <h1>Six days on solid ground.</h1>
-  <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: lectures, case studies and time on the ground, a day for each lane.</p>
+  <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: short morning briefings, verified field visits and cultural evenings, a day for each lane.</p>
   <div class="btn-row" style="margin-top:30px">
    <a href="#invite" class="btn btn-gold">Request an invitation</a>
    <a href="#program" class="btn btn-ghost">See the program</a>
@@ -1037,7 +1043,7 @@ event_body = f"""
   <div class="section-head">
    <span class="eyebrow">The program · Draft</span>
    <h2>Six days. Three lanes.</h2>
-   <p class="lede">Lectures in the morning, the city in the afternoon. Sessions are a draft and may change as each member finalizes his day.</p>
+   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Tuesday to Thursday are three days of Colombian commerce: short briefings and field work. Sessions are a draft and may change as each member finalizes his day.</p>
   </div>
   {program_html()}
  </div>
