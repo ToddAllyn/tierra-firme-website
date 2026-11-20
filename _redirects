@@ -1,8 +1,11 @@
 /the-seats.html /members 301
 /the-seats /members 301
-/get-the-read.html /join 301
-/get-the-read /join 301
+/get-the-read.html /membership 301
+/get-the-read /membership 301
+/join.html /membership 301
+/join /membership 301
+/investor-lab /bogota-2027 301
 /tierra-firme.html / 301
 /tierra-firme-episodes.html /the-show 301
 /tierra-firme-hosts.html /members 301
-/tierra-firme-subscribe.html /join 301
+/tierra-firme-subscribe.html /membership 301
