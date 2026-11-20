@@ -385,9 +385,9 @@ FAQ = [
 
 MEMBERS = [
     dict(key='cre', lane='cre', seat='The Asset', area='Commercial real estate', name='Murphy D. Cheatham II', short='Murphy Cheatham',
-         role='Private Clients Director, CBRE · Dallas',
+         role='Private Clients Director, CBRE · Global',
          show='The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing.',
-         bio=("Murphy D. Cheatham II is Private Clients Director at CBRE in Dallas, where he advises private families and high net worth "
+         bio=("Murphy D. Cheatham II is Private Clients Director at CBRE, a global role in which he advises private families and high net worth "
               "individuals on commercial real estate. In more than two decades he has sourced and serviced debt and equity, optimized portfolios "
               "and managed properties, led strategic planning on more than $300 million in mixed-use projects in partnership with HDR, and served as "
               "Chief of Housing and Business Development for the City of Shreveport. He holds a B.S. in Accounting from Grambling State University "
@@ -415,10 +415,13 @@ MEMBERS = [
                               {"@type": "CollegeOrUniversity", "name": "IE Business School"}],
                  "sameAs": ["https://lagrandeglobal.com/shawn-leamon/", "https://cielo.travel/meet-our-ceo-shawn-christopher-leamon/"]}),
     dict(key='research', lane='research', seat='The Country', area='Research', name='Todd Allyn', short='Todd Allyn',
-         role='Research lead · Former Dean, College of Business, Chancellor University · Bogotá',
+         role='Research lead · Founding Director, Sovereo Intelligence Research · Former Dean, College of Business, Chancellor University · Bogotá',
          show='The country: the economic, currency and political conditions that decide what you keep, and the signals that they are changing.',
-         bio=("Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, which tracks how geopolitics, "
-              "currencies and policy change the options open to families with capital abroad. Before that he was Dean of the College of Business at Chancellor "
+         bio=("Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, a research company that tracks how "
+              "geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo publishes a "
+              "daily SITREP, Country Dossiers and the Decision Forecast, a public record of forecasts scored against what actually happened. Its "
+              "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> logs verified business deals from official "
+              "sources: US$46.0 billion across 67 priced deals in 21 countries of the Americas in 2026, as of 20 November 2026. Before Sovereo he was Dean of the College of Business at Chancellor "
               "University in Cleveland, where he helped build the Jack Welch Management Institute, and he spent 24 years teaching college economics, "
               "finance and business. He hosted The Todd Allyn Show on iHeartRadio and holds a finance degree and dual master's degrees in finance and "
               "international business from the University of Akron. He has lived in Bogotá since 2020."),
@@ -1427,9 +1430,9 @@ llms = f"""# Tierra Firme
 > A consortium of three practitioners in commercial real estate, business and family capital, and research. Tierra Firme produces a free show, sourced answers and seminars for people placing capital across borders, starting with Latin America. Based in Bogotá, Colombia. Educational only: no listings, no transactions, no investment advice.
 
 ## Members and lanes
-- Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, Dallas, advising private families and high net worth individuals.
+- Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
 - Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
-- Todd Allyn, The Country (research): leads Tierra Firme research; former Dean of the College of Business at Chancellor University, Bogotá.
+- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) logs US$46.0 billion across 67 priced deals in 21 countries of the Americas in 2026, as of 20 November 2026. Former Dean of the College of Business at Chancellor University. Bogotá.
 
 ## Event
 - [Tierra Firme Investor Lab, Bogotá 2027]({BASE}/bogota-2027): 10 to 12 March 2027, Bogotá, 30 seats. One day per lane. Education, not advice.
