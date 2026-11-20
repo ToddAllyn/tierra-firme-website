@@ -1,4 +1,5 @@
 """Answer pages: one real investor question per page. Facts checked against the sources listed on each page.
+Each entry carries a lane: cre (Murphy), capital (Shawn) or research (Todd).
 Edit here, then run build.py. Keep answers answer-first (40 to 70 words), dated, sourced, and educational."""
 
 UPDATED = '2026-10-23'
@@ -6,6 +7,7 @@ UPDATED_TEXT = 'October 23, 2026'
 
 QUESTIONS = [
     dict(
+        lane='research',
         slug='can-foreigners-buy-property-in-colombia',
         q='Can foreigners buy property in Colombia?',
         short='Yes, with the same ownership rights as Colombians, if the money comes in through the formal exchange market and is registered.',
@@ -39,6 +41,7 @@ QUESTIONS = [
         related=['register-foreign-investment-in-colombia', 'taxes-foreigners-pay-on-property-in-colombia', 'colombia-investor-visa-through-real-estate'],
     ),
     dict(
+        lane='research',
         slug='register-foreign-investment-in-colombia',
         q='Why do you have to register a foreign investment in Colombia?',
         short='Registration with Banco de la República is what protects your right to move the money and the sale proceeds back out.',
@@ -72,6 +75,7 @@ QUESTIONS = [
         related=['can-foreigners-buy-property-in-colombia', 'colombia-investor-visa-through-real-estate', 'how-the-exchange-rate-changes-your-real-estate-return'],
     ),
     dict(
+        lane='research',
         slug='taxes-foreigners-pay-on-property-in-colombia',
         q='What taxes do foreigners pay on property in Colombia?',
         short='Closing costs when you buy, annual predial while you own, tax on rent, and 15% capital gains tax when you sell after two years.',
@@ -107,6 +111,7 @@ QUESTIONS = [
         related=['can-foreigners-buy-property-in-colombia', 'how-the-exchange-rate-changes-your-real-estate-return', 'what-is-propiedad-horizontal-in-colombia'],
     ),
     dict(
+        lane='research',
         slug='how-the-exchange-rate-changes-your-real-estate-return',
         q='How does the exchange rate change your return on property abroad?',
         short='Your return is the local price change plus or minus the currency move. A strong local gain can disappear when converted home.',
@@ -139,6 +144,7 @@ QUESTIONS = [
         related=['currency-political-and-structural-arbitrage', 'how-to-evaluate-a-country-before-investing', 'taxes-foreigners-pay-on-property-in-colombia'],
     ),
     dict(
+        lane='research',
         slug='colombia-investor-visa-through-real-estate',
         q='Can buying property in Colombia get you a visa?',
         short='It can support an M investor visa if the property is worth at least 350 monthly minimum wages, in your name, and registered with the central bank.',
@@ -169,6 +175,7 @@ QUESTIONS = [
         related=['register-foreign-investment-in-colombia', 'can-foreigners-buy-property-in-colombia', 'how-to-evaluate-a-country-before-investing'],
     ),
     dict(
+        lane='research',
         slug='what-is-propiedad-horizontal-in-colombia',
         q='What is propiedad horizontal in Colombia?',
         short='The legal regime for buildings and gated communities: you own your unit, share the common areas, and pay a mandatory administration fee.',
@@ -198,6 +205,7 @@ QUESTIONS = [
         related=['can-foreigners-buy-property-in-colombia', 'taxes-foreigners-pay-on-property-in-colombia', 'how-to-evaluate-a-country-before-investing'],
     ),
     dict(
+        lane='research',
         slug='currency-political-and-structural-arbitrage',
         q='What are currency, political and structural arbitrage?',
         short='Three reasons the same money can buy more abroad, and three matching risks that decide whether the gap is real.',
@@ -225,6 +233,7 @@ QUESTIONS = [
         related=['how-the-exchange-rate-changes-your-real-estate-return', 'how-to-evaluate-a-country-before-investing', 'taxes-foreigners-pay-on-property-in-colombia'],
     ),
     dict(
+        lane='research',
         slug='how-to-evaluate-a-country-before-investing',
         q='How do you evaluate a country before investing there?',
         short='Information, evaluation, interpretation, then action: gather sourced facts, test them, read what they mean for you, and only then commit.',
