@@ -1,4 +1,4 @@
-// POST /subscribe  { email, source }
+// POST /subscribe  { email, source, lanes? }
 // Stores the subscriber in the TF_SUBSCRIBERS KV namespace (Tierra Firme's own list,
 // separate from any member's list). Sends a welcome email only when RESEND_API_KEY,
 // UNSUB_SECRET and NEWSLETTER_FROM are set. Capture works without them.
@@ -7,6 +7,11 @@ const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+// Lane choices from the signup form. Records created before lanes existed have no
+// `lanes` field; treat that as "all lanes" when reading.
+const LANES = ['cre', 'capital', 'research'];
+const cleanLanes = (v) => Array.isArray(v) ? [...new Set(v.map(String).filter(x => LANES.includes(x)))] : [];
 
 export async function hmac(secret, value) {
   const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret),
@@ -24,11 +29,22 @@ export async function onRequestPost({ request, env }) {
 
   const key = 'sub:' + email;
   const existing = await env.TF_SUBSCRIBERS.get(key, 'json');
-  if (existing && existing.status === 'active') return json({ ok: true, already: true });
+  const lanes = cleanLanes(data.lanes);
+  const now = new Date().toISOString();
+
+  if (existing && existing.status === 'active') {
+    // Already subscribed: merge any new lane choices, keep everything else.
+    const merged = [...new Set([...(existing.lanes || []), ...lanes])];
+    if (merged.length !== (existing.lanes || []).length) {
+      await env.TF_SUBSCRIBERS.put(key, JSON.stringify({ ...existing, lanes: merged, updated: now }));
+    }
+    return json({ ok: true, already: true });
+  }
 
   await env.TF_SUBSCRIBERS.put(key, JSON.stringify({
     email, status: 'active', source: String(data.source || '').slice(0, 80),
-    created: existing?.created || new Date().toISOString(), updated: new Date().toISOString(),
+    lanes: [...new Set([...(existing?.lanes || []), ...lanes])],
+    created: existing?.created || now, updated: now,
   }));
 
   if (env.RESEND_API_KEY && env.UNSUB_SECRET && env.NEWSLETTER_FROM) {
