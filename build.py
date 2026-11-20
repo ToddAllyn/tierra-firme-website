@@ -278,8 +278,8 @@ LANES = [
 LANE = {l['id']: l for l in LANES}
 
 # Event: Tierra Firme Investor Lab, Bogotá. Dates and seat count come from the 2027 Investor Lab draft.
-EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá', start='2027-03-10', end='2027-03-12',
-             dates='10 to 12 March 2027', short='March 2027', seats=30)
+EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá', start='2027-03-07', end='2027-03-12',
+             dates='7 to 12 March 2027', short='March 2027', seats=30)
 
 # Photos: Wikimedia Commons. Licenses read on each File: page on 2026-11-20. BY and BY-SA need the credit line.
 PHOTOS = {
@@ -349,7 +349,7 @@ def hero_preload(p):
             f'{x["base"]}-{big}.webp {big}w" imagesizes="100vw" fetchpriority="high">')
 
 def event_strip():
-    return ('<div class="event-strip"><div><b>3 days</b><span>10 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
+    return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
             '<div><b>30 seats</b><span>An intimate room</span></div><div><b>0</b><span>Properties for sale</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
@@ -365,7 +365,7 @@ FAQ = [
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Bogotá 2027 Investor Lab?",
-     "Three days in Bogotá, 10 to 12 March 2027, for 30 people: one day per lane, with lectures in the morning and the city in the afternoon. "
+     "Six days and five nights in Bogotá, arriving Sunday 7 March 2027 and leaving Friday 12 March, for 30 people: a day for each lane, a day with all three, and time in the city. "
      "It is a seminar, not a sales event. Details go to the waitlist first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -610,9 +610,9 @@ def seat_cards(link=True):
 # ---------- index ----------
 index_body = f"""
 {photo_hero('twilight', f'''
-  <span class="kicker">Tierra Firme Investor Lab<span class="rule"></span>Bogotá · 10 to 12 March 2027</span>
+  <span class="kicker">Tierra Firme Investor Lab<span class="rule"></span>Bogotá · 7 to 12 March 2027</span>
   <h1>Any currency.<br>Solid ground.</h1>
-  <p class="lede">A private three-day seminar in Bogotá for people placing capital across borders. Commercial real estate, business and family capital, and country research, taught by the three members of Tierra Firme.</p>
+  <p class="lede">A private six-day seminar in Bogotá for people placing capital across borders. Commercial real estate, business and family capital, and country research, taught by the three members of Tierra Firme.</p>
   <div class="btn-row" style="margin-top:30px">
    <a href="bogota-2027.html#invite" class="btn btn-gold">Request an invitation</a>
    <a href="bogota-2027.html" class="btn btn-ghost">See the program</a>
@@ -648,7 +648,7 @@ index_body = f"""
    <span class="eyebrow">Why Bogotá</span>
    <h2>Where the rules are made.</h2>
    <p class="lede">Medellín gets the attention. Bogotá holds the institutions every foreign buyer ends up dealing with: the central bank, the tax authority, the notaries, the law firms and the ministries.</p>
-   <p>We meet where the decisions that affect you are made, for three days of lectures in the morning and the city in the afternoon.</p>
+   <p>We meet where the decisions that affect you are made, for six days of lectures in the morning and the city in the afternoon.</p>
    <div class="btn-row" style="margin-top:22px"><a href="bogota-2027.html" class="btn btn-ink">The Bogotá 2027 program</a></div>
   </div>
  </div>
@@ -720,7 +720,7 @@ index_body = f"""
   <div class="ladder">
    <div class="step"><div class="step-mark">1</div><div><h3>Watch the show <span class="pill on">Free</span></h3><p style="margin:0">The thesis, the framework and real stories from the ground, in English and Spanish.</p></div></div>
    <div class="step"><div class="step-mark">2</div><div><h3>Read the answers <span class="pill on">Free</span></h3><p style="margin:0">Sourced answers in each lane, from title and tax to the exchange rate. <a href="questions.html">Browse the questions</a>.</p></div></div>
-   <div class="step"><div class="step-mark">3</div><div><h3>Attend the Investor Lab <span class="pill">Bogotá · March 2027</span></h3><p style="margin:0">Three days, three lanes, thirty seats. <a href="bogota-2027.html">See the program</a>.</p></div></div>
+   <div class="step"><div class="step-mark">3</div><div><h3>Attend the Investor Lab <span class="pill">Bogotá · March 2027</span></h3><p style="margin:0">Six days, three lanes, thirty seats. <a href="bogota-2027.html">See the program</a>.</p></div></div>
    <div class="step"><div class="step-mark">4</div><div><h3>Join the community <span class="pill">Opening soon</span></h3><p style="margin:0">Membership with a structured curriculum, a members' forum and live office hours with all three members. <a href="membership.html">Join the waitlist</a>.</p></div></div>
   </div>
  </div>
@@ -942,31 +942,49 @@ notfound_body = """
 
 from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 # ---------- Bogotá 2027 Investor Lab ----------
+# Six days, five nights: arrive Sunday, depart Friday afternoon or Saturday morning depending on flights.
+# Each day: (lane id or None for a shared day, title, weekday, date, slots).
 PROGRAM = [
-    ('research', 'Wednesday', '10 March', [
+    (None, 'Arrival', 'Sunday', '7 March', [
+        ('Day', 'Arrive in Bogotá and settle in at the hotel in north Bogotá.'),
+        ('Evening', 'Welcome reception with the three members.'),
+    ]),
+    ('research', None, 'Monday', '8 March', [
         ('Morning', 'Colombia in context. The economy, the political calendar and where policy is heading.'),
         ('Afternoon', 'The peso. Earning in one currency and owning in another, and how the exchange rate changes what you keep.'),
-        ('Evening', 'Welcome reception.'),
     ]),
-    ('cre', 'Thursday', '11 March', [
+    ('cre', None, 'Tuesday', '9 March', [
         ('Morning', 'How property is valued, titled and managed in Colombia: propiedad horizontal, taxes while you hold and when you sell, with Colombian counsel.'),
         ('Afternoon', 'On the ground. A field read of two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
     ]),
-    ('capital', 'Friday', '12 March', [
+    ('capital', None, 'Wednesday', '10 March', [
         ('Morning', 'Building and holding a business abroad: entities, registering foreign investment and getting money home.'),
-        ('Midday', 'On the ground. An operator on site on what it really costs to run a business here.'),
-        ('Afternoon', 'The decision framework. Run your own question through it before you fly home.'),
+        ('Afternoon', 'On the ground. An operator on site on what it really costs to run a business here.'),
+    ]),
+    (None, 'All three lanes', 'Thursday', '11 March', [
+        ('Morning', 'Teaching cases. A sample property and a sample business worked through by all three members, as a classroom exercise.'),
+        ('Afternoon', 'Office hours. Small-group time with each member on your own questions.'),
+    ]),
+    (None, 'The decision', 'Friday', '12 March', [
+        ('Morning', 'The decision framework. Run your own question through it with the three members.'),
+        ('Afternoon', 'Departures, or stay the night and fly out Saturday 13 March, depending on flights.'),
     ]),
 ]
 
 def program_html():
     out = []
-    for lane, dow, date, slots in PROGRAM:
-        l = LANE[lane]
+    for lane, title, dow, date, slots in PROGRAM:
         sl = ''.join(f'<div class="slot"><span class="t">{t}</span><p>{html.escape(d)}</p></div>' for t, d in slots)
+        if lane:
+            l = LANE[lane]
+            tag = f'<span class="tag tag-{l["key"]}">{l["seat"]}</span>'
+            head = f'<h3>{l["label"]}</h3><p style="margin-top:-6px">Led by {l["member"]}. <a href="lanes/{l["slug"]}.html">About this lane</a></p>'
+        else:
+            tag = '<span class="tag">Together</span>'
+            head = f'<h3>{title}</h3>'
         out.append(f"""<article class="day">
-   <div class="when">{dow}<b>{date}</b><span class="tag tag-{l['key']}">{l['seat']}</span></div>
-   <div><h3>{l['label']}</h3><p style="margin-top:-6px">Led by {l['member']}. <a href="lanes/{l['slug']}.html">About this lane</a></p>{sl}</div>
+   <div class="when">{dow}<b>{date}</b>{tag}</div>
+   <div>{head}{sl}</div>
   </article>""")
     return '<div class="program">' + ''.join(out) + '</div>'
 
@@ -976,7 +994,7 @@ def faculty_html():
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
-     "Wednesday 10 to Friday 12 March 2027 in Bogotá, Colombia, at an upscale hotel in north Bogotá. The venue is confirmed to registered attendees."),
+     "Six days and five nights in Bogotá: arrive Sunday 7 March 2027, depart Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. The venue is an upscale hotel in north Bogotá, confirmed to registered attendees."),
     ("Who is it for?",
      "People who earn in dollars, euros or another currency and are weighing property or a small business in Colombia, and families thinking about how to hold what they build across borders."),
     ("How many seats are there?",
@@ -990,8 +1008,8 @@ EVENT_FAQ = [
 event_body = f"""
 {photo_hero('downtown', f'''
   <span class="kicker">Investor Lab<span class="rule"></span>Bogotá · {EVENT['dates']}</span>
-  <h1>Three days on solid ground.</h1>
-  <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: lectures, case studies and time on the ground, one day for each lane.</p>
+  <h1>Six days on solid ground.</h1>
+  <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: lectures, case studies and time on the ground, a day for each lane.</p>
   <div class="btn-row" style="margin-top:30px">
    <a href="#invite" class="btn btn-gold">Request an invitation</a>
    <a href="#program" class="btn btn-ghost">See the program</a>
@@ -1018,7 +1036,7 @@ event_body = f"""
  <div class="container">
   <div class="section-head">
    <span class="eyebrow">The program · Draft</span>
-   <h2>One day for each lane.</h2>
+   <h2>Six days. Three lanes.</h2>
    <p class="lede">Lectures in the morning, the city in the afternoon. Sessions are a draft and may change as each member finalizes his day.</p>
   </div>
   {program_html()}
@@ -1046,7 +1064,7 @@ event_body = f"""
    <span class="eyebrow">The details</span>
    <h2>Bogotá, March 2027.</h2>
    <dl class="facts">
-    <div><dt>Dates</dt><dd>Wednesday 10 to Friday 12 March 2027</dd></div>
+    <div><dt>Dates</dt><dd>6 days, 5 nights: arrive Sunday 7 March, depart Friday 12 March afternoon or Saturday 13 March morning, depending on flights</dd></div>
     <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
     <div><dt>Venue</dt><dd>An upscale hotel in north Bogotá, confirmed to registered attendees</dd></div>
     <div><dt>Airport</dt><dd>El Dorado International (BOG)</dd></div>
@@ -1076,7 +1094,7 @@ event_body = f"""
    <ul class="checks">
     <li>A decision framework, with your own question run through it</li>
     <li>A written Colombia country briefing on the conditions your decision will live in</li>
-    <li>Every presentation from all three days</li>
+    <li>Every presentation from the week</li>
    </ul>
   </div>
  </div>
@@ -1129,7 +1147,7 @@ event_body = f"""
 
 event_schema = [
     {"@type": "EducationEvent", "@id": BASE + "/bogota-2027#event", "name": "Tierra Firme Investor Lab, Bogotá 2027",
-     "description": "A three-day educational seminar in Bogotá on commercial real estate, business and family capital, and country research for people placing capital across borders.",
+     "description": "A six-day educational seminar in Bogotá on commercial real estate, business and family capital, and country research for people placing capital across borders.",
      "startDate": EVENT['start'], "endDate": EVENT['end'], "eventStatus": "https://schema.org/EventScheduled",
      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "maximumAttendeeCapacity": EVENT['seats'],
      "location": {"@type": "Place", "name": "North Bogotá (venue confirmed to registered attendees)",
@@ -1188,7 +1206,7 @@ def lane_page(l):
   <span class="kicker">{l['seat']}<span class="rule"></span>{l['label']} · {l['first']}</span>
   <h1>{c['h1']}</h1>
   <p class="lede">{m['show']}</p>
-  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/bogota-2027#program" class="btn btn-ghost">{day[1]} {day[2]} at the Investor Lab</a></div>
+  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/bogota-2027#program" class="btn btn-ghost">{day[2]} {day[3]} at the Investor Lab</a></div>
 ''')}
 <section>
  <div class="container grid-2" style="align-items:start">
@@ -1263,8 +1281,8 @@ PAGES = [
         "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
         "thumbnailUrl": BASE + "/media/trailer-poster.webp", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
         "uploadDate": "2026-10-23", "duration": "PT1M3S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
-    ('bogota-2027.html', 'Bogotá 2027 Investor Lab | Tierra Firme · 10 to 12 March 2027',
-     'Tierra Firme Investor Lab: three days in Bogotá, 10 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
+    ('bogota-2027.html', 'Bogotá 2027 Investor Lab | Tierra Firme · 7 to 12 March 2027',
+     'Tierra Firme Investor Lab: six days in Bogotá, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
      event_body, event_schema, [('', 'Home'), ('bogota-2027.html', 'Bogotá 2027')], 'downtown'),
     ('credits.html', 'Photo Credits | Tierra Firme', 'Credits and licenses for the photographs used on the Tierra Firme site.',
      credits_body, [], [('', 'Home'), ('credits.html', 'Photo credits')], None),
@@ -1443,7 +1461,7 @@ llms = f"""# Tierra Firme
 - Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Bogotá.
 
 ## Event
-- [Tierra Firme Investor Lab, Bogotá 2027]({BASE}/bogota-2027): 10 to 12 March 2027, Bogotá, 30 seats. One day per lane. Education, not advice.
+- [Tierra Firme Investor Lab, Bogotá 2027]({BASE}/bogota-2027): 6 days, 5 nights, 7 to 12 March 2027 (arrive Sunday, depart Friday afternoon or Saturday morning), Bogotá, 30 seats. A day for each lane. Education, not advice.
 
 ## Pages
 - [Home]({BASE}/): what Tierra Firme is, the three lanes, the framework and FAQ.
