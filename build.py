@@ -462,8 +462,8 @@ def hero_preload(p):
 def itin_card(cta='colombia-2027.html#invite'):
     return f"""<aside class="itin-card" aria-label="Investor Lab 2027 at a glance">
    <div class="ic-top"><span>Investor Lab 2027</span><span class="pre">Preliminary</span></div>
-   <div class="ic-city"><span class="n">3</span><h3>Bogotá</h3><span class="d">Sun 7 to Wed 10 March</span><p>Arrival, then three days: the country, property and business.</p></div>
-   <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Thu 11 to Fri 12 March</span><p>Two days of field visits, then the decision framework.</p></div>
+   <div class="ic-city"><span class="n">3</span><h3>Bogotá</h3><span class="d">Sun 7 to Wed 10 March, morning</span><p>Arrival, then the country, property and business.</p></div>
+   <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Wed 10 evening to Fri 12 March</span><p>Field visits and culture, then the decision framework.</p></div>
    <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3</b><span>Lanes</span></div></div>
    <a href="{cta}" class="btn btn-gold">Get the information sheet</a>
    <p class="fine">Dates, cities and sessions may change. The list hears first.</p>
@@ -477,8 +477,8 @@ def city_tile(p, city, days, text, href):
 
 def cities_html():
     return ('<div class="cities">'
-            + city_tile('downtown', 'Bogotá', '3 days · 8 to 10 March', 'The capital, where the rules are made: the central bank, the tax authority, notaries and ministries. Briefings on the country, property and business.', 'colombia-2027.html#itinerary')
-            + city_tile('medellin', 'Medellín', '2 days · 11 to 12 March', "Colombia's second-largest city. Two days of verified field visits, then the decision framework before you fly home.", 'colombia-2027.html#itinerary')
+            + city_tile('downtown', 'Bogotá', '3 days · 8 to 10 March, morning', 'The capital, where the rules are made: the central bank, the tax authority, notaries and ministries. Briefings on the country, property and business.', 'colombia-2027.html#itinerary')
+            + city_tile('medellin', 'Medellín', '2 days · 10 March evening to 12 March', "Colombia's second-largest city. Arrive Wednesday evening, then verified field visits and the decision framework before you fly home.", 'colombia-2027.html#itinerary')
             + '</div>')
 
 def event_strip():
@@ -1053,7 +1053,8 @@ notfound_body = """
 from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 # ---------- Bogotá 2027 Investor Lab ----------
 # PRELIMINARY. Six days, five nights: 3 days in Bogotá, 2 in Medellín.
-# Arrive Bogotá Sunday; Monday to Wednesday in Bogotá; fly to Medellín Wednesday evening;
+# Arrive Bogotá Sunday; Monday, Tuesday and Wednesday morning in Bogotá; fly to Medellín Wednesday afternoon
+# (the move may instead be Tuesday); Medellín from Wednesday evening;
 # Thursday and Friday in Medellín; depart Friday afternoon or Saturday morning depending on flights.
 # Format: short boardroom briefings, verified field visits, cultural evenings.
 # Each day: (city, lane id or None, title, weekday, date, [(label, text)]).
@@ -1072,14 +1073,16 @@ PROGRAM = [
         ('Field visit', 'Two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
         ('Evening', 'Cultural evening.'),
     ]),
-    ('Bogotá', 'capital', 'Business', 'Wednesday', '10 March', [
+    ('Bogotá', 'capital', 'Business', 'Wednesday', '10 March · morning', [
         ('Boardroom', 'Building and holding a business: entities, registering foreign investment and getting money home.'),
-        ('Field visit', 'An operator on site on what it really costs to run a business here.'),
-        ('Evening', 'Short evening flight to Medellín.'),
+        ('Afternoon', 'Short flight to Medellín. The move may be Tuesday instead, depending on planning.'),
+    ]),
+    ('Medellín', None, 'Arrival in Medellín', 'Wednesday', '10 March · evening', [
+        ('Evening', 'Check in, then a cultural evening in Medellín.'),
     ]),
     ('Medellín', None, 'Commerce on the ground', 'Thursday', '11 March', [
         ('Boardroom', 'Medellín in context, with all three members.'),
-        ('Field visit', 'Verified field visits across the city, then small-group time with each member.'),
+        ('Field visit', 'Verified field visits across the city, including an operator on site on what it really costs to run a business here, then small-group time with each member.'),
         ('Evening', 'Cultural evening.'),
     ]),
     ('Medellín', None, 'The decision', 'Friday', '12 March', [
@@ -1091,13 +1094,13 @@ PROGRAM = [
 def _dcard(lane, title, dow, date, slots):
     cls = f' lane-{LANE[lane]["key"]}' if lane else ''
     by = (f'<p class="by">{LANE[lane]["label"]} · <a href="lanes/{LANE[lane]["slug"]}.html">{LANE[lane]["member"]}</a></p>' if lane
-          else '<p class="by">All three members</p>' if title not in ('Arrival',) else '<p class="by">Bogotá</p>')
+          else '<p class="by">Travel day</p>' if title.startswith('Arrival') else '<p class="by">All three members</p>')
     dl = ''.join(f'<dt>{t}</dt><dd>{html.escape(d)}</dd>' for t, d in slots)
     return f'<article class="dcard{cls}"><span class="dd">{dow} · {date}</span><h4>{title}</h4>{by}<dl>{dl}</dl></article>'
 
 def program_html():
     cols = []
-    for city, label in (('Bogotá', '3 days + arrival'), ('Medellín', '2 days')):
+    for city, label in (('Bogotá', 'Sun 7 to Wed 10 morning'), ('Medellín', 'Wed 10 evening to Fri 12')):
         cards = ''.join(_dcard(*d[1:]) for d in PROGRAM if d[0] == city)
         cols.append(f'<div class="itin-col"><h3 class="city-h">{city}<span>{label}</span></h3><div class="days">{cards}</div></div>')
     return (f'<div class="prelim"><b>Preliminary.</b><span>{PRELIM[13:]} The information sheet and mailing list get every update first.</span></div>'
@@ -1109,7 +1112,7 @@ def faculty_html():
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
-     "Six days and five nights in Colombia: arrive in Bogotá on Sunday 7 March 2027, three days in Bogotá, then two days in Medellín, departing Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. Hotels are confirmed to registered attendees."),
+     "Six days and five nights in Colombia: arrive in Bogotá on Sunday 7 March 2027, Bogotá through Wednesday morning, then Medellín from Wednesday evening (the move may be Tuesday instead), departing Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. Hotels are confirmed to registered attendees."),
     ("Is the program final?",
      "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and the mailing list hears first."),
     ("Who is it for?",
@@ -1192,7 +1195,7 @@ event_body = f"""
    <h2>Colombia, March 2027.</h2>
    <dl class="facts">
     <div><dt>Dates</dt><dd>Arrive Sunday 7 March in Bogotá. Depart Friday 12 March afternoon or Saturday 13 March morning from Medellín</dd></div>
-    <div><dt>Cities</dt><dd>Bogotá, 3 days. Medellín, 2 days</dd></div>
+    <div><dt>Cities</dt><dd>Bogotá, Sunday to Wednesday morning. Medellín, Wednesday evening to Friday. The move may be Tuesday instead</dd></div>
     <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
     <div><dt>Hotels</dt><dd>Upscale hotels in both cities, confirmed to registered attendees</dd></div>
     <div><dt>Airports</dt><dd>Arrive El Dorado, Bogotá (BOG). Depart José María Córdova, Medellín (MDE)</dd></div>
