@@ -170,6 +170,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:44px 0 36px}
 .legal{font-size:.82rem;color:rgba(255,255,255,.55);max-width:90ch;margin:0 0 10px}
 .credit{font-size:.82rem;color:rgba(255,255,255,.55);margin:0}
 .credit a{color:rgba(255,255,255,.75)}
+.portrait{display:block;width:var(--ps,72px);height:var(--ps,72px);border-radius:50%;object-fit:cover;border:2px solid var(--gold);background:var(--navy);margin-bottom:16px;flex:none}
+.monogram{display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:500;font-size:calc(var(--ps,72px) * .36);letter-spacing:.02em;color:var(--gold-l);background:radial-gradient(circle at 30% 25%,#12355f,var(--navy) 70%)}
+.portrait-lg{--ps:min(320px,70vw);margin:0 auto}
 .disclaimer{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin:0 0 8px}
 
 /* event: photo hero */
@@ -384,7 +387,7 @@ FAQ = [
 ]
 
 MEMBERS = [
-    dict(key='cre', lane='cre', seat='The Asset', area='Commercial real estate', name='Murphy D. Cheatham II', short='Murphy Cheatham',
+    dict(key='cre', lane='cre', seat='The Asset', area='Commercial real estate', name='Murphy D. Cheatham II', short='Murphy Cheatham', photo=None, initials='MC',
          role='Private Clients Director, CBRE · Global',
          show='The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing.',
          bio=("Murphy D. Cheatham II is Private Clients Director at CBRE, a global role in which he advises private families and high net worth "
@@ -399,7 +402,7 @@ MEMBERS = [
                  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Grambling State University"},
                               {"@type": "CollegeOrUniversity", "name": "Arizona State University"}],
                  "sameAs": ["https://www.cbre.com/people/murphy-cheatham"]}),
-    dict(key='capital', lane='capital', seat='The Capital', area='Business and family capital', name='Shawn Christopher Leamon', short='Shawn Leamon',
+    dict(key='capital', lane='capital', seat='The Capital', area='Business and family capital', name='Shawn Christopher Leamon', short='Shawn Leamon', photo=None, initials='SL',
          role='Founder and Managing Partner, LaGrande Global · Founder and CEO, Cielo.Travel · Bogotá',
          show='The capital: how individuals and families build, run and hold a business abroad, what it costs to enter and what it takes to operate.',
          bio=("Shawn Christopher Leamon is founder and managing partner of LaGrande Global, the investment firm he started in 2013, which manages "
@@ -414,7 +417,7 @@ MEMBERS = [
                  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Dartmouth College"},
                               {"@type": "CollegeOrUniversity", "name": "IE Business School"}],
                  "sameAs": ["https://lagrandeglobal.com/shawn-leamon/", "https://cielo.travel/meet-our-ceo-shawn-christopher-leamon/"]}),
-    dict(key='research', lane='research', seat='The Country', area='Research', name='Todd Allyn', short='Todd Allyn',
+    dict(key='research', lane='research', seat='The Country', area='Research', name='Todd Allyn', short='Todd Allyn', photo='/img/members/todd-allyn', initials='TA',
          role='Research lead · Founding Director, Sovereo Intelligence Research · Bogotá',
          show='The country: the economic, currency and political conditions that decide what you keep, and the signals that they are changing.',
          bio=("Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, a research company that tracks how "
@@ -423,10 +426,17 @@ MEMBERS = [
               "and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its "
               "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> tracks business deals worldwide from official "
               "sources, with US$46 billion in verified deals logged in 2026. He hosted The Todd Allyn Show on iHeartRadio and has lived in Bogotá since 2020."),
-         person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director",
+         person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director", "image": BASE + "/img/members/todd-allyn-640.webp",
                  "worksFor": {"@type": "Organization", "name": "Sovereo Intelligence Research", "url": "https://www.sovereo.com"},
                  "sameAs": ["https://www.linkedin.com/in/toddallyn/", "https://www.youtube.com/@sovereointel", "https://www.sovereo.com"]}),
 ]
+
+def portrait(m, size=72, cls=''):
+    """Member photo when we have one; otherwise a gold monogram until the member sends a photo."""
+    if m.get('photo'):
+        return (f'<img class="portrait {cls}" style="--ps:{size}px" src="{m["photo"]}-{320 if size <= 160 else 640}.webp" '
+                f'width="{size}" height="{size}" alt="{html.escape(m["name"])}" loading="lazy" decoding="async">')
+    return f'<div class="portrait monogram {cls}" style="--ps:{size}px" role="img" aria-label="{html.escape(m["name"])}">{m["initials"]}</div>'
 
 EPISODES = [
     ('All three', 'The World Is Mispriced', "The founding thesis: you're not broke, you're in the wrong market. Currency, political and structural conditions put the first rung back within reach abroad."),
@@ -589,6 +599,7 @@ def seat_cards(link=True):
     out = []
     for m in MEMBERS:
         out.append(f"""<article class="card bar-{m['key']}">
+    {portrait(m, 72)}
     <span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span>
     <h3>{m['name']}</h3>
     <p>{m['show']}</p>
@@ -751,6 +762,7 @@ index_body = f"""
 member_rows = ''.join(f"""
   <article class="member" id="{m['key']}">
    <div>
+    {portrait(m, 160)}
     <span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span>
     <h2>{m['name']}</h2>
     <p class="role">{m['role']}</p>
@@ -960,7 +972,7 @@ def program_html():
 
 def faculty_html():
     return '<div class="faculty">' + ''.join(f"""<a class="card bar-{m['key']}" href="lanes/{LANE[m['lane']]['slug']}.html">
-    <span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span><h3>{m['name']}</h3><p>{m['show']}</p></a>""" for m in MEMBERS) + '</div>'
+    {portrait(m, 72)}<span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span><h3>{m['name']}</h3><p>{m['show']}</p></a>""" for m in MEMBERS) + '</div>'
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
@@ -1207,7 +1219,7 @@ def lane_page(l):
    <p class="role">{m['role']}</p>
    <p>{m['bio']}</p>
   </div>
-  {fig('library' if l['id'] == 'research' else 'lobby' if l['id'] == 'cre' else 'foyer', 'wide')}
+  <div>{portrait(m, 320, 'portrait-lg')}</div>
  </div>
 </section>
 <section class="dark" id="join">
