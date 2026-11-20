@@ -572,7 +572,7 @@ def portrait(m, size=72, cls=''):
     return f'<div class="portrait monogram {cls}" style="--ps:{size}px" role="img" aria-label="{html.escape(m["name"])}">{m["initials"]}</div>'
 
 EPISODES = [
-    ('All three', 'The World Is Mispriced', "The founding thesis: you're not broke, you're in the wrong market. Currency, political and structural conditions put the first rung back within reach abroad."),
+    ('All three', 'The World Is Mispriced', 'The founding thesis: prudent capital looks past its home market. Currency, political and structural conditions can make the next asset more reachable abroad, with risks to match.'),
     ('Research', 'The Arbitrage, in Numbers', 'The math: how home-currency income and savings change in value the moment they cross the border.'),
     ('Asset', 'Real Assets, Real Prices', 'What entry-level property abroad costs, and how to judge it against being priced out at home.'),
     ('Capital', 'Buy the Business, Not Just the Building', 'Starting or buying a small business abroad, where the cost of entry is within reach and the income is real.'),
