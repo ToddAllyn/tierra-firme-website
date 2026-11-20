@@ -607,6 +607,47 @@ def seat_cards(link=True):
    </article>""")
     return '<div class="grid-3">' + ''.join(out) + '</div>'
 
+# ---------- Why Latin America, why Colombia ----------
+# Each Colombia point links to a sourced answer page; keep claims to what those pages support.
+def why_html(alt=False):
+    q = lambda slug, text: f'<a href="/questions/{slug}">{text}</a>'
+    return f"""<section{' class="alt"' if alt else ''} id="why">
+ <div class="container">
+  <div class="section-head">
+   <span class="eyebrow">Why Latin America. Why Colombia.</span>
+   <h2>The case for looking south, and the rules behind it.</h2>
+   <p class="lede">The benefits are real, and so are the risks. Here is what draws buyers from the US, Canada and Europe, with the rule or source behind each point.</p>
+  </div>
+  <div class="grid-3">
+   <article class="card bar-research"><span class="tag tag-research">Latin America</span><h3>Close to home</h3><p>Latin America shares or sits near North American time zones and is a short flight away, so owning or running something there is practical from home.</p></article>
+   <article class="card bar-research"><span class="tag tag-research">Latin America</span><h3>Your currency goes further</h3><p>Many local currencies trade cheaply against the dollar, euro and loonie, so the same income or savings can reach further. The rate can also move against you while you hold. {q('how-the-exchange-rate-changes-your-real-estate-return', 'How the exchange rate works')}.</p></article>
+   <article class="card bar-research"><span class="tag tag-research">Latin America</span><h3>Markets others overlook</h3><p>Political and structural risk is often priced in, sometimes more than it should be. Research tells the difference. {q('currency-political-and-structural-arbitrage', 'The three arbitrages')}.</p></article>
+  </div>
+  <div class="grid-2" style="margin-top:28px">
+   <div>
+    <h3 style="font-size:1.5rem">Why Colombia</h3>
+    <ul class="checks">
+     <li>Foreigners can own property with the same rights as Colombians. {q('can-foreigners-buy-property-in-colombia', 'Source and detail')}</li>
+     <li>A foreign investment registered with Banco de la República carries the right to bring the money home. {q('register-foreign-investment-in-colombia', 'How registration works')}</li>
+     <li>Qualifying property can support an investor visa. {q('colombia-investor-visa-through-real-estate', 'Visa rules')}</li>
+     <li>Buildings run under a clear legal regime, propiedad horizontal. {q('what-is-propiedad-horizontal-in-colombia', 'What it means for owners')}</li>
+     <li>Bogotá runs on UTC-5 all year, the same clock as US Eastern time in winter.</li>
+    </ul>
+   </div>
+   <div>
+    <h3 style="font-size:1.5rem">And what to watch</h3>
+    <ul class="checks">
+     <li>The peso can fall against your home currency while you hold. {q('how-the-exchange-rate-changes-your-real-estate-return', 'Currency risk')}</li>
+     <li>Taxes apply when you buy, while you own and when you sell. {q('taxes-foreigners-pay-on-property-in-colombia', 'Taxes for foreigners')}</li>
+     <li>Money that arrives informally can be hard to take back out. Register it on the way in.</li>
+     <li>Policy changes with each government. {q('how-to-evaluate-a-country-before-investing', 'How to read a country')}</li>
+    </ul>
+   </div>
+  </div>
+  <p class="note" style="margin-top:26px">{DISCLAIMER} Rules change; each linked page cites its primary sources.</p>
+ </div>
+</section>"""
+
 # ---------- index ----------
 index_body = f"""
 {photo_hero('twilight', f'''
@@ -614,7 +655,7 @@ index_body = f"""
   <h1>Any currency.<br>Solid ground.</h1>
   <p class="lede">A private six-day seminar in Bogotá for people placing capital across borders. Commercial real estate, business and family capital, and country research, taught by the three members of Tierra Firme.</p>
   <div class="btn-row" style="margin-top:30px">
-   <a href="bogota-2027.html#invite" class="btn btn-gold">Request an invitation</a>
+   <a href="bogota-2027.html#invite" class="btn btn-gold">Get the information sheet</a>
    <a href="bogota-2027.html" class="btn btn-ghost">See the program</a>
    <a href="#player" class="btn btn-ghost">&#9654;&nbsp; Watch the trailer</a>
   </div>
@@ -653,6 +694,8 @@ index_body = f"""
   </div>
  </div>
 </section>
+
+{why_html(alt=True)}
 
 <section class="dark">
  <div class="container">
@@ -1007,8 +1050,10 @@ EVENT_FAQ = [
      "Thirty. The room is kept small so every question gets answered."),
     ("Will anyone sell me property or a business?",
      "No. There are no listings, no sponsors pitching from the stage and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
-    ("How do I get a seat?",
-     "Join the waitlist on this page. Seat details and pricing go to the waitlist before anyone else."),
+    ("How do I get the information sheet?",
+     "Leave your email at the bottom of this page. You will receive the information sheet and join the mailing list; the final schedule, seat details and pricing go to the list before anyone else."),
+    ("Is the schedule final?",
+     "No. The schedule is tentative while we put the program together. Dates, sessions and visits may change."),
 ]
 
 event_body = f"""
@@ -1017,8 +1062,8 @@ event_body = f"""
   <h1>Six days on solid ground.</h1>
   <p class="lede">Read the country before you buy into it. A private seminar in Bogotá for foreign buyers weighing Colombian property or a business: short morning briefings, verified field visits and cultural evenings, a day for each lane.</p>
   <div class="btn-row" style="margin-top:30px">
-   <a href="#invite" class="btn btn-gold">Request an invitation</a>
-   <a href="#program" class="btn btn-ghost">See the program</a>
+   <a href="#invite" class="btn btn-gold">Get the information sheet</a>
+   <a href="#program" class="btn btn-ghost">Tentative schedule</a>
   </div>
   {event_strip()}
 ''')}
@@ -1038,12 +1083,15 @@ event_body = f"""
  </div>
 </section>
 
+{why_html(alt=False)}
+
 <section class="alt" id="program">
  <div class="container">
   <div class="section-head">
-   <span class="eyebrow">The program · Draft</span>
+   <span class="eyebrow">Tentative schedule</span>
    <h2>Six days. Three lanes.</h2>
-   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Arrive Sunday; Monday to Friday are Colombian commerce: short briefings and field work. Sessions are a draft and may change as each member finalizes his day.</p>
+   <p class="lede">Boardroom mornings, Colombian commerce and investment in the afternoons, culture in the evenings. Arrive Sunday; Monday to Friday are Colombian commerce: short briefings and field work.</p>
+   <p class="note"><strong>Tentative.</strong> We are putting this program together now. Dates, sessions and visits may change; the information sheet and mailing list get every update first.</p>
   </div>
   {program_html()}
  </div>
@@ -1143,9 +1191,9 @@ event_body = f"""
 <section class="band-green" id="invite">
  <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
   <span class="eyebrow">30 seats · Bogotá · March 2027</span>
-  <h2>Request an invitation.</h2>
-  <p class="lede">Join the waitlist. Seat details and pricing go to the list before public release.</p>
-  {signup_block(btn='Request an invitation', ok="Thank you. You're on the Bogotá 2027 waitlist; seat details come to you first.", source='bogota-2027')}
+  <h2>Get the information sheet.</h2>
+  <p class="lede">Leave your email to receive the Bogotá 2027 information sheet and join the mailing list. Dates, the final schedule, seat details and pricing go to the list first.</p>
+  {signup_block(btn='Send me the information sheet', ok="Thank you. You're on the Bogotá 2027 list; the information sheet and every update come to you first.", source='bogota-2027')}
   <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
  </div>
 </section>
