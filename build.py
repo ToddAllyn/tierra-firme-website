@@ -385,27 +385,30 @@ FAQ = [
 
 MEMBERS = [
     dict(key='cre', lane='cre', seat='The Asset', area='Commercial real estate', name='Murphy D. Cheatham II', short='Murphy Cheatham',
-         role='Commercial real estate · Advisor, convener and educator · Dallas',
+         role='Private Clients Director, CBRE · Dallas',
          show='The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing.',
-         bio=("Murphy D. Cheatham II has spent more than two decades in commercial real estate, most recently in private client work in Dallas. "
-              "His career has covered debt and equity, portfolio strategy and property management, strategic planning on more than $300 million "
-              "in mixed-use projects in partnership with HDR, and service as Chief of Housing and Business Development for the City of Shreveport. "
-              "He holds a B.S. in Accounting from Grambling State University and a Master of Real Estate Development from Arizona State University, "
-              "and helped create the real estate partnership between the two schools. He hosts The Murphy Cheatham Podcast. At Tierra Firme he "
-              "teaches and convenes; he does not offer property or transactions."),
+         bio=("Murphy D. Cheatham II is Private Clients Director at CBRE in Dallas, where he advises private families and high net worth "
+              "individuals on commercial real estate. In more than two decades he has sourced and serviced debt and equity, optimized portfolios "
+              "and managed properties, led strategic planning on more than $300 million in mixed-use projects in partnership with HDR, and served as "
+              "Chief of Housing and Business Development for the City of Shreveport. He holds a B.S. in Accounting from Grambling State University "
+              "and a Master of Real Estate Development from Arizona State University, and helped create the real estate partnership between the two schools. "
+              "He hosts The Murphy Cheatham Podcast."),
          person={"@type": "Person", "name": "Murphy D. Cheatham II", "alternateName": "Murphy Cheatham",
-                 "knowsAbout": ["Commercial real estate", "Real estate development"],
+                 "jobTitle": "Private Clients Director",
+                 "worksFor": {"@type": "Organization", "name": "CBRE", "url": "https://www.cbre.com"},
                  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Grambling State University"},
-                              {"@type": "CollegeOrUniversity", "name": "Arizona State University"}]}),
+                              {"@type": "CollegeOrUniversity", "name": "Arizona State University"}],
+                 "sameAs": ["https://www.cbre.com/people/murphy-cheatham"]}),
     dict(key='capital', lane='capital', seat='The Capital', area='Business and family capital', name='Shawn Christopher Leamon', short='Shawn Leamon',
-         role='Business and family capital · Founder, LaGrande Global and Cielo.Travel · Bogotá',
+         role='Founder and Managing Partner, LaGrande Global · Founder and CEO, Cielo.Travel · Bogotá',
          show='The capital: how individuals and families build, run and hold a business abroad, what it costs to enter and what it takes to operate.',
-         bio=("Shawn Christopher Leamon has worked in finance and business with a focus on Latin America since founding LaGrande Global in 2013. "
-              "Earlier he worked in investment banking and wealth management. He built and sold a marketing agency, and is founder and CEO of "
-              "Cielo.Travel, one of Colombia's largest digital travel networks. Born in Dallas, he has lived in Bogotá since 2023. "
+         bio=("Shawn Christopher Leamon is founder and managing partner of LaGrande Global, the investment firm he started in 2013, which manages "
+              "close to $100 million across private equity, startups, real estate and public markets, with a focus on Latin America. Before that he "
+              "worked in investment banking and wealth management on portfolios of more than $1 billion. He also built and sold a marketing agency, "
+              "and is founder and CEO of Cielo.Travel, one of Colombia's largest digital travel networks. Born in Dallas, he has lived in Bogotá since 2023. "
               "He holds degrees in Economics and Philosophy from Dartmouth College and an MBA from IE Business School."),
          person={"@type": "Person", "name": "Shawn Christopher Leamon", "alternateName": "Shawn Leamon",
-                 "jobTitle": "Founder and CEO, Cielo.Travel",
+                 "jobTitle": "Founder and Managing Partner",
                  "worksFor": [{"@type": "Organization", "name": "LaGrande Global", "url": "https://lagrandeglobal.com"},
                               {"@type": "Organization", "name": "Cielo.Travel", "url": "https://cielo.travel"}],
                  "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Dartmouth College"},
@@ -1255,7 +1258,7 @@ PAGES = [
     ('credits.html', 'Photo Credits | Tierra Firme', 'Credits and licenses for the photographs used on the Tierra Firme site.',
      credits_body, [], [('', 'Home'), ('credits.html', 'Photo credits')], None),
     ('members.html', 'Members | Tierra Firme',
-     'Meet the Tierra Firme members: Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn (research).',
+     'Meet the Tierra Firme members: Murphy D. Cheatham II (commercial real estate, CBRE), Shawn Christopher Leamon (business and family capital, LaGrande Global) and Todd Allyn (research).',
      members_body, [dict(m['person'], **{"memberOf": {"@id": BASE + "/#org"}}) for m in MEMBERS],
      [('', 'Home'), ('members.html', 'Members')], None),
     ('the-show.html', 'The Show | Tierra Firme Season One',
@@ -1424,8 +1427,8 @@ llms = f"""# Tierra Firme
 > A consortium of three practitioners in commercial real estate, business and family capital, and research. Tierra Firme produces a free show, sourced answers and seminars for people placing capital across borders, starting with Latin America. Based in Bogotá, Colombia. Educational only: no listings, no transactions, no investment advice.
 
 ## Members and lanes
-- Murphy D. Cheatham II, The Asset (commercial real estate): more than two decades in commercial real estate, Dallas. Advisor, convener and educator.
-- Shawn Christopher Leamon, The Capital (business and family capital): founder of LaGrande Global (2013) and founder and CEO of Cielo.Travel, Bogotá.
+- Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, Dallas, advising private families and high net worth individuals.
+- Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
 - Todd Allyn, The Country (research): leads Tierra Firme research; former Dean of the College of Business at Chancellor University, Bogotá.
 
 ## Event
