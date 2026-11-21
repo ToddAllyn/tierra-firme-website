@@ -293,6 +293,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .ic-city h3{margin:0;font-size:1.25rem;color:#fff}
 .ic-city .d{font-size:.78rem;color:rgba(255,255,255,.6);letter-spacing:.06em;text-align:right}
 .ic-city p{grid-column:2/4;margin:0;font-size:.9rem;color:rgba(255,255,255,.72)}
+@media (max-width:520px){.ic-city .d{grid-column:2/4;grid-row:2;text-align:left}.ic-city p{grid-row:3}}
 .ic-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin:2px 0 16px}
 .ic-facts div{padding:12px 0;text-align:center;border-left:1px solid rgba(255,255,255,.1)}
 .ic-facts div:first-child{border-left:0}
@@ -459,6 +460,96 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 @media (max-width:560px){.cg-grid{grid-template-columns:1fr}}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
+
+/* ---------- wealth palette: ivory, champagne, emerald, gold ---------- */
+:root{--cream:#fcf8ef;--cream-2:#f5ecd9;--surface:#fffdf8;--border:#e7d9b9;--gold:#d4a13a;--gold-d:#94680f;--gold-l:#f0cd7c;
+  --em:#0c4a37;--em-2:#13684e;--em-3:#1f8a68;--emd:#08362a;--line:rgba(176,130,38,.32);--navy:#0a3a2c;--ink-2:#08362a}
+body{background:var(--cream)}
+.site-header{background:rgba(8,54,42,.95);border-bottom:1px solid rgba(240,205,124,.28)}
+@media (max-width:1080px){.main-nav{background:var(--emd)}}
+.event-bar{background:var(--emd)}
+.subnav{background:rgba(8,54,42,.96)}
+footer{background:linear-gradient(180deg,var(--em),var(--emd))}
+.btn-gold{background:linear-gradient(180deg,#e7bb59,#d19a2e);color:#08362a;box-shadow:0 8px 24px rgba(180,130,30,.28)}
+.btn-gold:hover{background:linear-gradient(180deg,#f0cd7c,#dcaa45)}
+.hero{background:radial-gradient(ellipse at 80% 0%,var(--em-3) 0%,var(--em) 45%,var(--emd) 100%)}
+.photo-hero{background:var(--em)}
+.photo-hero::after{background:linear-gradient(90deg,rgba(6,40,30,.72) 0%,rgba(6,40,30,.42) 45%,rgba(6,40,30,0) 78%),linear-gradient(180deg,rgba(6,30,24,.35) 0%,rgba(0,0,0,0) 30%,rgba(6,40,30,.45) 72%,rgba(6,40,30,.82) 100%)}
+@media (max-width:760px){.photo-hero::after{background:linear-gradient(180deg,rgba(6,40,30,.55) 0%,rgba(6,40,30,.35) 40%,rgba(6,40,30,.75) 75%,rgba(6,40,30,.9) 100%)}}
+.itin-card{background:rgba(6,44,33,.55);border-color:rgba(240,205,124,.35)}
+.quote-band{background:var(--em)}
+.quote-band::after{background:linear-gradient(180deg,rgba(8,54,42,.30),rgba(8,54,42,.62))}
+.band-green{background:radial-gradient(ellipse at 15% 0%,var(--em-3),var(--em) 55%,var(--emd))}
+.ink{background:linear-gradient(180deg,#fffdf7 0%,#f6eddb 100%);color:var(--ink)}
+.ink h2,.ink h3{color:var(--ink)}.ink p{color:var(--muted)}.ink .eyebrow{color:var(--gold-d)}
+.ink .card{background:#fff;border-color:var(--border);box-shadow:0 14px 36px rgba(120,90,30,.08)}
+.ink .note,.ink .trailer-fine{color:var(--muted)}.ink .checks li{color:var(--ink)}
+.ink a{color:var(--em-2)}
+.ink .btn-ghost{color:var(--em);border-color:var(--gold)}.ink .btn-ghost:hover{background:var(--em);color:#fff}
+.ink .faq summary{color:var(--ink)}.ink .faq details{border-color:var(--border)}.ink .faq details p{color:var(--muted)}
+.ink .stats{border-color:var(--border)}.ink .stats div{border-color:var(--border)}
+.ink .stats b,.ink .stats b a{color:var(--em)}.ink .stats span{color:var(--muted)}
+.ink .format{border-color:var(--border);background:#fff}.ink .format div{border-color:var(--border)}.ink .format .k{color:var(--gold-d)}
+.ink .cguide{border-top-color:var(--border)}.ink .cg-body h3{color:var(--ink)}.ink .cg-block{border-top-color:var(--gold)}
+.ink .cg-block .k{color:var(--gold-d)}.ink .cg-block p{color:var(--muted)}.ink .cg-src{color:var(--muted-2)}.ink .cg-src a{color:var(--muted)}
+.ink figcaption{color:var(--muted-2)}
+.ink .city h3{color:#fff}.ink .city p{color:rgba(255,255,255,.88)}.ink .city .c-credit,.ink .city small{color:rgba(255,255,255,.6)}
+.dark .card:hover,.ink .card:hover{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,161,58,.3),0 24px 50px rgba(120,90,30,.16)}
+.trailer{background:radial-gradient(ellipse at 50% 0%,#fffdf6 0%,#f7efdc 55%,#efe2c3 100%);color:var(--ink)}
+.trailer h2{color:var(--ink)}.trailer .eyebrow{color:var(--gold-d)}.trailer-fine{color:var(--muted)}
+.trailer .player{box-shadow:0 40px 90px rgba(60,45,10,.28),0 0 0 1px rgba(212,161,58,.45)}
+.ticker{background:var(--em)}
+
+/* ---------- Colombia in frames: interactive gallery ---------- */
+.frames-sec{background:linear-gradient(180deg,var(--cream) 0%,#f3e9d2 100%)}
+.fr-bar{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin:0 0 22px}
+.fr-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.fr-tab{font:600 .78rem Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .25s,color .25s,border-color .25s,transform .2s}
+.fr-tab span{font-size:.68rem;letter-spacing:0;background:var(--cream-2);color:var(--gold-d);border-radius:999px;padding:1px 7px}
+.fr-tab:hover{border-color:var(--gold);transform:translateY(-1px)}
+.fr-tab[aria-pressed=true]{background:var(--em);color:#fff;border-color:var(--em)}.fr-tab[aria-pressed=true] span{background:rgba(255,255,255,.16);color:var(--gold-l)}
+.fr-hint{margin:0;font-size:.82rem;color:var(--muted)}
+.fr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(180px,19vw,260px);grid-auto-flow:dense;gap:14px}
+.fr-item{margin:0;position:relative;min-width:0;opacity:1;transform:none;transition:opacity .45s,transform .45s}
+.fr-item.big{grid-column:span 2;grid-row:span 2}.fr-item.wide{grid-column:span 2}.fr-item.tall{grid-row:span 2}
+.fr-item.out{opacity:0;transform:scale(.96)}
+.fr-item[hidden]{display:none}
+.fr-open{all:unset;box-sizing:border-box;position:absolute;inset:0;cursor:zoom-in;overflow:hidden;border-radius:6px;background:var(--em);box-shadow:0 10px 28px rgba(60,45,10,.14)}
+.fr-open:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.fr-open img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s}
+.fr-open::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,40,30,0) 45%,rgba(6,40,30,.82) 100%);transition:opacity .4s}
+.fr-open:hover img,.fr-open:focus-visible img{transform:scale(1.07);filter:saturate(1.12) brightness(1.04)}
+.fr-num{position:absolute;left:14px;top:12px;z-index:2;font:500 .8rem Fraunces,serif;color:#fff;letter-spacing:.06em;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.fr-zoom{position:absolute;right:12px;top:12px;z-index:2;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,253,248,.88);color:var(--em);font-size:.95rem;opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s}
+.fr-open:hover .fr-zoom,.fr-open:focus-visible .fr-zoom{opacity:1;transform:none}
+.fr-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px 16px;color:#fff;display:block}
+.fr-tag{display:inline-block;font:600 .62rem Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#08362a;background:var(--gold-l);padding:3px 8px;border-radius:2px;margin-bottom:8px}
+.fr-cap b{display:block;font:500 clamp(1.05rem,1.6vw,1.35rem)/1.2 Fraunces,serif}
+.fr-desc{display:block;font-size:.84rem;line-height:1.45;color:rgba(255,255,255,.85);max-height:0;opacity:0;overflow:hidden;transition:max-height .45s,opacity .45s,margin .45s}
+.fr-open:hover .fr-desc,.fr-open:focus-visible .fr-desc{max-height:5em;opacity:1;margin-top:6px}
+.fr-item.big .fr-cap b{font-size:clamp(1.4rem,2.4vw,2rem)}.fr-item.big .fr-desc{max-height:5em;opacity:1;margin-top:6px}
+@media (hover:none){.fr-desc{max-height:5em;opacity:1;margin-top:6px}.fr-zoom{opacity:1;transform:none}}
+@media (max-width:1000px){.fr-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(170px,30vw,240px)}}
+@media (max-width:560px){.fr-grid{grid-template-columns:1fr;grid-auto-rows:230px}.fr-item.big,.fr-item.wide{grid-column:auto}.fr-item.big,.fr-item.tall{grid-row:span 1}.fr-hint{display:none}}
+.fr-box{border:0;padding:0;margin:0;width:100vw;height:100vh;max-width:none;max-height:none;background:transparent;color:#fff;overflow:hidden}
+.fr-box::backdrop{background:rgba(5,30,23,.94);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.fr-box[open]{display:flex;align-items:center;justify-content:center;animation:frIn .35s ease}
+@keyframes frIn{from{opacity:0}to{opacity:1}}
+.fr-box figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:16px;max-width:min(1400px,92vw);padding:64px 0 24px}
+.fr-stage{display:flex;align-items:center;justify-content:center}
+.fr-stage img{max-width:min(1400px,92vw);max-height:calc(100vh - 210px);width:auto;height:auto;display:block;border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.5);transition:opacity .3s,transform .3s}
+.fr-stage img.swap{opacity:0;transform:scale(.985)}
+.fr-box figcaption{text-align:center;max-width:70ch;padding:0 16px}
+.fr-box figcaption b{display:block;font:500 clamp(1.3rem,2.4vw,1.8rem) Fraunces,serif;margin:4px 0}
+.fr-box figcaption>span:not(.fr-count){display:block;color:rgba(255,255,255,.8)}
+.fr-box figcaption small{display:block;margin-top:8px;color:rgba(255,255,255,.55);font-size:.76rem}.fr-box figcaption small a{color:inherit}
+.fr-count{font:600 .7rem Inter,sans-serif;letter-spacing:.22em;color:var(--gold-l)}
+.fr-nav,.fr-close{position:absolute;border:1px solid rgba(240,205,124,.5);background:rgba(8,54,42,.6);color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.fr-nav:hover,.fr-close:hover{background:var(--gold);color:#08362a;transform:scale(1.06)}
+.fr-nav.prev{left:clamp(10px,2vw,28px);top:50%;margin-top:-26px}.fr-nav.next{right:clamp(10px,2vw,28px);top:50%;margin-top:-26px}
+.fr-close{right:clamp(10px,2vw,28px);top:clamp(10px,2vw,22px);width:46px;height:46px;font-size:1.05rem}
+@media (max-width:640px){.fr-nav{top:auto;bottom:14px;margin-top:0}.fr-box figure{padding-bottom:84px}}
+@media (prefers-reduced-motion:reduce){.fr-item,.fr-open img,.fr-stage img,.fr-desc{transition:none}.fr-box[open]{animation:none}}
 """
 
 NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions')]
@@ -535,6 +626,29 @@ PHOTOS.update({
                        src='https://commons.wikimedia.org/wiki/File:Hotel_Tequendama_-_Vista_desde_Carrera_D%C3%A9cima.jpg'),
 })
 
+PHOTOS.update({
+    'metro_night': dict(base='/img/medellin/medellin-metrocable-night', w=(1920, 960), ratio=(1920, 1278),
+                        alt='Medellín at night seen from the Metrocable, the city lights filling the Aburrá Valley',
+                        title='Medellín at night from the Metrocable', author='JoranL', lic='CC BY-SA 4.0',
+                        lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                        src='https://commons.wikimedia.org/wiki/File:Metrocable_in_Medell%C3%ADn_by_night.jpg'),
+    'metro_k': dict(base='/img/medellin/medellin-metrocable-line-k', w=(1920, 960), ratio=(1920, 1278),
+                    alt='Metrocable Line K cable cars above the hillside neighborhoods of northeast Medellín',
+                    title='Metrocable Line K, Medellín', author='Bernard Gagnon', lic='CC BY-SA 4.0',
+                    lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                    src='https://commons.wikimedia.org/wiki/File:L%C3%ADnea_K_(Medell%C3%ADn_Metrocable)_01.jpg'),
+    'botero': dict(base='/img/medellin/medellin-plaza-botero', w=(1920, 960), ratio=(1920, 1064),
+                   alt='Plaza Botero in central Medellín, with bronze sculptures by Fernando Botero among palm trees',
+                   title='Plaza Botero, Medellín', author='Steffen Schmitz', lic='CC BY-SA 4.0',
+                   lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                   src='https://commons.wikimedia.org/wiki/File:Medell%C3%ADn,_Plaza_Botero,_2023-07_CN-01.jpg'),
+    'poblado': dict(base='/img/medellin/medellin-el-poblado-night', w=(1920, 960), ratio=(1920, 1280),
+                    alt='Apartment towers of El Poblado, Medellín, lit at night among the trees',
+                    title='El Poblado at night, Medellín', author='william gil', lic='CC BY 2.0',
+                    lic_url='https://creativecommons.org/licenses/by/2.0/',
+                    src='https://commons.wikimedia.org/wiki/File:El_poblado,_Medell%C3%ADn.jpg'),
+})
+
 def credit(p):
     p = PHOTOS[p]
     return f'Photo: <a href="{p["src"]}" rel="noopener">{html.escape(p["author"])}</a>, <a href="{p["lic_url"]}" rel="noopener">{p["lic"]}</a>, via Wikimedia Commons'
@@ -564,16 +678,46 @@ def ticker():
     items = ''.join(f'<span>{t}</span>' for t in TICKER_ITEMS)
     return f'<div class="ticker" aria-hidden="true"><div class="track">{items}{items}</div></div>'
 
-MOSAIC = [('towers', 'w2 h2', 'Bogotá, below Monserrate'), ('colpatria', 'h2', 'Torre Colpatria at night'),
-          ('medellin', '', 'Medellín'), ('agora', '', 'Ágora Bogotá'),
-          ('downtown', 'w2', 'Downtown Bogotá'), ('colon', '', 'Teatro Colón'), ('tequendama', '', 'Centro Internacional')]
-def mosaic_html():
-    out = []
-    for p, cls, cap in MOSAIC:
-        x = PHOTOS[p]
-        small_credit = '' if x.get('ill') else f'<small>{html.escape(x["author"])}, {x["lic"]}</small>'
-        out.append(f'<figure class="{cls} reveal">{img(p, "(max-width:760px) 50vw, 25vw")}<figcaption>{html.escape(cap)}{small_credit}</figcaption></figure>')
-    return '<div class="mosaic">' + ''.join(out) + '</div>'
+FRAMES = [  # (photo, category, title, description, size)
+    ('towers', 'bogota', 'Bogotá, below Monserrate', 'Office and residential towers of central Bogotá, with Monserrate and the Eastern Hills behind.', 'big'),
+    ('colpatria', 'bogota', 'Torre Colpatria', 'Torre Colpatria lit at night, one of Bogotá’s best-known towers.', 'tall'),
+    ('metro_night', 'medellin', 'Medellín after dark', 'The city lights fill the Aburrá Valley, seen from the Metrocable.', 'wide'),
+    ('agora', 'landmarks', 'Ágora Bogotá', 'The city’s convention center, beside the Corferias exhibition grounds.', ''),
+    ('botero', 'medellin', 'Plaza Botero', 'Central Medellín, with bronze sculptures by Fernando Botero.', ''),
+    ('downtown', 'bogota', 'Downtown Bogotá', 'The high-rise center seen from the Torre Colpatria observation deck.', 'wide'),
+    ('colon', 'landmarks', 'Teatro Colón', 'The painted ceiling and chandelier of Bogotá’s historic theater.', 'tall'),
+    ('medellin', 'medellin', 'The Aburrá Valley', 'Towers of Medellín climbing the green slopes of the valley.', ''),
+    ('twilight', 'bogota', 'Bogotá at twilight', 'The city from Monserrate as the lights come on across the savanna.', ''),
+    ('metro_k', 'medellin', 'Metrocable Line K', 'Cable cars above the hillside neighborhoods of northeast Medellín.', 'wide'),
+    ('tequendama', 'landmarks', 'Hotel Tequendama', 'In the Centro Internacional, Bogotá’s international business district.', ''),
+    ('poblado', 'medellin', 'El Poblado', 'Apartment towers of El Poblado, Medellín, lit at night.', ''),
+    ('general', 'bogota', 'The savanna', 'Bogotá’s center and the flat high plain beyond.', ''),
+]
+FRAME_CATS = [('all', 'All'), ('bogota', 'Bogotá'), ('medellin', 'Medellín'), ('landmarks', 'Landmarks')]
+
+def frames_html():
+    counts = {c: sum(1 for f in FRAMES if c == 'all' or f[1] == c) for c, _ in FRAME_CATS}
+    tabs = ''.join(f'<button type="button" class="fr-tab" data-cat="{c}" aria-pressed="{"true" if c == "all" else "false"}">{n}<span>{counts[c]}</span></button>'
+                   for c, n in FRAME_CATS)
+    items = []
+    for n, (p, cat, title, desc, size) in enumerate(FRAMES, 1):
+        x = PHOTOS[p]; big = x['w'][0]
+        label = dict(FRAME_CATS)[cat]
+        items.append(
+            f'<figure class="fr-item {size}" data-cat="{cat}" data-full="{x["base"]}-{big}.webp" data-title="{html.escape(title)}" '
+            f'data-desc="{html.escape(desc)}" data-credit="{html.escape(x["author"])}, {x["lic"]}" data-src="{x["src"]}">'
+            f'<button type="button" class="fr-open" aria-label="Open {html.escape(title)}">{img(p, "(max-width:640px) 100vw, (max-width:1000px) 50vw, 34vw")}'
+            f'<span class="fr-num">{n:02d}</span><span class="fr-zoom" aria-hidden="true">&#x2922;</span>'
+            f'<span class="fr-cap"><span class="fr-tag">{label}</span><b>{html.escape(title)}</b><span class="fr-desc">{html.escape(desc)}</span></span></button></figure>')
+    return (f'<div class="frames"><div class="fr-bar"><div class="fr-tabs" role="group" aria-label="Filter photographs">{tabs}</div>'
+            f'<p class="fr-hint">Tap any frame to open it full screen. Use the arrow keys to move between frames.</p></div>'
+            f'<div class="fr-grid">{"".join(items)}</div></div>'
+            '<dialog class="fr-box" id="fr-box" aria-label="Photograph viewer"><figure><div class="fr-stage"><img alt="" id="fr-img"></div>'
+            '<figcaption><span class="fr-count" id="fr-count"></span><b id="fr-title"></b><span id="fr-desc"></span>'
+            '<small>Photo: <a id="fr-credit" rel="noopener" target="_blank"></a>, via Wikimedia Commons</small></figcaption></figure>'
+            '<button type="button" class="fr-nav prev" id="fr-prev" aria-label="Previous photograph">&#8592;</button>'
+            '<button type="button" class="fr-nav next" id="fr-next" aria-label="Next photograph">&#8594;</button>'
+            '<button type="button" class="fr-close" id="fr-close" aria-label="Close" autofocus>&#10005;</button></dialog>')
 
 def quote_band(p, quote, sub, cta=''):
     return (f'<section class="quote-band">{img(p, "100vw", "qb-img")}<div class="container"><blockquote class="reveal">{quote}</blockquote>'
@@ -865,6 +1009,32 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
     .then(function(){{b.disabled=false;}});
   }});
  }}
+
+ var fr=document.querySelector('.frames');
+ if(fr){{var items=[].slice.call(fr.querySelectorAll('.fr-item')),tabs=[].slice.call(fr.querySelectorAll('.fr-tab')),box=document.getElementById('fr-box'),
+   bi=document.getElementById('fr-img'),cur=0,vis=items,x0=null;
+  var filter=function(cat){{tabs.forEach(function(t){{t.setAttribute('aria-pressed',t.getAttribute('data-cat')===cat?'true':'false');}});
+   items.forEach(function(it){{var on=cat==='all'||it.getAttribute('data-cat')===cat;
+    if(on){{it.hidden=false;it.classList.add('out');requestAnimationFrame(function(){{requestAnimationFrame(function(){{it.classList.remove('out');}});}});}}else{{it.hidden=true;}}}});
+   vis=items.filter(function(it){{return !it.hidden;}});}};
+  tabs.forEach(function(t){{t.addEventListener('click',function(){{filter(t.getAttribute('data-cat'));}});}});
+  var show=function(n){{cur=(n+vis.length)%vis.length;var it=vis[cur];bi.classList.add('swap');
+   var im=new Image();im.onload=im.onerror=function(){{bi.src=it.getAttribute('data-full');bi.alt=it.querySelector('img').alt;bi.classList.remove('swap');}};im.src=it.getAttribute('data-full');
+   document.getElementById('fr-title').textContent=it.getAttribute('data-title');document.getElementById('fr-desc').textContent=it.getAttribute('data-desc');
+   var c=document.getElementById('fr-credit');c.textContent=it.getAttribute('data-credit');c.href=it.getAttribute('data-src');
+   document.getElementById('fr-count').textContent=(cur+1<10?'0':'')+(cur+1)+' / '+(vis.length<10?'0':'')+vis.length;}};
+  items.forEach(function(it){{it.querySelector('.fr-open').addEventListener('click',function(){{var n=vis.indexOf(it);if(!box.showModal){{window.open(it.getAttribute('data-full'));return;}}
+   show(n);box.showModal();document.body.style.overflow='hidden';}});}});
+  var close=function(){{box.close();}};
+  box.addEventListener('close',function(){{document.body.style.overflow='';var it=vis[cur];if(it)it.querySelector('.fr-open').focus();}});
+  document.getElementById('fr-close').addEventListener('click',close);
+  document.getElementById('fr-prev').addEventListener('click',function(){{show(cur-1);}});
+  document.getElementById('fr-next').addEventListener('click',function(){{show(cur+1);}});
+  box.addEventListener('click',function(e){{if(e.target===box)close();}});
+  box.addEventListener('keydown',function(e){{if(e.key==='ArrowRight'){{show(cur+1);}}else if(e.key==='ArrowLeft'){{show(cur-1);}}}});
+  box.addEventListener('pointerdown',function(e){{x0=e.clientX;}});
+  box.addEventListener('pointerup',function(e){{if(x0===null)return;var dx=e.clientX-x0;x0=null;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));}});
+ }}
 }})();
 </script>
 </body>
@@ -952,7 +1122,7 @@ index_body = f"""
     <span class="kicker">Tierra Firme<span class="rule"></span>Any currency · Solid ground</span>
     <h1>Read the country <em>before</em> you buy into it.</h1>
     <p class="lede">A consortium of three practitioners in commercial real estate, business and family capital, and research. A private program in Colombia, a free show and sourced answers for people placing capital across borders.</p>
-    <div class="btn-row" style="margin-top:26px"><a href="colombia-2027.html#invite" class="btn btn-gold">Get the information sheet</a><a href="colombia-2027.html" class="btn btn-ghost">Investor Lab 2027</a><a href="#player" class="btn btn-ghost">&#9654;&nbsp; Trailer</a></div>
+    <div class="btn-row" style="margin-top:26px"><a href="colombia-2027.html#invite" class="btn btn-gold">Get the information sheet</a><a href="colombia-2027.html" class="btn btn-ghost">Investor Lab 2027</a><a href="#trailer" class="btn btn-ghost">&#9654;&nbsp; Watch the film</a></div>
     <p class="hero-fine">{DISCLAIMER} No listings, no sales, no fees on what you buy.</p>
    </div>
    {itin_card()}
@@ -960,37 +1130,6 @@ index_body = f"""
 ''', video='/media/hero-loop')}
 
 {ticker()}
-
-<section class="ink">
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Investor Lab 2027 · Preliminary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
-   <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
-  </div>
-  {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
-  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
- </div>
-</section>
-
-<section class="ink" style="padding-top:0">
- <div class="container">
-  <div class="section-head"><span class="eyebrow">Colombia in frames</span><h2 style="margin:0">Where the program happens.</h2></div>
-  {mosaic_html()}
- </div>
-</section>
-
-<section>
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Three members · Three lanes</span><h2 style="margin:0">Practitioners, not promoters.</h2></div>
-   <a href="members.html" class="btn btn-ink">Meet the members</a>
-  </div>
-  {seat_cards()}
- </div>
-</section>
-
-{why_html(alt=True)}
 
 <section class="trailer" id="trailer">
  <div class="container">
@@ -1010,6 +1149,41 @@ index_body = f"""
   <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
+
+<section class="ink">
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Investor Lab 2027 · Preliminary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
+   <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
+  </div>
+  {cities_html()}
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
+ </div>
+</section>
+
+<section class="frames-sec" id="frames">
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Colombia in frames</span><h2 style="margin:0">Two cities, one journey.</h2></div>
+   <p class="lede" style="margin:0;max-width:46ch">Bogotá, where the rules are made, and Medellín, where the valley meets the mountains. Explore the places on the route.</p>
+  </div>
+  {frames_html()}
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+   <div><span class="eyebrow">Three members · Three lanes</span><h2 style="margin:0">Practitioners, not promoters.</h2></div>
+   <a href="members.html" class="btn btn-ink">Meet the members</a>
+  </div>
+  {seat_cards()}
+ </div>
+</section>
+
+{why_html(alt=True)}
+
 
 <section>
  <div class="container">
