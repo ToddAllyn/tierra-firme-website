@@ -447,7 +447,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
 
-NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('newsletter.html', 'Newsletter')]
+NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions')]
 
 DISCLAIMER = "Educational content. Not investment, tax or legal advice."
 
@@ -573,7 +573,7 @@ def itin_card(cta='colombia-2027.html#invite'):
    <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Wed 10 evening to Fri 12 March</span><p>Field visits and culture, then the decision framework.</p></div>
    <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3</b><span>Lanes</span></div></div>
    <a href="{cta}" class="btn btn-gold">Get the information sheet</a>
-   <p class="fine">Dates, cities and sessions may change. The list hears first.</p>
+   <p class="fine">Dates, cities and sessions may change. Newsletter subscribers hear first.</p>
   </aside>"""
 
 def city_tile(p, city, days, text, href):
@@ -784,7 +784,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
  <div class="container">
   <div class="footer-grid">
    <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
-   <nav class="footer-nav" aria-label="Footer">{''.join(f'<a href="{h}">{t}</a>' for h, t in NAV)}<a href="credits.html">Photo credits</a></nav>
+   <nav class="footer-nav" aria-label="Footer">{''.join(f'<a href="{h}">{t}</a>' for h, t in NAV)}<a href="newsletter.html">Newsletter</a><a href="credits.html">Photo credits</a></nav>
   </div>
   <p class="disclaimer">{DISCLAIMER}</p>
   <p class="legal">{LEGAL}</p>
@@ -1016,7 +1016,7 @@ index_body = f"""
   <div>
    <span class="eyebrow">Investor Lab 2027 · Episodes · Research</span>
    <h2>Know the ground before you stand on it.</h2>
-   <p class="lede">Get the Investor Lab information sheet and join the mailing list. Seats, new episodes and research go to the list first.</p>
+   <p class="lede">Get the Investor Lab information sheet and the free Tierra Firme Newsletter. Subscribers hear about seats, new episodes and research first.</p>
   </div>
   <div>{signup_block(btn='Send me the information sheet', source='home')}</div>
  </div>
@@ -1078,7 +1078,7 @@ members_body = f"""
   <div>
    <span class="eyebrow">Investor Lab 2027 · Preliminary</span>
    <h2>Meet them in Bogotá and Medellín.</h2>
-   <p class="lede">Get the information sheet and join the mailing list. Seats and new episodes go to the list first.</p>
+   <p class="lede">Get the information sheet and the free Tierra Firme Newsletter. Subscribers hear about seats and new episodes first.</p>
   </div>
   <div>{signup_block(btn='Send me the information sheet', source='members')}</div>
  </div>
@@ -1190,6 +1190,17 @@ newsletter_body = f"""
   </div>
  </div>
 </section>
+<section>
+ <div class="container split">
+  <div>
+   <span class="eyebrow">Sample issue</span>
+   <h2>Read Issue No. 1.</h2>
+   <p class="lede">Two cities, three lanes: the Investor Lab 2027 plan, US$3.84 billion in Colombian deals so far this year, and a short briefing from each member.</p>
+   <div class="btn-row" style="margin-top:20px"><a href="/newsletter/issue-1" class="btn btn-ink">Read the full issue &rarr;</a></div>
+  </div>
+  <a href="/newsletter/issue-1" class="photo lift" style="display:block;max-height:560px;overflow:hidden;border:1px solid var(--border);border-top:3px solid var(--gold)"><img src="/img/newsletter-issue-1.webp" alt="Preview of Tierra Firme Newsletter Issue No. 1" width="720" height="1300" loading="lazy" decoding="async" style="height:auto"></a>
+ </div>
+</section>
 <section class="alt">
  <div class="container grid-2">
   <div>
@@ -1280,7 +1291,7 @@ def program_html():
     for city, label in (('Bogotá', 'Sun 7 to Wed 10 morning'), ('Medellín', 'Wed 10 evening to Fri 12')):
         cards = ''.join(_dcard(*d[1:]) for d in PROGRAM if d[0] == city)
         cols.append(f'<div class="itin-col"><h3 class="city-h">{city}<span>{label}</span></h3><div class="days">{cards}</div></div>')
-    return (f'<div class="prelim"><b>Preliminary.</b><span>{PRELIM[13:]} The information sheet and mailing list get every update first.</span></div>'
+    return (f'<div class="prelim"><b>Preliminary.</b><span>{PRELIM[13:]} Newsletter subscribers get every update first.</span></div>'
             f'<div class="itin">{"".join(cols)}</div>')
 
 def faculty_html():
@@ -1291,7 +1302,7 @@ EVENT_FAQ = [
     ("When and where is the Investor Lab?",
      "Six days and five nights in Colombia: arrive in Bogotá on Sunday 7 March 2027, Bogotá through Wednesday morning, then Medellín from Wednesday evening (the move may be Tuesday instead), departing Friday 12 March in the afternoon or Saturday 13 March in the morning, depending on flights. Hotels are confirmed to registered attendees."),
     ("Is the program final?",
-     "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and the mailing list hears first."),
+     "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and newsletter subscribers hear first."),
     ("Who is it for?",
      "People who earn in dollars, euros or another currency and are weighing property or a business in Colombia, and families thinking about how to hold what they build across borders."),
     ("How many seats are there?",
@@ -1299,7 +1310,7 @@ EVENT_FAQ = [
     ("Will anyone sell me property or a business?",
      "No. There are no listings, no brokers in the room and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
     ("How do I get the information sheet?",
-     "Leave your email on this page. You will receive the information sheet and join the mailing list; the final schedule, seat details and pricing go to the list before anyone else."),
+     "Leave your email on this page. You will receive the information sheet and the free Tierra Firme Newsletter, and subscribers get the final schedule, seat details and pricing before anyone else."),
 ]
 
 event_body = f"""
@@ -1378,7 +1389,7 @@ event_body = f"""
     <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
     <div><dt>Hotels</dt><dd>Upscale hotels in both cities, confirmed to registered attendees</dd></div>
     <div><dt>Airports</dt><dd>Arrive El Dorado, Bogotá (BOG). Depart José María Córdova, Medellín (MDE)</dd></div>
-    <div><dt>Seats and pricing</dt><dd>Sent to the mailing list first</dd></div>
+    <div><dt>Seats and pricing</dt><dd>Sent to newsletter subscribers first</dd></div>
    </dl>
    <p class="note" style="margin-top:18px">{PRELIM}</p>
   </div>
@@ -1412,7 +1423,7 @@ event_body = f"""
   <div>
    <span class="eyebrow">30 seats · Bogotá and Medellín · March 2027</span>
    <h2>Get the information sheet.</h2>
-   <p class="lede">Leave your email to receive the information sheet and join the mailing list. The final itinerary, seat details and pricing go to the list first.</p>
+   <p class="lede">Leave your email to receive the information sheet and the free Tierra Firme Newsletter. Subscribers get the final itinerary, seat details and pricing first.</p>
    <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
   </div>
   <div>{signup_block(btn='Send me the information sheet', ok="Thank you. You're on the Investor Lab 2027 list; the information sheet and every update come to you first.", source='colombia-2027')}</div>
@@ -1729,7 +1740,7 @@ open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for p, pr in ([('', '1.0'), ('colombia-2027', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('questions', '0.9')]
               + [('lanes/' + l['slug'], '0.8') for l in LANES if l['approved']]
-              + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('newsletter', '0.8'), ('credits', '0.3')]):
+              + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('newsletter', '0.8'), ('newsletter/issue-1', '0.6'), ('credits', '0.3')]):
     sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-11-20</lastmod><priority>{pr}</priority></url>\n'
 sm += '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
