@@ -1189,7 +1189,7 @@ HOME_FAQ = [
 ]
 
 GET_ITEMS = [
-    ('Mornings', 'Boardroom briefings', 'The country, property, business and the decision, with Colombian counsel among the guest speakers.'),
+    ('Mornings', 'Boardroom briefings', 'The country, property, business and the decision, with Colombian practitioners on hand to answer questions and share local know-how.'),
     ('Afternoons', 'Verified field visits', 'Districts, operators and sites in both cities that the hosts have walked themselves. Places, not units for sale.'),
     ('Evenings', 'The culture', 'Dinners and evenings in Bogotá and Medellín with the hosts and a small group asking the same questions you are.'),
     ('You leave with', 'A framework and a briefing', 'A decision framework, a written country briefing and every presentation from the week.'),
@@ -1233,7 +1233,7 @@ index_body = f"""
   <div class="section-head"><span class="eyebrow">What Tierra Firme is</span><h2>Three practitioners at one table.</h2>
    <p class="lede">Tierra Firme is a consortium of three practitioners in commercial real estate, business and family capital, and research. It produces a free show, sourced research and private seminars for people placing capital across borders, starting with Latin America. Investor Lab 2027 is its first program. Each host checks the other two.</p></div>
   {hosts_row()}
-  <p class="note" style="margin-top:22px">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to the list.</p>
+  <p class="note" style="margin-top:22px">Guest speakers, including Colombian practitioners who work every day in property, tax and foreign investment, will be announced to the list.</p>
  </div>
 </section>
 
@@ -1680,7 +1680,7 @@ event_body = f"""
 
 <section class="ink" id="faculty">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">Hosts</span><h2>Hosted by Tierra Firme.</h2><p class="lede">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to newsletter subscribers.</p></div>
+  <div class="section-head"><span class="eyebrow">Hosts</span><h2>Hosted by Tierra Firme.</h2><p class="lede">Guest speakers, including Colombian practitioners who work every day in property, tax and foreign investment, will be announced to newsletter subscribers.</p></div>
   {faculty_html()}
  </div>
 </section>
