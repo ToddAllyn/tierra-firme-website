@@ -1276,14 +1276,14 @@ index_body = f"""
   </div>
   <div class="player" id="player">
    <video id="tf-trailer" playsinline preload="none" data-poster="/media/film-poster-v6.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
-    <source src="/media/tierra-firme-film-v6.mp4" type="video/mp4">
+    <source src="/media/tierra-firme-film-v7.mp4" type="video/mp4">
    </video>
-   <button type="button" class="play-big" id="tf-sound" aria-label="Play the film with sound"><span class="pb-icon" aria-hidden="true"></span><span class="pb-txt"><b>Play the film</b><small>3:38 · Sound on · Captioned</small></span></button>
+   <button type="button" class="play-big" id="tf-sound" aria-label="Play the film with sound"><span class="pb-icon" aria-hidden="true"></span><span class="pb-txt"><b>Play the film</b><small>3:41 · Sound on · Captioned</small></span></button>
    <button type="button" class="replay" id="tf-replay" aria-label="Replay trailer" hidden>&#8635;&nbsp; Replay</button>
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
+  <p class="trailer-fine">3 minutes 41 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 """
@@ -1882,8 +1882,8 @@ PAGES = [
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
      index_body, [faq_schema(HOME_FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
         "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
-        "thumbnailUrl": BASE + "/media/film-poster-v6.webp", "contentUrl": BASE + "/media/tierra-firme-film-v6.mp4",
-        "uploadDate": "2026-11-21", "duration": "PT3M38S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
+        "thumbnailUrl": BASE + "/media/film-poster-v6.webp", "contentUrl": BASE + "/media/tierra-firme-film-v7.mp4",
+        "uploadDate": "2026-11-21", "duration": "PT3M41S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
      'Preliminary: six days in Bogotá and Medellín, 7 to 12 March 2027, for an exclusive group of investors. Property, business capital and country research.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
@@ -2080,7 +2080,8 @@ llms = f"""# Tierra Firme
 """
 open(os.path.join(OUT, 'llms.txt'), 'w').write(llms)
 
-redirects = """/media/tierra-firme-film.mp4 /media/tierra-firme-film-v6.mp4 302
+redirects = """/media/tierra-firme-film.mp4 /media/tierra-firme-film-v7.mp4 302
+/media/tierra-firme-film-v6.mp4 /media/tierra-firme-film-v7.mp4 302
 /the-seats.html /members 301
 /the-seats /members 301
 /get-the-read.html /newsletter 301
