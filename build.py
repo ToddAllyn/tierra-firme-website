@@ -4,7 +4,7 @@ import json, os, html, re
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 os.makedirs(OUT, exist_ok=True)
-BASE = 'https://tierrafirme.lat'
+BASE = 'https://www.tierrafirme.lat'
 SHARE = BASE + '/tierra-firme-share.jpg'
 
 CSS = r"""
