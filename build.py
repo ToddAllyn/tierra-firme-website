@@ -480,7 +480,7 @@ LANE = {l['id']: l for l in LANES}
 
 # Event: Tierra Firme Investor Lab, Bogotá. Dates and seat count come from the 2027 Investor Lab draft.
 EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá and Medellín', start='2027-03-07', end='2027-03-12',
-             dates='7 to 12 March 2027', short='March 2027', seats=30)
+             dates='7 to 12 March 2027', short='March 2027')
 PRELIM = 'Preliminary. Dates, cities and sessions may change while we put the program together.'
 
 # Photos: Wikimedia Commons. Licenses read on each File: page on 2026-11-20. BY and BY-SA need the credit line.
@@ -517,21 +517,26 @@ PHOTOS = {
                     src='https://commons.wikimedia.org/wiki/File:Bogota_general_view_2015.jpg'),
 }
 
-ILLUSTRATIVE = {
-    'ballroom': ('seminar-ballroom', 'An intimate hotel ballroom set for a seminar, rows of upholstered chairs facing a screen, mountains at dusk through tall windows'),
-    'lobby': ('hotel-lobby', 'A modern luxury hotel lobby lounge in stone, walnut and brass, with green velvet armchairs'),
-    'boardroom': ('boardroom', 'A high-floor boardroom with a long wood table and leather chairs, a city of towers and green mountains beyond the glass'),
-    'foyer': ('conference-foyer', 'A bright conference foyer with a navy and gold registration desk and cocktail tables'),
-    'library': ('library-lounge', 'A hotel library lounge with dark wood shelves, leather club chairs and a fireplace, city lights at dusk outside'),
-}
-for k, (f, alt) in ILLUSTRATIVE.items():
-    PHOTOS[k] = dict(base='/img/illustrative/' + f, w=(1920, 960), ratio=(1920, 1080), alt=alt + ' (illustrative image)',
-                     title='Illustrative image, not the venue', ill=True)
+PHOTOS.update({
+    'agora': dict(base='/img/bogota/agora-bogota-convention-center', w=(1920, 960), ratio=(1920, 1234),
+                  alt='Ágora Bogotá, the city convention center, a glass and steel building beside the Corferias exhibition grounds',
+                  title='Ágora Bogotá convention center', author='Mriobomorales', lic='CC BY-SA 4.0',
+                  lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                  src='https://commons.wikimedia.org/wiki/File:Agora_and_Corferias_event_and_buissines_district.png'),
+    'colon': dict(base='/img/bogota/teatro-colon-ceiling', w=(1920, 960), ratio=(1920, 1440),
+                  alt='The painted ceiling and crystal chandelier of the Teatro Colón in Bogotá',
+                  title='Teatro Colón, Bogotá', author='Ricardoinbaviera', lic='CC BY-SA 3.0',
+                  lic_url='https://creativecommons.org/licenses/by-sa/3.0/',
+                  src='https://commons.wikimedia.org/wiki/File:Interior_Teatro_Colon_Bogota.jpg'),
+    'tequendama': dict(base='/img/bogota/hotel-tequendama', w=(1920, 960), ratio=(1920, 1091),
+                       alt='The Hotel Tequendama in Bogotá’s Centro Internacional, seen from Carrera Décima',
+                       title='Hotel Tequendama, Centro Internacional, Bogotá', author='Peter Angritt', lic='CC BY-SA 4.0',
+                       lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                       src='https://commons.wikimedia.org/wiki/File:Hotel_Tequendama_-_Vista_desde_Carrera_D%C3%A9cima.jpg'),
+})
 
 def credit(p):
     p = PHOTOS[p]
-    if p.get('ill'):
-        return 'Generated illustration for Tierra Firme.'
     return f'Photo: <a href="{p["src"]}" rel="noopener">{html.escape(p["author"])}</a>, <a href="{p["lic_url"]}" rel="noopener">{p["lic"]}</a>, via Wikimedia Commons'
 
 def img(p, sizes='100vw', cls='', eager=False):
@@ -552,7 +557,7 @@ def photo_hero(p, inner, video=None):
     return (f'<section class="photo-hero"><picture>{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
             f'<div class="container">{inner}</div>{cue}<p class="ph-credit">{"Film footage: Pexels. " if video else ""}{credit(p)}</p></section>')
 
-TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>30</b> seats',
+TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>Invitation</b> · exclusive group',
                 '<b>US$46.0B</b> in deals tracked by Sovereo', '<b>US$3.84B</b> in Colombia alone', 'Boardroom mornings',
                 'Verified field visits', 'Cultural evenings', '<b>Three</b> practitioners · three lanes', 'Any currency · solid ground']
 def ticker():
@@ -560,8 +565,8 @@ def ticker():
     return f'<div class="ticker" aria-hidden="true"><div class="track">{items}{items}</div></div>'
 
 MOSAIC = [('towers', 'w2 h2', 'Bogotá, below Monserrate'), ('colpatria', 'h2', 'Torre Colpatria at night'),
-          ('medellin', '', 'Medellín'), ('ballroom', '', 'The room (illustrative)'),
-          ('downtown', 'w2', 'Downtown Bogotá'), ('boardroom', '', 'The boardroom (illustrative)'), ('lobby', '', 'The lobby (illustrative)')]
+          ('medellin', '', 'Medellín'), ('agora', '', 'Ágora Bogotá'),
+          ('downtown', 'w2', 'Downtown Bogotá'), ('colon', '', 'Teatro Colón'), ('tequendama', '', 'Centro Internacional')]
 def mosaic_html():
     out = []
     for p, cls, cap in MOSAIC:
@@ -585,7 +590,7 @@ def itin_card(cta='colombia-2027.html#invite'):
    <div class="ic-top"><span>Investor Lab 2027</span><span class="pre">Preliminary</span></div>
    <div class="ic-city"><span class="n">3</span><h3>Bogotá</h3><span class="d">Sun 7 to Wed 10 March, morning</span><p>Arrival, then the country, property and business.</p></div>
    <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Wed 10 evening to Fri 12 March</span><p>Field visits and culture, then the decision framework.</p></div>
-   <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3</b><span>Lanes</span></div></div>
+   <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b>3</b><span>Lanes</span></div></div>
    <a href="{cta}" class="btn btn-gold">Get the information sheet</a>
    <p class="fine">Dates, cities and sessions may change. Newsletter subscribers hear first.</p>
   </aside>"""
@@ -604,7 +609,7 @@ def cities_html():
 
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
-            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div></div>')
+            '<div><b>Exclusive</b><span>A private group of investors</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -619,7 +624,7 @@ FAQ = [
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Investor Lab 2027?",
-     "A preliminary six-day, five-night program in Colombia for 30 people: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
+     "A preliminary six-day, five-night program in Colombia for an exclusive group of investors: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
      "It is a seminar, not a sales event. Details go to newsletter subscribers first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -963,7 +968,7 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
   <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
@@ -990,7 +995,7 @@ index_body = f"""
 <section class="trailer" id="trailer">
  <div class="container">
   <div class="section-head" style="margin-bottom:28px">
-   <span class="eyebrow">The film · 3 minutes</span>
+   <span class="eyebrow">The film · 3½ minutes</span>
    <h2>Solid ground.</h2>
   </div>
   <div class="player" id="player">
@@ -1002,7 +1007,7 @@ index_body = f"""
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">3 minutes 37 seconds. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
+  <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 
@@ -1362,8 +1367,8 @@ EVENT_FAQ = [
      "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and newsletter subscribers hear first."),
     ("Who is it for?",
      "People who earn in dollars, euros or another currency and are weighing property or a business in Colombia, and families thinking about how to hold what they build across borders."),
-    ("How many seats are there?",
-     "Thirty. The room is kept small so every question gets answered."),
+    ("How large is the group?",
+     "Small and exclusive, by design, so every question gets answered."),
     ("Will anyone sell me property or a business?",
      "No. There are no listings, no brokers in the room and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
     ("How do I get the information sheet?",
@@ -1376,7 +1381,7 @@ event_body = f"""
    <div>
     <span class="kicker">Investor Lab 2027<span class="rule"></span>Bogotá · Medellín · Preliminary</span>
     <h1>Two cities. Six days. <em>Solid ground.</em></h1>
-    <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, hosted by Tierra Firme with guest speakers.</p>
+    <p class="lede">A private program in Colombia for an exclusive group of investors placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, hosted by Tierra Firme with guest speakers.</p>
     <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get the information sheet</a><a href="#itinerary" class="btn btn-ghost">Preliminary itinerary</a></div>
    </div>
    {itin_card('#invite')}
@@ -1419,10 +1424,10 @@ event_body = f"""
 
 <section class="alt">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">The setting</span><h2>Quiet rooms, small groups.</h2><p class="lede">Upscale hotels in both cities, a high-floor boardroom and time out in the city. Interior images are illustrations of the format; hotels are confirmed to registered attendees.</p></div>
+  <div class="section-head"><span class="eyebrow">The setting</span><h2>Quiet rooms, small groups.</h2><p class="lede">Upscale hotels in both cities, a high-floor boardroom and time out in the city. Venues and hotels are confirmed to registered attendees; the photographs show Bogotá, not the venue.</p></div>
   <div class="gallery">
-   {fig('ballroom', 'wide', '(max-width:760px) 100vw, 66vw')}
-   <div class="col">{fig('boardroom', 'wide', '(max-width:760px) 100vw, 33vw')}{fig('lobby', 'wide', '(max-width:760px) 100vw, 33vw')}</div>
+   {fig('agora', 'wide', '(max-width:760px) 100vw, 66vw')}
+   <div class="col">{fig('colon', 'wide', '(max-width:760px) 100vw, 33vw')}{fig('tequendama', 'wide', '(max-width:760px) 100vw, 33vw')}</div>
   </div>
  </div>
 </section>
@@ -1444,7 +1449,7 @@ event_body = f"""
    <dl class="facts">
     <div><dt>Dates</dt><dd>Arrive Sunday 7 March in Bogotá. Depart Friday 12 March afternoon or Saturday 13 March morning from Medellín</dd></div>
     <div><dt>Cities</dt><dd>Bogotá, Sunday to Wednesday morning. Medellín, Wednesday evening to Friday. The move may be Tuesday instead</dd></div>
-    <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
+    <div><dt>Group</dt><dd>Exclusive and kept small, so every question gets answered</dd></div>
     <div><dt>Hotels</dt><dd>Upscale hotels in both cities, confirmed to registered attendees</dd></div>
     <div><dt>Airports</dt><dd>Arrive El Dorado, Bogotá (BOG). Depart José María Córdova, Medellín (MDE)</dd></div>
     <div><dt>Seats and pricing</dt><dd>Sent to newsletter subscribers first</dd></div>
@@ -1479,7 +1484,7 @@ event_body = f"""
 <section class="band-green" id="invite">
  <div class="container signup-band">
   <div>
-   <span class="eyebrow">30 seats · Bogotá and Medellín · March 2027</span>
+   <span class="eyebrow">Exclusive group · Bogotá and Medellín · March 2027</span>
    <h2>Get the information sheet.</h2>
    <p class="lede">Leave your email to receive the information sheet and the free Tierra Firme Newsletter. Subscribers get the final itinerary, seat details and pricing first.</p>
    <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
@@ -1493,7 +1498,7 @@ event_schema = [
     {"@type": "EducationEvent", "@id": BASE + "/colombia-2027#event", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín",
      "description": "A six-day educational program in Bogotá and Medellín on commercial real estate, business and family capital, and country research for people placing capital across borders.",
      "startDate": EVENT['start'], "endDate": EVENT['end'], "eventStatus": "https://schema.org/EventScheduled",
-     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "maximumAttendeeCapacity": EVENT['seats'],
+     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
      "location": [{"@type": "Place", "name": "Bogotá (hotel confirmed to registered attendees)",
                    "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}},
                   {"@type": "Place", "name": "Medellín (hotel confirmed to registered attendees)",
@@ -1518,7 +1523,7 @@ LANE_COPY = {
                 'Reading a district: infrastructure, services and the signals a listing never shows'],
         show='Ground Truth: a real property on camera, and what the same income would and would not buy at home.',
         extra=''),
-    'capital': dict(photo='boardroom', h1='Build it, run it, hold it.',
+    'capital': dict(photo='agora', h1='Build it, run it, hold it.',
         voice=("I have built and run businesses in Latin America, and I live in Bogotá. Most people who look at Colombia think about an apartment. "
                "Fewer think about the business that could pay for it, or how a family holds what it builds across two countries. This lane is about "
                "that: what it takes to start or buy a small business here, what it costs to run, and how families hold it over time."),
@@ -1605,14 +1610,14 @@ credit_rows = ''.join(
     f'<li><strong>{html.escape(p["title"])}</strong>. {html.escape(p["author"])}, <a href="{p["lic_url"]}" rel="noopener">{p["lic"]}</a>. '
     f'<a href="{p["src"]}" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li>'
     for k, p in PHOTOS.items() if not p.get('ill'))
-FILM_CREDITS = [('Juan Castelblanco', 'Andes mountains, Colombia', 'https://www.pexels.com/video/drone-video-of-the-andes-mountains-in-colombia-15747549/'), ('Martina Tomšič', 'Globe', 'https://www.pexels.com/video/close-up-view-of-a-globe-4696463/'), ('Saif Abdulraheem', 'Counting money', 'https://www.pexels.com/video/person-counting-money-4275306/'), ('Alexandr Shorban', 'Clouds from an airplane window', 'https://www.pexels.com/video/clouds-seen-from-airplane-window-10691579/'), ('Juan David Palacio Mesa', 'Bogotá aerials and the Colombian flag', 'https://www.pexels.com/video/bogota-vista-aerea-19593286/'), ('Werner Pfennig', 'Conference room', 'https://www.pexels.com/video/man-speaking-in-conference-room-6951601/'), ('Yunus Terk', 'Modern apartments, aerial', 'https://www.pexels.com/video/stunning-aerial-view-of-modern-luxury-apartments-38235767/'), ('Ron Lach', 'Business owner in a café', 'https://www.pexels.com/video/close-up-video-of-a-woman-holding-a-clipboard-8441634/'), ('Jakub Zerdzicki', 'Financial analyst', 'https://www.pexels.com/video/financial-analyst-calculating-market-trends-38597877/'), ('Camilo Carrò', 'Airplane wing in flight', 'https://www.pexels.com/video/airplane-wing-while-flying-in-the-sky-6472910/'), ('Thirdman', 'Signing a document', 'https://www.pexels.com/video/close-up-video-of-a-person-signing-a-document-8471105/'), ('Julián Armando Santos', 'Plaza de Bolívar and Bogotá walkways', 'https://www.pexels.com/video/historic-plaza-bolivar-in-bogota-colombia-37151628/'), ('Nothing Ahead', 'Modern high-rise buildings', 'https://www.pexels.com/video/modern-high-rise-buildings-exterior-view-35082942/'), ('Polina Kovaleva', 'Notebook', 'https://www.pexels.com/video/closeup-video-of-writings-on-a-notebook-5546876/'), ('Juan Camilo Trujillo Botero', 'Bogotá at twilight and city aerials', 'https://www.pexels.com/video/aerial-view-of-bogota-at-twilight-40369496/'), ('ME UP', 'Medellín skyline at dusk', 'https://www.pexels.com/video/aerial-view-of-medellin-skyline-at-dusk-40130401/'), ('Vlada Karpovich', 'Business meeting', 'https://www.pexels.com/video/people-having-business-meeting-7552419/'), ('Federico Molina', 'Medellín with mountains', 'https://www.pexels.com/video/aerial-view-of-urban-landscape-with-mountains-40437627/'), ('E CG', 'Salsa, Cali', 'https://www.pexels.com/video/salsa-colorful-shoes-19851286/'), ('Naresh Babu', 'Evening glassware', 'https://www.pexels.com/video/elegant-nighttime-glassware-with-ambient-lighting-37482114/'), ('Mikhail Nilov', 'Professionals reviewing documents', 'https://www.pexels.com/video/professionals-looking-carefully-on-documents-8847933/'), ('Alex Moliski', 'City and mountains at sunset', 'https://www.pexels.com/video/an-aerial-view-of-a-city-and-mountains-at-sunset-26775139/')]
+FILM_CREDITS = [('Juan Castelblanco', 'Andes mountains, Colombia', 'https://www.pexels.com/video/drone-video-of-the-andes-mountains-in-colombia-15747549/'), ('Martina Tomšič', 'Globe', 'https://www.pexels.com/video/close-up-view-of-a-globe-4696463/'), ('Saif Abdulraheem', 'Counting money', 'https://www.pexels.com/video/person-counting-money-4275306/'), ('Alexandr Shorban', 'Clouds from an airplane window', 'https://www.pexels.com/video/clouds-seen-from-airplane-window-10691579/'), ('Juan David Palacio Mesa', 'Bogotá aerials and the Colombian flag', 'https://www.pexels.com/video/bogota-vista-aerea-19593286/'), ('Werner Pfennig', 'Conference room', 'https://www.pexels.com/video/man-speaking-in-conference-room-6951601/'), ('Yunus Terk', 'Modern apartments, aerial', 'https://www.pexels.com/video/stunning-aerial-view-of-modern-luxury-apartments-38235767/'), ('Ron Lach', 'Business owner in a café', 'https://www.pexels.com/video/close-up-video-of-a-woman-holding-a-clipboard-8441634/'), ('Jakub Zerdzicki', 'Financial analyst', 'https://www.pexels.com/video/financial-analyst-calculating-market-trends-38597877/'), ('Camilo Carrò', 'Airplane wing in flight', 'https://www.pexels.com/video/airplane-wing-while-flying-in-the-sky-6472910/'), ('Thirdman', 'Signing a document', 'https://www.pexels.com/video/close-up-video-of-a-person-signing-a-document-8471105/'), ('Julián Armando Santos', 'Plaza de Bolívar and Bogotá walkways', 'https://www.pexels.com/video/historic-plaza-bolivar-in-bogota-colombia-37151628/'), ('Nothing Ahead', 'Modern high-rise buildings', 'https://www.pexels.com/video/modern-high-rise-buildings-exterior-view-35082942/'), ('Polina Kovaleva', 'Notebook', 'https://www.pexels.com/video/closeup-video-of-writings-on-a-notebook-5546876/'), ('Juan Camilo Trujillo Botero', 'Bogotá at twilight and city aerials', 'https://www.pexels.com/video/aerial-view-of-bogota-at-twilight-40369496/'), ('ME UP', 'Medellín skyline at dusk', 'https://www.pexels.com/video/aerial-view-of-medellin-skyline-at-dusk-40130401/'), ('Vlada Karpovich', 'Business meeting', 'https://www.pexels.com/video/people-having-business-meeting-7552419/'), ('Federico Molina', 'Medellín with mountains', 'https://www.pexels.com/video/aerial-view-of-urban-landscape-with-mountains-40437627/'), ('E CG', 'Salsa, Cali', 'https://www.pexels.com/video/salsa-colorful-shoes-19851286/'), ('Naresh Babu', 'Evening glassware', 'https://www.pexels.com/video/elegant-nighttime-glassware-with-ambient-lighting-37482114/'), ('Mikhail Nilov', 'Professionals reviewing documents', 'https://www.pexels.com/video/professionals-looking-carefully-on-documents-8847933/'), ('Alex Moliski', 'City and mountains at sunset', 'https://www.pexels.com/video/an-aerial-view-of-a-city-and-mountains-at-sunset-26775139/'), ('Julián Armando Santos', 'Sunday ciclovía, Bogotá', 'https://www.pexels.com/video/ciudad-de-bogota-ciclovia-dominical-27097445/'), ('Julián Armando Santos', 'Ciclovía cyclists, Bogotá', 'https://www.pexels.com/video/ciclovias-deporte-bogota-27174461/')]
 film_rows = ''.join(f'<li><strong>{html.escape(w)}</strong>. {html.escape(a)}, <a href="{u}" rel="noopener">Pexels</a>.</li>' for a, w, u in FILM_CREDITS)
 credits_body = f"""
 <section class="hero">
  <div class="container">
   <span class="eyebrow">Credits</span>
   <h1>Photo credits.</h1>
-  <p class="lede">Photographs of Bogotá are used under the licenses below. Interior images marked "Illustrative" are generated illustrations of the seminar format, not photographs of the venue.</p>
+  <p class="lede">Photographs of Bogotá are used under the licenses below.</p>
  </div>
 </section>
 <section>
@@ -1632,9 +1637,9 @@ PAGES = [
      index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
         "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
         "thumbnailUrl": BASE + "/media/film-poster.webp", "contentUrl": BASE + "/media/tierra-firme-film.mp4",
-        "uploadDate": "2026-11-21", "duration": "PT3M37S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
+        "uploadDate": "2026-11-21", "duration": "PT3M38S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
-     'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
+     'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for an exclusive group of investors. Commercial real estate, business and family capital, and country research. Education, not advice.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
     ('credits.html', 'Photo Credits | Tierra Firme', 'Credits and licenses for the photographs used on the Tierra Firme site.',
      credits_body, [], [('', 'Home'), ('credits.html', 'Photo credits')], None),
@@ -1813,7 +1818,7 @@ llms = f"""# Tierra Firme
 - Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46.0 billion in business deals so far, including US$3.84 billion in Colombia (Sovereo Desk, The Global Deal Record). Professor of economics and decision science for over 24 years. Bogotá.
 
 ## Event
-- [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
+- [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. Exclusive group. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
 
 ## Pages
 - [Home]({BASE}/): what Tierra Firme is, the three lanes, the framework and FAQ.
