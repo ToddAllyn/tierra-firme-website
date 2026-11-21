@@ -557,8 +557,9 @@ MEMBERS = [
               "geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo turns those "
               "conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, "
               "and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its "
-              "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> tracks business deals worldwide from official "
-              "sources, with US$46 billion in verified deals logged in 2026. He hosted The Todd Allyn Show on iHeartRadio and has lived in Bogotá since 2020."),
+              "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> has tracked US$46 billion in verified business "
+              "deals across Latin America and the Caribbean in 2026, including US$3.8 billion in Colombia, each from an official source. "
+              "He has been a professor of economics and decision science for over 24 years, and has lived in Bogotá since 2020."),
          person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director", "image": BASE + "/img/members/todd-allyn-640.webp",
                  "worksFor": {"@type": "Organization", "name": "Sovereo Intelligence Research", "url": "https://www.sovereo.com"},
                  "sameAs": ["https://www.linkedin.com/in/toddallyn/", "https://www.youtube.com/@sovereointel", "https://www.sovereo.com"]}),
@@ -1558,7 +1559,7 @@ llms = f"""# Tierra Firme
 ## Members and lanes
 - Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
 - Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
-- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Bogotá.
+- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46 billion in verified business deals across Latin America and the Caribbean in 2026, including US$3.8 billion in Colombia. Professor of economics and decision science for over 24 years. Bogotá.
 
 ## Event
 - [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
