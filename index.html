@@ -652,6 +652,54 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .mprofile .lane-link{margin-top:6px}
 @media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
 .pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+/* ===== Motion and imagery layer ===== */
+.ph-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.photo-hero picture{z-index:0}
+.photo-hero::after{z-index:1}
+@media (prefers-reduced-motion:reduce){.ph-video{display:none}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes kenburns{from{transform:scale(1.0)}to{transform:scale(1.08)}}
+.photo-hero .ph-img{animation:kenburns 22s ease-out both}
+.photo-hero .kicker,.photo-hero h1,.photo-hero .lede,.photo-hero .btn-row,.photo-hero .hero-fine,.photo-hero .itin-card{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.photo-hero h1{animation-delay:.12s}.photo-hero .lede{animation-delay:.24s}.photo-hero .btn-row{animation-delay:.36s}.photo-hero .hero-fine{animation-delay:.46s}.photo-hero .itin-card{animation-delay:.5s}
+.photo-hero h1 em{font-style:italic;background:linear-gradient(90deg,#f3c76a,#e9a825 60%,#fff2cc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scroll-cue{position:absolute;left:50%;bottom:18px;z-index:3;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.55);border-radius:14px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#f3c76a;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+@media (max-width:980px){.scroll-cue{display:none}}
+/* ticker */
+.ticker{background:#040c1a;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:0;animation:marquee 48s linear infinite;padding-block:14px}
+.ticker span{font:500 .82rem Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);padding:0 26px}
+.ticker span b{color:#f3c76a;font-weight:600}
+.ticker span::after{content:"\25C6";color:#e9a825;margin-left:52px;font-size:.6rem;vertical-align:middle}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+/* reveal on scroll (only when JS is on) */
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+/* mosaic */
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,230px);gap:10px}
+.mosaic figure{position:relative;overflow:hidden;margin:0;background:var(--navy)}
+.mosaic figure.w2{grid-column:span 2}.mosaic figure.h2{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.mosaic figure:hover img{transform:scale(1.07);filter:saturate(1.15)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:28px 14px 10px;background:linear-gradient(180deg,transparent,rgba(4,12,26,.85));color:#fff;font:500 .82rem Inter,sans-serif;letter-spacing:.04em}
+.mosaic figcaption small{display:block;font-size:.66rem;color:rgba(255,255,255,.6);letter-spacing:0;margin-top:2px}
+@media (max-width:760px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.mosaic figure.w2{grid-column:span 2}}
+/* full-bleed quote band */
+.quote-band{position:relative;padding:clamp(96px,14vw,180px) 0;color:#fff;overflow:hidden;background:#061327}
+.quote-band .qb-img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;will-change:transform}
+.quote-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,26,.55),rgba(4,12,26,.78))}
+.quote-band .container{position:relative;z-index:2;text-align:center}
+.quote-band blockquote{margin:0 auto;font:500 clamp(2rem,5vw,4rem)/1.12 Fraunces,serif;max-width:18ch;letter-spacing:-.01em}
+.quote-band blockquote em{color:#f3c76a}
+.quote-band p{color:rgba(255,255,255,.75);margin-top:18px}
+/* card glow */
+.ink .card,.dark .card{position:relative}
+.dark .card:hover,.ink .card:hover{border-color:rgba(233,168,37,.6);box-shadow:0 0 0 1px rgba(233,168,37,.25),0 30px 60px rgba(0,0,0,.35)}
+.stats b{font-variant-numeric:tabular-nums}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 
@@ -679,11 +727,11 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 <main>
 
 
-<section class="photo-hero"><picture><img class="ph-img" src="/img/bogota/bogota-twilight-from-monserrate-960.webp" srcset="/img/bogota/bogota-twilight-from-monserrate-960.webp 960w, /img/bogota/bogota-twilight-from-monserrate-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Bogotá at twilight, seen from Monserrate, city lights spreading toward the savanna" fetchpriority="high"></picture><div class="container">
+<section class="photo-hero"><picture><img class="ph-img" src="/img/bogota/bogota-twilight-from-monserrate-960.webp" srcset="/img/bogota/bogota-twilight-from-monserrate-960.webp 960w, /img/bogota/bogota-twilight-from-monserrate-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Bogotá at twilight, seen from Monserrate, city lights spreading toward the savanna" fetchpriority="high"></picture><video class="ph-video" autoplay muted loop playsinline preload="metadata" poster="/media/hero-loop-poster.webp" aria-hidden="true"><source src="/media/hero-loop.mp4" type="video/mp4"></video><div class="container">
   <div class="hero-split">
    <div>
     <span class="kicker">Tierra Firme<span class="rule"></span>Any currency · Solid ground</span>
-    <h1>Read the country before you buy into it.</h1>
+    <h1>Read the country <em>before</em> you buy into it.</h1>
     <p class="lede">A consortium of three practitioners in commercial real estate, business and family capital, and research. A private program in Colombia, a free show and sourced answers for people placing capital across borders.</p>
     <div class="btn-row" style="margin-top:26px"><a href="/colombia-2027#invite" class="btn btn-gold">Get the information sheet</a><a href="/colombia-2027" class="btn btn-ghost">Investor Lab 2027</a><a href="#player" class="btn btn-ghost">&#9654;&nbsp; Trailer</a></div>
     <p class="hero-fine">Educational content. Not investment, tax or legal advice. No listings, no sales, no fees on what you buy.</p>
@@ -697,7 +745,9 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
    <p class="fine">Dates, cities and sessions may change. The list hears first.</p>
   </aside>
   </div>
-</div><p class="ph-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Dan-gold-bogota-city-night-montserrate.jpg" rel="noopener">Danielcgold</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons</p></section>
+</div><span class="scroll-cue" aria-hidden="true"></span><p class="ph-credit">Film footage: Pexels. Photo: <a href="https://commons.wikimedia.org/wiki/File:Dan-gold-bogota-city-night-montserrate.jpg" rel="noopener">Danielcgold</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>, via Wikimedia Commons</p></section>
+
+<div class="ticker" aria-hidden="true"><div class="track"><span><b>Bogotá</b> · 3 days</span><span><b>Medellín</b> · 2 days</span><span><b>March 2027</b> · preliminary</span><span><b>30</b> seats</span><span><b>US$46.0B</b> in deals tracked by Sovereo</span><span><b>US$3.84B</b> in Colombia alone</span><span>Boardroom mornings</span><span>Verified field visits</span><span>Cultural evenings</span><span><b>Three</b> practitioners · three lanes</span><span>Any currency · solid ground</span><span><b>Bogotá</b> · 3 days</span><span><b>Medellín</b> · 2 days</span><span><b>March 2027</b> · preliminary</span><span><b>30</b> seats</span><span><b>US$46.0B</b> in deals tracked by Sovereo</span><span><b>US$3.84B</b> in Colombia alone</span><span>Boardroom mornings</span><span>Verified field visits</span><span>Cultural evenings</span><span><b>Three</b> practitioners · three lanes</span><span>Any currency · solid ground</span></div></div>
 
 <section class="ink">
  <div class="container">
@@ -708,6 +758,13 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
   <div class="cities"><a class="city lift" href="/colombia-2027#itinerary"><img class="" src="/img/bogota/downtown-from-torre-colpatria-960.webp" srcset="/img/bogota/downtown-from-torre-colpatria-960.webp 960w, /img/bogota/downtown-from-torre-colpatria-1920.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1440" alt="Downtown Bogotá high-rises seen from the Torre Colpatria observation deck" loading="lazy" decoding="async"><span class="c-credit">Photo: Peter Chovanec, CC BY 2.0</span><div class="c-body"><span class="c-days">3 days · 8 to 10 March, morning</span><h3>Bogotá</h3><p>The capital, where the rules are made: the central bank, the tax authority, notaries and ministries. Briefings on the country, property and business.</p></div></a><a class="city lift" href="/colombia-2027#itinerary"><img class="" src="/img/bogota/medellin-towers-960.webp" srcset="/img/bogota/medellin-towers-960.webp 960w, /img/bogota/medellin-towers-1920.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1280" alt="Residential and office towers of Medellín climbing the green slopes of the Aburrá Valley" loading="lazy" decoding="async"><span class="c-credit">Photo: Mussi Katz, CC0 1.0</span><div class="c-body"><span class="c-days">2 days · 10 March evening to 12 March</span><h3>Medellín</h3><p>Colombia's second-largest city. Arrive Wednesday evening, then verified field visits and the decision framework before you fly home.</p></div></a></div>
   <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
   <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
+ </div>
+</section>
+
+<section class="ink" style="padding-top:0">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">Colombia in frames</span><h2 style="margin:0">Where the program happens.</h2></div>
+  <div class="mosaic"><figure class="w2 h2 reveal"><img class="" src="/img/bogota/towers-below-monserrate-960.webp" srcset="/img/bogota/towers-below-monserrate-960.webp 960w, /img/bogota/towers-below-monserrate-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1280" alt="Office and residential towers of central Bogotá with Monserrate and the Eastern Hills behind" loading="lazy" decoding="async"><figcaption>Bogotá, below Monserrate<small>Jos Cuevasc, CC BY-SA 4.0</small></figcaption></figure><figure class="h2 reveal"><img class="" src="/img/bogota/torre-colpatria-night-600.webp" srcset="/img/bogota/torre-colpatria-night-600.webp 600w, /img/bogota/torre-colpatria-night-900.webp 900w" sizes="(max-width:760px) 50vw, 25vw" width="900" height="1600" alt="Torre Colpatria lit at night in yellow, blue and red, with the city below" loading="lazy" decoding="async"><figcaption>Torre Colpatria at night<small>ProtoplasmaKid, CC BY-SA 4.0</small></figcaption></figure><figure class=" reveal"><img class="" src="/img/bogota/medellin-towers-960.webp" srcset="/img/bogota/medellin-towers-960.webp 960w, /img/bogota/medellin-towers-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1280" alt="Residential and office towers of Medellín climbing the green slopes of the Aburrá Valley" loading="lazy" decoding="async"><figcaption>Medellín<small>Mussi Katz, CC0 1.0</small></figcaption></figure><figure class=" reveal"><img class="" src="/img/illustrative/seminar-ballroom-960.webp" srcset="/img/illustrative/seminar-ballroom-960.webp 960w, /img/illustrative/seminar-ballroom-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1080" alt="An intimate hotel ballroom set for a seminar, rows of upholstered chairs facing a screen, mountains at dusk through tall windows (illustrative image)" loading="lazy" decoding="async"><figcaption>The room (illustrative)</figcaption></figure><figure class="w2 reveal"><img class="" src="/img/bogota/downtown-from-torre-colpatria-960.webp" srcset="/img/bogota/downtown-from-torre-colpatria-960.webp 960w, /img/bogota/downtown-from-torre-colpatria-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1440" alt="Downtown Bogotá high-rises seen from the Torre Colpatria observation deck" loading="lazy" decoding="async"><figcaption>Downtown Bogotá<small>Peter Chovanec, CC BY 2.0</small></figcaption></figure><figure class=" reveal"><img class="" src="/img/illustrative/boardroom-960.webp" srcset="/img/illustrative/boardroom-960.webp 960w, /img/illustrative/boardroom-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1080" alt="A high-floor boardroom with a long wood table and leather chairs, a city of towers and green mountains beyond the glass (illustrative image)" loading="lazy" decoding="async"><figcaption>The boardroom (illustrative)</figcaption></figure><figure class=" reveal"><img class="" src="/img/illustrative/hotel-lobby-960.webp" srcset="/img/illustrative/hotel-lobby-960.webp 960w, /img/illustrative/hotel-lobby-1920.webp 1920w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="1080" alt="A modern luxury hotel lobby lounge in stone, walnut and brass, with green velvet armchairs (illustrative image)" loading="lazy" decoding="async"><figcaption>The lobby (illustrative)</figcaption></figure></div>
  </div>
 </section>
 
@@ -805,6 +862,8 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  </div>
 </section>
 
+<section class="quote-band"><img class="qb-img" src="/img/bogota/bogota-twilight-from-monserrate-960.webp" srcset="/img/bogota/bogota-twilight-from-monserrate-960.webp 960w, /img/bogota/bogota-twilight-from-monserrate-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Bogotá at twilight, seen from Monserrate, city lights spreading toward the savanna" loading="lazy" decoding="async"><div class="container"><blockquote class="reveal">Know the ground <em>before</em> you stand on it.</blockquote><p class="reveal">Bogotá and Medellín · March 2027 · Preliminary</p><a href="/colombia-2027" class="btn btn-gold reveal" style="margin-top:22px">See the Investor Lab</a></div></section>
+
 <section class="alt">
  <div class="container">
   <div class="section-head"><span class="eyebrow">Straight answers</span><h2>Questions people ask first.</h2></div>
@@ -843,6 +902,22 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 </footer>
 <script>
 (function(){
+ var root=document.documentElement;root.classList.add('js');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var sel='.section-head,.card,.dcard,.city,.mprofile,.qcard,.faq details,.photo,.day,.step,.facts,.format>div,.stats>div,.signup-band>div,.checks';
+ var els=Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function(e){return !e.closest('.photo-hero')&&!e.closest('.ticker');});
+ els.forEach(function(e,i){e.classList.add('reveal');var sib=e.parentElement?Array.prototype.indexOf.call(e.parentElement.children,e):0;e.style.transitionDelay=(Math.min(sib,5)*0.08)+'s';});
+ var all=document.querySelectorAll('.reveal');
+ if(reduce||!('IntersectionObserver' in window)){all.forEach(function(e){e.classList.add('in');});}
+ else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:0.08});all.forEach(function(e){io.observe(e);});}
+ /* count-up numbers in stat rows */
+ var nums=document.querySelectorAll('.stats b, .ic-facts b');
+ var countUp=function(b){var el=b.querySelector('a')||b;var txt=el.textContent;var m=txt.match(/([0-9]+(?:[.][0-9]+)?)/);if(!m)return;var end=parseFloat(m[1]);var dec=(m[1].split('.')[1]||'').length;var pre=txt.slice(0,m.index),post=txt.slice(m.index+m[1].length);var t0=null;
+  var step=function(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1400);var e=1-Math.pow(1-k,3);el.textContent=pre+(end*e).toFixed(dec)+post;if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
+ if(!reduce&&'IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){countUp(en.target);io2.unobserve(en.target);}});},{threshold:0.5});nums.forEach(function(n){io2.observe(n);});}
+ /* gentle parallax on quote bands */
+ var bands=document.querySelectorAll('.quote-band .qb-img');
+ if(bands.length&&!reduce){var par=function(){bands.forEach(function(im){var r=im.parentElement.getBoundingClientRect();var p=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.transform='translateY('+(p*-60).toFixed(1)+'px)';});};addEventListener('scroll',par,{passive:true});par();}
  var t=document.querySelector('.nav-toggle'),n=document.getElementById('main-nav');
  if(t&&n){t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});}
  var v=document.getElementById('tf-trailer');
