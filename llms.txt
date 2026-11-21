@@ -14,7 +14,7 @@
 - [Home](https://www.tierrafirme.lat/): what Tierra Firme is, the three lanes, the framework and FAQ.
 - [Members](https://www.tierrafirme.lat/members): full bios of the three members.
 - [The Show](https://www.tierrafirme.lat/the-show): Season One, twelve biweekly episodes in English and Spanish.
-- [Membership](https://www.tierrafirme.lat/membership): the community waitlist (curriculum, office hours, forum), opening soon. The only signup on the site.
+- [Newsletter](https://www.tierrafirme.lat/newsletter): the free Tierra Firme Newsletter. Investor Lab updates, sourced briefings by lane. The only signup on the site.
 
 ## Questions investors ask (sourced answers)
 - [Can foreigners buy property in Colombia?](https://www.tierrafirme.lat/questions/can-foreigners-buy-property-in-colombia): Yes, with the same ownership rights as Colombians, if the money comes in through the formal exchange market and is registered.

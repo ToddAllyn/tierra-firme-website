@@ -394,7 +394,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
 
-NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('membership.html', 'Membership')]
+NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions'), ('newsletter.html', 'Newsletter')]
 
 DISCLAIMER = "Educational content. Not investment, tax or legal advice."
 
@@ -528,15 +528,14 @@ FAQ = [
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Investor Lab 2027?",
      "A preliminary six-day, five-night program in Colombia for 30 people: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
-     "It is a seminar, not a sales event. Details go to the waitlist first."),
+     "It is a seminar, not a sales event. Details go to newsletter subscribers first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
      "including households priced out of ownership at home and retirees stretching a fixed income."),
     ("Is Tierra Firme free?",
-     "The show and the email list are free. Seminars are paid and announced to the list first. A paid membership community is opening soon; join the waitlist for first access."),
-    ("What is the Tierra Firme membership?",
-     "A paid community opening soon: a structured curriculum on evaluating markets abroad, a members' forum, and live office hours with "
-     "Murphy, Shawn and Todd. It is education, not investment advice. The waitlist gets first access."),
+     "The show, the sourced answers and the Tierra Firme Newsletter are free. The Investor Lab is a paid seminar, and its details go to newsletter subscribers first."),
+    ("What is the Tierra Firme Newsletter?",
+     "A free email from Tierra Firme: Investor Lab 2027 updates, short briefings on Colombia and Latin America across property, business and family capital, and country research, plus new answers and episodes. Unsubscribe in one click."),
     ("Does Tierra Firme sell property or arrange transactions?",
      "No. Tierra Firme teaches how to read a market before you commit. It does not list property, arrange transactions or take fees on what anyone buys."),
     ("Is anything from Tierra Firme investment advice?",
@@ -685,7 +684,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
  <div class="container nav-wrap">
   <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
-  <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="membership.html" class="btn btn-gold">Join the community</a></nav>
+  <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="newsletter.html" class="btn btn-gold">Free newsletter</a></nav>
  </div>
 </header>
 <main>
@@ -752,7 +751,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
     return out
 
 
-def signup_block(dark=True, btn='Join the community', ok="You're on the waitlist. Investor Lab details, new episodes and research come to you first.", source='', preset=()):
+def signup_block(dark=True, btn='Get the free newsletter', ok="You're subscribed to the Tierra Firme Newsletter. Investor Lab updates, new research and episodes come to you first.", source='', preset=()):
     boxes = ''.join(f'<label><input type="checkbox" name="lanes" value="{l["id"]}"{" checked" if l["id"] in preset else ""}> {l["label"]}</label>' for l in LANES)
     return f"""<div class="signup-wrap"><form class="signup" id="signup" novalidate data-ok="{html.escape(ok)}" data-source="{html.escape(source)}">
    <label class="sr" for="tf-email">Email address</label>
@@ -1050,45 +1049,53 @@ show_body = f"""
 </section>
 """
 
-membership_body = f"""
-<section class="hero">
- <div class="container grid-2" style="align-items:start">
+newsletter_body = f"""
+<section class="hero-light">
+ <div class="container signup-band">
   <div>
-   <span class="eyebrow">Membership · Opening soon</span>
-   <h1>Join the community.</h1>
-   <p class="lede">A members' community for people serious about placing capital in Latin America. Learn the framework, ask the three members directly, and compare notes with others doing the same work.</p>
-   {signup_block(btn='Join the waitlist', ok="You're on the membership waitlist. You'll hear first when doors open.", source='membership')}
-   <p class="hero-fine">Waitlist is free and commits you to nothing. Education, not investment advice.</p>
+   <span class="eyebrow">Free · The Tierra Firme Newsletter</span>
+   <h1>The Tierra Firme Newsletter.</h1>
+   <p class="lede">Short, sourced briefings on Colombia and Latin America from three practitioners, and every Investor Lab 2027 update before anyone else. Free.</p>
+   <p class="hero-fine" style="color:var(--muted)">No spam. Unsubscribe in one click. We never sell or share your address.</p>
   </div>
-  <div class="card hero-card">
-   <h3>What members get</h3>
+  <div class="card" style="background:#fff;border-top:3px solid var(--gold);box-shadow:0 24px 60px rgba(6,19,39,.08)">
+   <h3>Subscribe free</h3>
+   {signup_block(btn='Subscribe free', source='newsletter')}
+  </div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">In each issue</span><h2>Three lanes, one read.</h2><p class="lede">Pick the lanes you care about when you subscribe. Every issue is educational and sourced.</p></div>
+  <div class="grid-3">
+   <article class="card bar-cre"><span class="tag tag-cre">The Asset · Murphy</span><h3>Property</h3><p>How property is valued, titled and managed in Colombia, and what a buyer from abroad should check before committing.</p></article>
+   <article class="card bar-capital"><span class="tag tag-capital">The Capital · Shawn</span><h3>Business and family capital</h3><p>What it takes to build, run and hold a business across borders, and how families structure what they build.</p></article>
+   <article class="card bar-research"><span class="tag tag-research">The Country · Todd</span><h3>Research</h3><p>The currency, policy and deal flow behind the decision, drawing on Sovereo's Global Deal Record.</p></article>
+  </div>
+ </div>
+</section>
+<section class="alt">
+ <div class="container grid-2">
+  <div>
+   <span class="eyebrow">Also in your inbox</span>
    <ul class="checks">
-    <li>A structured curriculum on evaluating a market abroad: currency, political and structural conditions</li>
-    <li>Live office hours with Murphy, Shawn and Todd</li>
-    <li>A members' forum to compare markets, questions and lessons</li>
-    <li>Research led by Todd Allyn, and first seats at the Bogotá Investor Lab</li>
+    <li>Investor Lab 2027 (Bogotá and Medellín): dates, the final itinerary, seats and pricing, first</li>
+    <li>New sourced answers on ownership, tax, visas and getting money home</li>
+    <li>New episodes and films</li>
+   </ul>
+  </div>
+  <div>
+   <span class="eyebrow">What it is not</span>
+   <ul class="checks">
+    <li>No listings and no offers to buy anything</li>
+    <li>No investment, tax or legal advice</li>
+    <li>No sharing of your address, ever</li>
    </ul>
   </div>
  </div>
 </section>
-<section>
- <div class="container">
-  <div class="section-head">
-   <span class="eyebrow">How it fits</span>
-   <h2>The next step after the show.</h2>
-   <p class="lede">The show and the list stay free. Membership is for people who want structure, direct access to the three members and a room of peers.</p>
-  </div>
-  <div class="grid-3">
-   <article class="card bar-cre"><span class="tag tag-cre">The Asset · Murphy</span><h3>Read the property</h3><p>How to judge value, title and management before anyone shows you a unit.</p></article>
-   <article class="card bar-capital"><span class="tag tag-capital">The Capital · Shawn</span><h3>Read the business</h3><p>What it costs to enter, run and staff a business on the ground.</p></article>
-   <article class="card bar-research"><span class="tag tag-research">The Country · Todd</span><h3>Read the conditions</h3><p>The currency, policy and structural signals that set your real return.</p></article>
-  </div>
- </div>
-</section>
-<section>
- <div class="container">
-  <p class="note">Membership is educational. Tierra Firme does not list property, broker transactions or provide investment, tax or legal advice.</p>
- </div>
+<section style="padding-top:28px">
+ <div class="container"><div class="pagefoot"><a href="/" class="btn btn-ink">&larr; Back to home</a><a href="/colombia-2027" class="btn btn-gold">Investor Lab 2027 &rarr;</a></div></div>
 </section>
 """
 
@@ -1352,7 +1359,7 @@ def lane_page(l):
     day = next(p[1:] for p in PROGRAM if p[1] == l['id'])
     qs = [x for x in QUESTIONS if x['lane'] == l['id']]
     qhtml = ('<div class="qlist">' + ''.join(f'<a class="qcard" href="/questions/{x["slug"]}"><h3>{html.escape(x["q"])}</h3><p>{html.escape(x["short"])}</p></a>' for x in qs) + '</div>') if qs \
-        else '<p>Answer pages for this lane are being written. Join the waitlist to hear when they publish.</p>'
+        else '<p>Answer pages for this lane are being written. Subscribe to the newsletter to hear when they publish.</p>'
     covers = ''.join(f'<li>{html.escape(x)}</li>' for x in c['covers'])
     body = f"""
 {photo_hero(c['photo'], f'''
@@ -1397,7 +1404,7 @@ def lane_page(l):
  <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
   <span class="eyebrow">{l['label']}</span>
   <h2>Follow {l['first']}'s lane.</h2>
-  <p class="lede">Join the community waitlist. Pick the lanes you want to hear about.</p>
+  <p class="lede">Subscribe to the free Tierra Firme Newsletter. Pick the lanes you want to hear about.</p>
   {signup_block(source='lane-' + l['id'], preset=(l['id'],))}
  </div>
 </section>
@@ -1451,9 +1458,9 @@ PAGES = [
     ('the-show.html', 'The Show | Tierra Firme Season One',
      'Tierra Firme Season One: twelve free episodes on placing capital abroad, from the currency math to a full case study. In English and Spanish.',
      show_body, [show_schema], [('', 'Home'), ('the-show.html', 'The Show')], None),
-    ('membership.html', 'Membership | Join the Tierra Firme Community',
-     'Join the waitlist for the Tierra Firme membership community: a curriculum on evaluating markets abroad, live office hours with the three members, and a members forum.',
-     membership_body, [], [('', 'Home'), ('membership.html', 'Membership')], None),
+    ('newsletter.html', 'The Tierra Firme Newsletter | Free',
+     'The free Tierra Firme Newsletter: sourced briefings on Colombia and Latin America across property, business and family capital, and research, plus Investor Lab 2027 updates first.',
+     newsletter_body, [], [('', 'Home'), ('newsletter.html', 'Newsletter')], None),
 ]
 
 for fname, title, desc, body, extra, crumbs, hero in PAGES:
@@ -1566,7 +1573,7 @@ hub_body = f"""
 <section class="dark">
  <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
   <h2>Have a question we have not answered?</h2>
-  <p class="lede">Join the waitlist and reply to any email. New answers go to the list first.</p>
+  <p class="lede">Subscribe to the free newsletter and reply to any issue. New answers go to subscribers first.</p>
   {signup_block(source='questions')}
  </div>
 </section>
@@ -1604,7 +1611,7 @@ open(os.path.join(OUT, 'robots.txt'), 'w').write(robots)
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for p, pr in ([('', '1.0'), ('colombia-2027', '1.0'), ('members', '0.9'), ('the-show', '0.9'), ('questions', '0.9')]
               + [('lanes/' + l['slug'], '0.8') for l in LANES if l['approved']]
-              + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('membership', '0.8'), ('credits', '0.3')]):
+              + [('questions/' + x['slug'], '0.8') for x in QUESTIONS] + [('newsletter', '0.8'), ('credits', '0.3')]):
     sm += f'  <url><loc>{BASE}/{p}</loc><lastmod>2026-11-20</lastmod><priority>{pr}</priority></url>\n'
 sm += '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
@@ -1625,7 +1632,7 @@ llms = f"""# Tierra Firme
 - [Home]({BASE}/): what Tierra Firme is, the three lanes, the framework and FAQ.
 - [Members]({BASE}/members): full bios of the three members.
 - [The Show]({BASE}/the-show): Season One, twelve biweekly episodes in English and Spanish.
-- [Membership]({BASE}/membership): the community waitlist (curriculum, office hours, forum), opening soon. The only signup on the site.
+- [Newsletter]({BASE}/newsletter): the free Tierra Firme Newsletter. Investor Lab updates, sourced briefings by lane. The only signup on the site.
 
 ## Questions investors ask (sourced answers)
 """ + ''.join(f"- [{x['q']}]({BASE}/questions/{x['slug']}): {x['short']}\n" for x in QUESTIONS) + f"""
@@ -1637,17 +1644,19 @@ open(os.path.join(OUT, 'llms.txt'), 'w').write(llms)
 
 redirects = """/the-seats.html /members 301
 /the-seats /members 301
-/get-the-read.html /membership 301
-/get-the-read /membership 301
-/join.html /membership 301
-/join /membership 301
+/get-the-read.html /newsletter 301
+/get-the-read /newsletter 301
+/join.html /newsletter 301
+/join /newsletter 301
+/membership /newsletter 301
+/membership.html /newsletter 301
 /investor-lab /colombia-2027 301
 /bogota-2027 /colombia-2027 301
 /bogota-2027.html /colombia-2027 301
 /tierra-firme.html / 301
 /tierra-firme-episodes.html /the-show 301
 /tierra-firme-hosts.html /members 301
-/tierra-firme-subscribe.html /membership 301
+/tierra-firme-subscribe.html /newsletter 301
 """
 open(os.path.join(OUT, '_redirects'), 'w').write(redirects)
 
