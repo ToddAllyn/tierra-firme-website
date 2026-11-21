@@ -517,21 +517,26 @@ PHOTOS = {
                     src='https://commons.wikimedia.org/wiki/File:Bogota_general_view_2015.jpg'),
 }
 
-ILLUSTRATIVE = {
-    'ballroom': ('seminar-ballroom', 'An intimate hotel ballroom set for a seminar, rows of upholstered chairs facing a screen, mountains at dusk through tall windows'),
-    'lobby': ('hotel-lobby', 'A modern luxury hotel lobby lounge in stone, walnut and brass, with green velvet armchairs'),
-    'boardroom': ('boardroom', 'A high-floor boardroom with a long wood table and leather chairs, a city of towers and green mountains beyond the glass'),
-    'foyer': ('conference-foyer', 'A bright conference foyer with a navy and gold registration desk and cocktail tables'),
-    'library': ('library-lounge', 'A hotel library lounge with dark wood shelves, leather club chairs and a fireplace, city lights at dusk outside'),
-}
-for k, (f, alt) in ILLUSTRATIVE.items():
-    PHOTOS[k] = dict(base='/img/illustrative/' + f, w=(1920, 960), ratio=(1920, 1080), alt=alt + ' (illustrative image)',
-                     title='Illustrative image, not the venue', ill=True)
+PHOTOS.update({
+    'agora': dict(base='/img/bogota/agora-bogota-convention-center', w=(1920, 960), ratio=(1920, 1234),
+                  alt='Ágora Bogotá, the city convention center, a glass and steel building beside the Corferias exhibition grounds',
+                  title='Ágora Bogotá convention center', author='Mriobomorales', lic='CC BY-SA 4.0',
+                  lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                  src='https://commons.wikimedia.org/wiki/File:Agora_and_Corferias_event_and_buissines_district.png'),
+    'colon': dict(base='/img/bogota/teatro-colon-ceiling', w=(1920, 960), ratio=(1920, 1440),
+                  alt='The painted ceiling and crystal chandelier of the Teatro Colón in Bogotá',
+                  title='Teatro Colón, Bogotá', author='Ricardoinbaviera', lic='CC BY-SA 3.0',
+                  lic_url='https://creativecommons.org/licenses/by-sa/3.0/',
+                  src='https://commons.wikimedia.org/wiki/File:Interior_Teatro_Colon_Bogota.jpg'),
+    'tequendama': dict(base='/img/bogota/hotel-tequendama', w=(1920, 960), ratio=(1920, 1091),
+                       alt='The Hotel Tequendama in Bogotá’s Centro Internacional, seen from Carrera Décima',
+                       title='Hotel Tequendama, Centro Internacional, Bogotá', author='Peter Angritt', lic='CC BY-SA 4.0',
+                       lic_url='https://creativecommons.org/licenses/by-sa/4.0/',
+                       src='https://commons.wikimedia.org/wiki/File:Hotel_Tequendama_-_Vista_desde_Carrera_D%C3%A9cima.jpg'),
+})
 
 def credit(p):
     p = PHOTOS[p]
-    if p.get('ill'):
-        return 'Generated illustration for Tierra Firme.'
     return f'Photo: <a href="{p["src"]}" rel="noopener">{html.escape(p["author"])}</a>, <a href="{p["lic_url"]}" rel="noopener">{p["lic"]}</a>, via Wikimedia Commons'
 
 def img(p, sizes='100vw', cls='', eager=False):
@@ -560,8 +565,8 @@ def ticker():
     return f'<div class="ticker" aria-hidden="true"><div class="track">{items}{items}</div></div>'
 
 MOSAIC = [('towers', 'w2 h2', 'Bogotá, below Monserrate'), ('colpatria', 'h2', 'Torre Colpatria at night'),
-          ('medellin', '', 'Medellín'), ('ballroom', '', 'The room (illustrative)'),
-          ('downtown', 'w2', 'Downtown Bogotá'), ('boardroom', '', 'The boardroom (illustrative)'), ('lobby', '', 'The lobby (illustrative)')]
+          ('medellin', '', 'Medellín'), ('agora', '', 'Ágora Bogotá'),
+          ('downtown', 'w2', 'Downtown Bogotá'), ('colon', '', 'Teatro Colón'), ('tequendama', '', 'Centro Internacional')]
 def mosaic_html():
     out = []
     for p, cls, cap in MOSAIC:
@@ -1419,10 +1424,10 @@ event_body = f"""
 
 <section class="alt">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">The setting</span><h2>Quiet rooms, small groups.</h2><p class="lede">Upscale hotels in both cities, a high-floor boardroom and time out in the city. Interior images are illustrations of the format; hotels are confirmed to registered attendees.</p></div>
+  <div class="section-head"><span class="eyebrow">The setting</span><h2>Quiet rooms, small groups.</h2><p class="lede">Upscale hotels in both cities, a high-floor boardroom and time out in the city. Venues and hotels are confirmed to registered attendees; the photographs show Bogotá, not the venue.</p></div>
   <div class="gallery">
-   {fig('ballroom', 'wide', '(max-width:760px) 100vw, 66vw')}
-   <div class="col">{fig('boardroom', 'wide', '(max-width:760px) 100vw, 33vw')}{fig('lobby', 'wide', '(max-width:760px) 100vw, 33vw')}</div>
+   {fig('agora', 'wide', '(max-width:760px) 100vw, 66vw')}
+   <div class="col">{fig('colon', 'wide', '(max-width:760px) 100vw, 33vw')}{fig('tequendama', 'wide', '(max-width:760px) 100vw, 33vw')}</div>
   </div>
  </div>
 </section>
@@ -1518,7 +1523,7 @@ LANE_COPY = {
                 'Reading a district: infrastructure, services and the signals a listing never shows'],
         show='Ground Truth: a real property on camera, and what the same income would and would not buy at home.',
         extra=''),
-    'capital': dict(photo='boardroom', h1='Build it, run it, hold it.',
+    'capital': dict(photo='agora', h1='Build it, run it, hold it.',
         voice=("I have built and run businesses in Latin America, and I live in Bogotá. Most people who look at Colombia think about an apartment. "
                "Fewer think about the business that could pay for it, or how a family holds what it builds across two countries. This lane is about "
                "that: what it takes to start or buy a small business here, what it costs to run, and how families hold it over time."),
@@ -1612,7 +1617,7 @@ credits_body = f"""
  <div class="container">
   <span class="eyebrow">Credits</span>
   <h1>Photo credits.</h1>
-  <p class="lede">Photographs of Bogotá are used under the licenses below. Interior images marked "Illustrative" are generated illustrations of the seminar format, not photographs of the venue.</p>
+  <p class="lede">Photographs of Bogotá are used under the licenses below.</p>
  </div>
 </section>
 <section>
