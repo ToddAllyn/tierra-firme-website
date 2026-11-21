@@ -587,7 +587,7 @@ MEMBERS = [
               "conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, "
               "and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its "
               "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> has tracked US$46.0 billion in business "
-              "deals so far across Latin America and the Caribbean, including US$3.8 billion in Colombia, each from an official source. "
+              "deals so far across Latin America and the Caribbean, including US$3.84 billion in Colombia, each from an official source. "
               "He has been a professor of economics and decision science for over 24 years, and has lived in Bogotá since 2020."),
          person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director", "image": BASE + "/img/members/todd-allyn-640.webp",
                  "worksFor": {"@type": "Organization", "name": "Sovereo Intelligence Research", "url": "https://www.sovereo.com"},
@@ -843,8 +843,8 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Deals tracked across Latin America and the Caribbean</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Of that, in Colombia</span></div></div>
-  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far across Latin America and the Caribbean, including US$3.8 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Deals tracked across Latin America and the Caribbean</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>Of that, in Colombia</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far across Latin America and the Caribbean, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
 
@@ -1616,7 +1616,7 @@ llms = f"""# Tierra Firme
 ## Members and lanes
 - Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
 - Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
-- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46.0 billion in business deals so far across Latin America and the Caribbean, including US$3.8 billion in Colombia (Sovereo Desk, The Global Deal Record). Professor of economics and decision science for over 24 years. Bogotá.
+- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46.0 billion in business deals so far across Latin America and the Caribbean, including US$3.84 billion in Colombia (Sovereo Desk, The Global Deal Record). Professor of economics and decision science for over 24 years. Bogotá.
 
 ## Event
 - [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
