@@ -443,6 +443,20 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .who{display:flex;align-items:center;gap:12px;margin-bottom:12px}.who .tag{margin:0}
 .by .avatar{margin-right:8px}
 .qa-meta .avatar{margin-right:8px}
+.cguide{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(22px,4vw,48px);align-items:start;margin-top:30px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12)}
+.cguide.rev{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}.cguide.rev .cg-photo{order:2}
+.cg-photo{position:relative;overflow:hidden;min-height:100%}
+.cg-photo img{display:block;width:100%;height:100%;min-height:340px;object-fit:cover;transition:transform 1.2s}
+.cguide:hover .cg-photo img{transform:scale(1.04)}
+.cg-days{position:absolute;left:14px;top:14px;font:600 .7rem Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:5px 10px}
+.cg-body h3{font-size:clamp(2rem,3.4vw,2.8rem);font-weight:500;margin:0 0 6px;color:#fff}
+.cg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;margin-top:8px}
+.cg-block{border-top:2px solid var(--gold);padding-top:10px}
+.cg-block .k{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);font-weight:600}
+.cg-block p{margin:6px 0 0;font-size:.93rem;line-height:1.6}
+.cg-src{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:16px}.cg-src a{color:rgba(255,255,255,.7)}
+@media (max-width:900px){.cguide,.cguide.rev{grid-template-columns:1fr}.cguide.rev .cg-photo{order:0}.cg-photo img{min-height:240px}}
+@media (max-width:560px){.cg-grid{grid-template-columns:1fr}}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
@@ -1249,40 +1263,39 @@ from questions_data import QUESTIONS, UPDATED, UPDATED_TEXT
 PROGRAM = [
     ('Bogotá', None, 'Arrival', 'Sunday', '7 March', [
         ('Day', 'Arrive in Bogotá and settle in at the hotel.'),
-        ('Evening', 'Welcome reception with the three members.'),
+        ('Culture', 'Welcome reception.'),
     ]),
     ('Bogotá', 'research', 'The country', 'Monday', '8 March', [
-        ('Boardroom', 'Colombia in context: the economy, the political calendar and where policy is heading.'),
-        ('Afternoon', 'The peso: earning in one currency and owning in another.'),
-        ('Evening', 'Cultural evening.'),
+        ('Boardroom', 'Colombia in context: the economy, the political calendar, where policy is heading, and the peso.'),
+        ('Field study', 'Bogotá\'s financial and institutional districts.'),
+        ('Culture', 'An evening in Bogotá.'),
     ]),
     ('Bogotá', 'cre', 'Property', 'Tuesday', '9 March', [
-        ('Boardroom', 'How property is valued, titled and managed, with Colombian counsel on propiedad horizontal and tax.'),
-        ('Field visit', 'Two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
-        ('Evening', 'Cultural evening.'),
+        ('Boardroom', 'How property is valued, titled and managed in Colombia: propiedad horizontal and tax.'),
+        ('Field study', 'Two contrasting Bogotá districts: infrastructure, services and the signals a listing never shows.'),
+        ('Culture', 'An evening in Bogotá.'),
     ]),
     ('Bogotá', 'capital', 'Business', 'Wednesday', '10 March · morning', [
         ('Boardroom', 'Building and holding a business: entities, registering foreign investment and getting money home.'),
-        ('Afternoon', 'Short flight to Medellín. The move may be Tuesday instead, depending on planning.'),
+        ('Field study', 'A Bogotá operator on site, then a short afternoon flight to Medellín. The move may be Tuesday instead.'),
     ]),
     ('Medellín', None, 'Arrival in Medellín', 'Wednesday', '10 March · evening', [
-        ('Evening', 'Check in, then a cultural evening in Medellín.'),
+        ('Culture', 'Check in, then an evening in Medellín.'),
     ]),
     ('Medellín', None, 'Commerce on the ground', 'Thursday', '11 March', [
-        ('Boardroom', 'Medellín in context, with all three members.'),
-        ('Field visit', 'Verified field visits across the city, including an operator on site on what it really costs to run a business here, then small-group time with each member.'),
-        ('Evening', 'Cultural evening.'),
+        ('Boardroom', 'Medellín in context: commerce, investment and the city\'s growth.'),
+        ('Field study', 'Verified visits to districts, operators and sites across the city.'),
+        ('Culture', 'An evening in Medellín.'),
     ]),
     ('Medellín', None, 'The decision', 'Friday', '12 March', [
-        ('Boardroom', 'The decision framework: run your own question through it with the three members.'),
-        ('Afternoon', 'Departures, or stay the night and fly out Saturday 13 March, depending on flights.'),
+        ('Boardroom', 'The decision framework: run your own question through it.'),
+        ('Field study', 'A final site visit, then departures in the afternoon, or fly out Saturday 13 March.'),
     ]),
 ]
 
 def _dcard(lane, title, dow, date, slots):
-    cls = f' lane-{LANE[lane]["key"]}' if lane else ''
-    by = (f'<p class="by">{avatar(MEMBER_BY_LANE[lane], 30)}{LANE[lane]["label"]} · <a href="lanes/{LANE[lane]["slug"]}.html">{LANE[lane]["member"]}</a></p>' if lane
-          else '<p class="by">Travel day</p>' if title.startswith('Arrival') else f'<p class="by">{avatars(26)} All three members</p>')
+    cls = ''  # days are by topic; speakers are announced separately
+    by = '<p class="by">Travel day</p>' if title.startswith('Arrival') else '<p class="by">Boardroom · Field study · Culture</p>'
     dl = ''.join(f'<dt>{t}</dt><dd>{html.escape(d)}</dd>' for t, d in slots)
     return f'<article class="dcard{cls}"><span class="dd">{dow} · {date}</span><h4>{title}</h4>{by}<dl>{dl}</dl></article>'
 
@@ -1297,6 +1310,50 @@ def program_html():
 def faculty_html():
     return '<div class="faculty">' + ''.join(f"""<a class="card bar-{m['key']}" href="lanes/{LANE[m['lane']]['slug']}.html">
     {portrait(m, 104)}<span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span><h3>{m['name']}</h3><p>{m['show']}</p></a>""" for m in MEMBERS) + '</div>'
+
+CITY_GUIDE = [
+    dict(name='Bogotá', photo='towers', days='3 days · Sun 7 to Wed 10 March',
+         intro='The capital, high on the Andean plateau, where the rules every foreign investor deals with are made.',
+         blocks=[
+            ('History', 'Founded on 6 August 1538 as Santa Fe de Bogotá, on land of the Muisca people. Capital of the Viceroyalty of New Granada and, since independence, of Colombia. The colonial center, La Candelaria, still sits beside Plaza de Bolívar and the seats of government.'),
+            ('Culture', 'A city of museums, universities and Sunday rituals. The Museo del Oro holds one of the great collections of pre-Hispanic goldwork, and every Sunday and holiday the Ciclovía closes major avenues to cars for cyclists and walkers.'),
+            ('Business climate', 'Home to the national government, the central bank (Banco de la República), the tax authority and the Colombian stock exchange. Institutional capital is active here: Bancolombia bought five leased buildings at Parque Logístico Calle 80 near Bogotá in 2026, about US$152 million.'),
+            ('Places worth seeing', 'Monserrate above the city; La Candelaria and Plaza de Bolívar; the Museo del Oro; Usaquén and its Sunday market; the Parque 93 and Zona T districts in the north.'),
+         ],
+         sources=[('Museo del Oro, Banco de la República', 'https://www.banrepcultural.org/bogota/museo-del-oro'),
+                  ('Ciclovía Bogotana, IDRD', 'https://www.idrd.gov.co/ciclovia-bogotana'),
+                  ('Banco de la República', 'https://www.banrep.gov.co'),
+                  ('Global Deal Record, Colombia', 'https://www.sovereo.com/deal-record/colombia')]),
+    dict(name='Medellín', photo='medellin', days='2 days · Wed 10 evening to Fri 12 March',
+         intro="Colombia's second city, in the Aburrá Valley, known as the City of the Eternal Spring for its mild climate year round.",
+         blocks=[
+            ('History', 'Founded in 1675 in the Aburrá Valley and capital of the department of Antioquia. Long the industrial heart of the country, it rebuilt itself in recent decades around transit, public space and education.'),
+            ('Culture', 'Paisa hospitality, the August Feria de las Flores, and the sculptures of Fernando Botero, a son of the city, in Plaza Botero beside the Museo de Antioquia. Hillside neighborhoods such as Comuna 13 tell the story of the city\'s transformation through street art.'),
+            ('Business climate', 'Headquarters city for Bancolombia and other major Antioquian companies, with the Ruta N innovation district. In 2013 the Urban Land Institute named Medellín the most innovative city in the world. In 2026 Bancolombia bought Rivana Business Park Torre Sur here, about US$65.6 million.'),
+            ('Places worth seeing', 'Plaza Botero and the Museo de Antioquia; Comuna 13; Parque Arví by Metrocable; El Poblado and Provenza; the Metro, opened in 1995, which still anchors the city\'s transit.'),
+         ],
+         sources=[('Museo de Antioquia', 'https://www.museodeantioquia.co'),
+                  ('Metro de Medellín', 'https://www.metrodemedellin.gov.co'),
+                  ('Ruta N', 'https://www.rutanmedellin.org'),
+                  ('Parque Arví', 'https://parquearvi.org'),
+                  ('Global Deal Record, Colombia', 'https://www.sovereo.com/deal-record/colombia')]),
+]
+
+def city_guide_html():
+    out = []
+    for k, c in enumerate(CITY_GUIDE):
+        blocks = ''.join(f'<div class="cg-block"><span class="k">{t}</span><p>{html.escape(d)}</p></div>' for t, d in c['blocks'])
+        src = ' · '.join(f'<a href="{u}" rel="noopener">{html.escape(n)}</a>' for n, u in c['sources'])
+        out.append(f"""<article class="cguide{' rev' if k % 2 else ''}" id="city-{c['name'].lower().replace('á','a').replace('í','i')}">
+   <div class="cg-photo">{img(c['photo'], '(max-width:900px) 100vw, 40vw')}<span class="cg-days">{c['days']}</span></div>
+   <div class="cg-body">
+    <h3>{c['name']}</h3>
+    <p class="lede">{html.escape(c['intro'])}</p>
+    <div class="cg-grid">{blocks}</div>
+    <p class="cg-src">Sources: {src}. {credit(c['photo'])}.</p>
+   </div>
+  </article>""")
+    return ''.join(out)
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
@@ -1319,7 +1376,7 @@ event_body = f"""
    <div>
     <span class="kicker">Investor Lab 2027<span class="rule"></span>Bogotá · Medellín · Preliminary</span>
     <h1>Two cities. Six days. <em>Solid ground.</em></h1>
-    <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, taught by the three members of Tierra Firme.</p>
+    <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, hosted by Tierra Firme with guest speakers.</p>
     <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get the information sheet</a><a href="#itinerary" class="btn btn-ghost">Preliminary itinerary</a></div>
    </div>
    {itin_card('#invite')}
@@ -1329,14 +1386,14 @@ event_body = f"""
 {ticker()}
 
 <nav class="subnav" aria-label="On this page"><div class="container">
- <a href="#itinerary">Itinerary</a><a href="#cities">Cities</a><a href="#format">Format</a><a href="#faculty">Faculty</a><a href="#why">Why Colombia</a><a href="#details">Details</a><a href="#faq">FAQ</a><a href="#invite" class="cta">Information sheet</a>
+ <a href="#itinerary">Itinerary</a><a href="#cities">Cities</a><a href="#format">Format</a><a href="#faculty">Hosts</a><a href="#why">Why Colombia</a><a href="#details">Details</a><a href="#faq">FAQ</a><a href="#invite" class="cta">Information sheet</a>
 </div></nav>
 
 <section id="itinerary">
  <div class="container">
   <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
    <div><span class="eyebrow">Preliminary itinerary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
-   <p style="margin:0;max-width:52ch">Arrive Sunday in Bogotá. Monday to Friday are Colombian commerce: boardroom mornings, field visits in the afternoon, culture in the evening.</p>
+   <p style="margin:0;max-width:52ch">Arrive Sunday in Bogotá. Every day from Monday to Friday follows the same rhythm: a short boardroom briefing, a field study and an evening of culture.</p>
   </div>
   {program_html()}
  </div>
@@ -1344,8 +1401,9 @@ event_body = f"""
 
 <section class="ink" id="cities">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">Two cities</span><h2>The capital and the second city.</h2></div>
+  <div class="section-head"><span class="eyebrow">Two cities</span><h2>The capital and the second city.</h2><p class="lede">History, culture, business climate and the places worth seeing in each.</p></div>
   {cities_html()}
+  {city_guide_html()}
  </div>
 </section>
 
@@ -1371,7 +1429,7 @@ event_body = f"""
 
 <section class="ink" id="faculty">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">Faculty</span><h2>The three members, plus local experts.</h2><p class="lede">Joined by Colombian counsel on property, tax and foreign investment law.</p></div>
+  <div class="section-head"><span class="eyebrow">Hosts</span><h2>Hosted by Tierra Firme.</h2><p class="lede">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to newsletter subscribers.</p></div>
   {faculty_html()}
  </div>
 </section>
@@ -1495,7 +1553,7 @@ def lane_page(l):
   <span class="kicker">{l['seat']}<span class="rule"></span>{l['label']} · {l['first']}</span>
   <h1>{c['h1']}</h1>
   <p class="lede">{m['show']}</p>
-  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/colombia-2027#itinerary" class="btn btn-ghost">{day[2]} {day[3]} at the Investor Lab</a></div>
+  <div class="btn-row" style="margin-top:28px"><a href="#join" class="btn btn-gold">Follow this lane</a><a href="/colombia-2027#itinerary" class="btn btn-ghost">Investor Lab 2027</a></div>
 ''')}
 <section>
  <div class="container grid-2" style="align-items:start">
