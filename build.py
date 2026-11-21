@@ -483,7 +483,7 @@ def cities_html():
 
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
-            '<div><b>30 seats</b><span>An intimate room</span></div><div><b>0</b><span>Properties for sale</span></div></div>')
+            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -572,7 +572,7 @@ def portrait(m, size=72, cls=''):
     return f'<div class="portrait monogram {cls}" style="--ps:{size}px" role="img" aria-label="{html.escape(m["name"])}">{m["initials"]}</div>'
 
 EPISODES = [
-    ('All three', 'The World Is Mispriced', "The founding thesis: you're not broke, you're in the wrong market. Currency, political and structural conditions put the first rung back within reach abroad."),
+    ('All three', 'The World Is Mispriced', 'The founding thesis: prudent capital looks past its home market. Currency, political and structural conditions can make the next asset more reachable abroad, with risks to match.'),
     ('Research', 'The Arbitrage, in Numbers', 'The math: how home-currency income and savings change in value the moment they cross the border.'),
     ('Asset', 'Real Assets, Real Prices', 'What entry-level property abroad costs, and how to judge it against being priced out at home.'),
     ('Capital', 'Buy the Business, Not Just the Building', 'Starting or buying a small business abroad, where the cost of entry is within reach and the income is real.'),
@@ -804,7 +804,8 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b>0</b><span>Properties for sale</span></div></div>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$3.8 billion across 10 verified, priced business deals in Colombia in 2026, including property purchases, as of 20 November 2026. Source: <a href="https://www.sovereo.com/deal-record/colombia" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
 
