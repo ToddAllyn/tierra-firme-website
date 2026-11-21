@@ -438,6 +438,11 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .ink .card,.dark .card{position:relative}
 .dark .card:hover,.ink .card:hover{border-color:rgba(233,168,37,.6);box-shadow:0 0 0 1px rgba(233,168,37,.25),0 30px 60px rgba(0,0,0,.35)}
 .stats b{font-variant-numeric:tabular-nums}
+.avatar{display:inline-block;width:var(--as,40px);height:var(--as,40px);border-radius:50%;object-fit:cover;border:2px solid #e9a825;background:#061327;vertical-align:middle;flex:none}
+.avatars{display:inline-flex;vertical-align:middle}.avatars .avatar{margin-left:-10px;border-color:#fff}.avatars .avatar:first-child{margin-left:0}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:12px}.who .tag{margin:0}
+.by .avatar{margin-right:8px}
+.qa-meta .avatar{margin-right:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
@@ -673,6 +678,17 @@ def portrait(m, size=72, cls=''):
                 f'width="{size}" height="{size}" alt="{html.escape(m["name"])}" loading="lazy" decoding="async">')
     return f'<div class="portrait monogram {cls}" style="--ps:{size}px" role="img" aria-label="{html.escape(m["name"])}">{m["initials"]}</div>'
 
+MEMBER_BY_LANE = {m['lane']: m for m in MEMBERS}
+def avatar(m, size=40):
+    """Small round member photo with a hover title, for inline mentions."""
+    return (f'<img class="avatar" src="{m["photo"]}-320.webp" alt="{html.escape(m["name"])}" title="{html.escape(m["name"])}" '
+            f'width="{size}" height="{size}" style="--as:{size}px" loading="lazy" decoding="async">') if m.get('photo') else ''
+def avatars(size=34):
+    return '<span class="avatars">' + ''.join(avatar(m, size) for m in MEMBERS) + '</span>'
+def who(lane, text, size=44):
+    """Tag line with the member's photo in front of it."""
+    return f'<div class="who">{avatar(MEMBER_BY_LANE[lane], size)}<span>{text}</span></div>'
+
 EPISODES = [
     ('All three', 'The World Is Mispriced', 'The founding thesis: prudent capital looks past its home market. Currency, political and structural conditions can make the next asset more reachable abroad, with risks to match.'),
     ('Research', 'The Arbitrage, in Numbers', 'The math: how home-currency income and savings change in value the moment they cross the border.'),
@@ -860,7 +876,7 @@ def seat_cards(link=True):
     out = []
     for m in MEMBERS:
         out.append(f"""<article class="card bar-{m['key']}">
-    {portrait(m, 72)}
+    {portrait(m, 104)}
     <span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span>
     <h3>{m['name']}</h3>
     <p>{m['show']}</p>
@@ -1100,9 +1116,9 @@ show_body = f"""
    <h2>Formats that outlive any single season.</h2>
   </div>
   <div class="grid-3">
-   <article class="card bar-cre"><span class="tag tag-cre">On location · Murphy · The Asset</span><h3>Ground Truth</h3><p>A real, affordable property abroad on camera, and what the same income would and would not buy at home.</p></article>
-   <article class="card bar-capital"><span class="tag tag-capital">Guest format · Shawn · The Capital</span><h3>Founder's Seat</h3><p>Someone who built a business or first balance sheet abroad: what worked, what it cost and what they would redo.</p></article>
-   <article class="card bar-research"><span class="tag tag-research">Every episode · Todd · The Country</span><h3>The Research Close</h3><p>A short close on currency, political and structural conditions and where they are heading.</p></article>
+   <article class="card bar-cre">{who('cre', '<span class="tag tag-cre">On location · Murphy · The Asset</span>')}<h3>Ground Truth</h3><p>A real, affordable property abroad on camera, and what the same income would and would not buy at home.</p></article>
+   <article class="card bar-capital">{who('capital', '<span class="tag tag-capital">Guest format · Shawn · The Capital</span>')}<h3>Founder's Seat</h3><p>Someone who built a business or first balance sheet abroad: what worked, what it cost and what they would redo.</p></article>
+   <article class="card bar-research">{who('research', '<span class="tag tag-research">Every episode · Todd · The Country</span>')}<h3>The Research Close</h3><p>A short close on currency, political and structural conditions and where they are heading.</p></article>
   </div>
   <div class="card" style="margin-top:22px"><span class="tag">Quarterly · All three</span><h3>The Teaching Case</h3><p>A sample property and a sample business, priced, run and stress-tested end to end on camera as a classroom exercise. Illustrative only.</p></div>
  </div>
@@ -1168,9 +1184,9 @@ newsletter_body = f"""
  <div class="container">
   <div class="section-head"><span class="eyebrow">In each issue</span><h2>Three lanes, one read.</h2><p class="lede">Pick the lanes you care about when you subscribe. Every issue is educational and sourced.</p></div>
   <div class="grid-3">
-   <article class="card bar-cre"><span class="tag tag-cre">The Asset · Murphy</span><h3>Property</h3><p>How property is valued, titled and managed in Colombia, and what a buyer from abroad should check before committing.</p></article>
-   <article class="card bar-capital"><span class="tag tag-capital">The Capital · Shawn</span><h3>Business and family capital</h3><p>What it takes to build, run and hold a business across borders, and how families structure what they build.</p></article>
-   <article class="card bar-research"><span class="tag tag-research">The Country · Todd</span><h3>Research</h3><p>The currency, policy and deal flow behind the decision, drawing on Sovereo's Global Deal Record.</p></article>
+   <article class="card bar-cre">{who('cre', '<span class="tag tag-cre">The Asset · Murphy</span>')}<h3>Property</h3><p>How property is valued, titled and managed in Colombia, and what a buyer from abroad should check before committing.</p></article>
+   <article class="card bar-capital">{who('capital', '<span class="tag tag-capital">The Capital · Shawn</span>')}<h3>Business and family capital</h3><p>What it takes to build, run and hold a business across borders, and how families structure what they build.</p></article>
+   <article class="card bar-research">{who('research', '<span class="tag tag-research">The Country · Todd</span>')}<h3>Research</h3><p>The currency, policy and deal flow behind the decision, drawing on Sovereo's Global Deal Record.</p></article>
   </div>
  </div>
 </section>
@@ -1254,8 +1270,8 @@ PROGRAM = [
 
 def _dcard(lane, title, dow, date, slots):
     cls = f' lane-{LANE[lane]["key"]}' if lane else ''
-    by = (f'<p class="by">{LANE[lane]["label"]} · <a href="lanes/{LANE[lane]["slug"]}.html">{LANE[lane]["member"]}</a></p>' if lane
-          else '<p class="by">Travel day</p>' if title.startswith('Arrival') else '<p class="by">All three members</p>')
+    by = (f'<p class="by">{avatar(MEMBER_BY_LANE[lane], 30)}{LANE[lane]["label"]} · <a href="lanes/{LANE[lane]["slug"]}.html">{LANE[lane]["member"]}</a></p>' if lane
+          else '<p class="by">Travel day</p>' if title.startswith('Arrival') else f'<p class="by">{avatars(26)} All three members</p>')
     dl = ''.join(f'<dt>{t}</dt><dd>{html.escape(d)}</dd>' for t, d in slots)
     return f'<article class="dcard{cls}"><span class="dd">{dow} · {date}</span><h4>{title}</h4>{by}<dl>{dl}</dl></article>'
 
@@ -1269,7 +1285,7 @@ def program_html():
 
 def faculty_html():
     return '<div class="faculty">' + ''.join(f"""<a class="card bar-{m['key']}" href="lanes/{LANE[m['lane']]['slug']}.html">
-    {portrait(m, 72)}<span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span><h3>{m['name']}</h3><p>{m['show']}</p></a>""" for m in MEMBERS) + '</div>'
+    {portrait(m, 104)}<span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span><h3>{m['name']}</h3><p>{m['show']}</p></a>""" for m in MEMBERS) + '</div>'
 
 EVENT_FAQ = [
     ("When and where is the Investor Lab?",
@@ -1475,7 +1491,7 @@ def lane_page(l):
   <div>
    <span class="eyebrow">In {l['first']}'s words</span>
    <p class="quote" style="color:var(--ink);font-size:clamp(1.3rem,2.2vw,1.7rem)">{html.escape(c['voice'])}</p>
-   <p class="role" style="margin-top:18px">{m['name']}</p>
+   <div class="who" style="margin-top:18px">{avatar(m, 56)}<span class="role" style="margin:0">{m['name']}</span></div>
   </div>
   <div>
    <span class="eyebrow">What this lane covers</span>
@@ -1606,7 +1622,7 @@ def q_page(x):
 </section>
 <section class="qa">
  <div class="container">
-  <p class="qa-meta"><a class="tag tag-{LANE[x['lane']]['key']}" style="text-decoration:none" href="/lanes/{LANE[x['lane']]['slug']}">{LANE[x['lane']]['seat']} · {LANE[x['lane']]['label']}</a><br>By Todd Allyn, research lead, Tierra Firme · Updated <time datetime="{UPDATED}">{UPDATED_TEXT}</time></p>
+  <p class="qa-meta"><a class="tag tag-{LANE[x['lane']]['key']}" style="text-decoration:none" href="/lanes/{LANE[x['lane']]['slug']}">{LANE[x['lane']]['seat']} · {LANE[x['lane']]['label']}</a><br>{avatar(MEMBER_BY_LANE['research'], 34)}By Todd Allyn, research lead, Tierra Firme · Updated <time datetime="{UPDATED}">{UPDATED_TEXT}</time></p>
   <p class="qa-answer">{_h.escape(x['answer'])}</p>
   {secs}
   <h2>More questions</h2>

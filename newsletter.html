@@ -602,6 +602,11 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .ink .card,.dark .card{position:relative}
 .dark .card:hover,.ink .card:hover{border-color:rgba(233,168,37,.6);box-shadow:0 0 0 1px rgba(233,168,37,.25),0 30px 60px rgba(0,0,0,.35)}
 .stats b{font-variant-numeric:tabular-nums}
+.avatar{display:inline-block;width:var(--as,40px);height:var(--as,40px);border-radius:50%;object-fit:cover;border:2px solid #e9a825;background:#061327;vertical-align:middle;flex:none}
+.avatars{display:inline-flex;vertical-align:middle}.avatars .avatar{margin-left:-10px;border-color:#fff}.avatars .avatar:first-child{margin-left:0}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:12px}.who .tag{margin:0}
+.by .avatar{margin-right:8px}
+.qa-meta .avatar{margin-right:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 </style>
@@ -642,9 +647,9 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  <div class="container">
   <div class="section-head"><span class="eyebrow">In each issue</span><h2>Three lanes, one read.</h2><p class="lede">Pick the lanes you care about when you subscribe. Every issue is educational and sourced.</p></div>
   <div class="grid-3">
-   <article class="card bar-cre"><span class="tag tag-cre">The Asset · Murphy</span><h3>Property</h3><p>How property is valued, titled and managed in Colombia, and what a buyer from abroad should check before committing.</p></article>
-   <article class="card bar-capital"><span class="tag tag-capital">The Capital · Shawn</span><h3>Business and family capital</h3><p>What it takes to build, run and hold a business across borders, and how families structure what they build.</p></article>
-   <article class="card bar-research"><span class="tag tag-research">The Country · Todd</span><h3>Research</h3><p>The currency, policy and deal flow behind the decision, drawing on Sovereo's Global Deal Record.</p></article>
+   <article class="card bar-cre"><div class="who"><img class="avatar" src="/img/members/murphy-cheatham-320.webp" alt="Murphy D. Cheatham II" title="Murphy D. Cheatham II" width="44" height="44" style="--as:44px" loading="lazy" decoding="async"><span><span class="tag tag-cre">The Asset · Murphy</span></span></div><h3>Property</h3><p>How property is valued, titled and managed in Colombia, and what a buyer from abroad should check before committing.</p></article>
+   <article class="card bar-capital"><div class="who"><img class="avatar" src="/img/members/shawn-leamon-320.webp" alt="Shawn Christopher Leamon" title="Shawn Christopher Leamon" width="44" height="44" style="--as:44px" loading="lazy" decoding="async"><span><span class="tag tag-capital">The Capital · Shawn</span></span></div><h3>Business and family capital</h3><p>What it takes to build, run and hold a business across borders, and how families structure what they build.</p></article>
+   <article class="card bar-research"><div class="who"><img class="avatar" src="/img/members/todd-allyn-320.webp" alt="Todd Allyn" title="Todd Allyn" width="44" height="44" style="--as:44px" loading="lazy" decoding="async"><span><span class="tag tag-research">The Country · Todd</span></span></div><h3>Research</h3><p>The currency, policy and deal flow behind the decision, drawing on Sovereo's Global Deal Record.</p></article>
   </div>
  </div>
 </section>

@@ -636,6 +636,11 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .ink .card,.dark .card{position:relative}
 .dark .card:hover,.ink .card:hover{border-color:rgba(233,168,37,.6);box-shadow:0 0 0 1px rgba(233,168,37,.25),0 30px 60px rgba(0,0,0,.35)}
 .stats b{font-variant-numeric:tabular-nums}
+.avatar{display:inline-block;width:var(--as,40px);height:var(--as,40px);border-radius:50%;object-fit:cover;border:2px solid #e9a825;background:#061327;vertical-align:middle;flex:none}
+.avatars{display:inline-flex;vertical-align:middle}.avatars .avatar{margin-left:-10px;border-color:#fff}.avatars .avatar:first-child{margin-left:0}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:12px}.who .tag{margin:0}
+.by .avatar{margin-right:8px}
+.qa-meta .avatar{margin-right:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 
@@ -674,7 +679,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
   <div>
    <span class="eyebrow">In Murphy's words</span>
    <p class="quote" style="color:var(--ink);font-size:clamp(1.3rem,2.2vw,1.7rem)">I have spent my career on the asset side of real estate: what a building is worth, who really owns it and what it costs to run. Abroad, those questions get harder, not easier. In this lane I teach how to read a property and the market around it before you commit, so the first conversation you have with a seller is not the first time you have thought about value, title or management.</p>
-   <p class="role" style="margin-top:18px">Murphy D. Cheatham II</p>
+   <div class="who" style="margin-top:18px"><img class="avatar" src="/img/members/murphy-cheatham-320.webp" alt="Murphy D. Cheatham II" title="Murphy D. Cheatham II" width="56" height="56" style="--as:56px" loading="lazy" decoding="async"><span class="role" style="margin:0">Murphy D. Cheatham II</span></div>
   </div>
   <div>
    <span class="eyebrow">What this lane covers</span>
