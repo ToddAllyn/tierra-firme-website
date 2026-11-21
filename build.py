@@ -689,7 +689,7 @@ def photo_hero(p, inner, video=None):
     vid = (f'<video class="ph-video" muted loop playsinline preload="none" data-src="{video}.mp4" aria-hidden="true">'
            f'</video>') if video else ''
     cue = '<span class="scroll-cue" aria-hidden="true"></span>' if video else ''
-    mob = f'<source media="(max-width:760px)" srcset="{PHOTOS[p]["base"]}-m.webp" width="720" height="1200">' if p in MOBILE_HERO else ''
+    mob = f'<source media="(max-width:760px)" srcset="{PHOTOS[p]["base"]}-m.webp" width="600" height="1000">' if p in MOBILE_HERO else ''
     return (f'<section class="photo-hero"><picture>{mob}{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
             f'<div class="container">{inner}</div>{cue}<p class="ph-credit">{"Film footage: Pexels. " if video else ""}{credit(p)}</p></section>')
 
@@ -954,7 +954,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-{preload or '<link rel="preload" as="image" href="/img/logo-light.webp" fetchpriority="high">'}
+{preload or '<link rel="preload" as="image" href="/img/logo-header.webp" fetchpriority="high">'}
 {jsonld({"@context": "https://schema.org", "@graph": graph})}
 <style>{CSS}</style>
 </head>
@@ -962,7 +962,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
 {banner}<div class="event-bar"><div class="container"><span class="pre">Preliminary</span><span><b>Investor Lab 2027</b><span class="eb-long"> · Bogotá 3 days · Medellín 2 days</span> · 7 to 12 March</span><a href="/colombia-2027#invite">Get the information sheet</a></div></div>
 <header class="site-header">
  <div class="container nav-wrap">
-  <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
+  <a href="index.html" class="brand"><img src="/img/logo-header.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
   <nav class="main-nav" id="main-nav" aria-label="Main">{nav}<a href="newsletter.html" class="btn btn-gold">Free newsletter</a></nav>
  </div>
@@ -974,7 +974,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
 <footer>
  <div class="container">
   <div class="footer-grid">
-   <a href="index.html" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
+   <a href="index.html" class="brand"><img src="/img/logo-header.webp" alt="Tierra Firme" width="120" height="56"></a>
    <nav class="footer-nav" aria-label="Footer">{''.join(f'<a href="{h}">{t}</a>' for h, t in NAV)}<a href="newsletter.html">Newsletter</a><a href="credits.html">Photo credits</a></nav>
   </div>
   <p class="disclaimer">{DISCLAIMER}</p>
@@ -1006,7 +1006,9 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
  if(hv.length&&window.matchMedia&&matchMedia('(min-width:900px)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&!(navigator.connection&&navigator.connection.saveData)){{
   window.addEventListener('load',function(){{setTimeout(function(){{hv.forEach(function(x){{x.addEventListener('playing',function(){{x.classList.add('on');}});x.src=x.getAttribute('data-src');x.preload='auto';var q=x.play();if(q&&q.catch)q.catch(function(){{}});}});}},1200);}});}}
  var v=document.getElementById('tf-trailer');
- if(v){{var sb=document.getElementById('tf-sound'),rb=document.getElementById('tf-replay');
+ if(v){{var setPoster=function(){{if(!v.poster)v.poster=v.getAttribute('data-poster');}};
+  if('IntersectionObserver' in window){{var pio=new IntersectionObserver(function(es){{if(es[0].isIntersecting){{setPoster();pio.disconnect();}}}},{{rootMargin:'300px'}});pio.observe(v);}}else{{setPoster();}}
+  window.addEventListener('load',function(){{setTimeout(setPoster,2500);}});var sb=document.getElementById('tf-sound'),rb=document.getElementById('tf-replay');
   var go=function(){{var p=v.play();if(p&&p.catch)p.catch(function(){{}});}};
   var check=function(){{if(v.paused)return;var r=v.getBoundingClientRect(),h=window.innerHeight||document.documentElement.clientHeight;var vis=Math.max(0,Math.min(r.bottom,h)-Math.max(r.top,0))/Math.max(1,r.height);if(vis<.15){{v.pause();leave();}}}};
   window.addEventListener('scroll',check,{{passive:true}});
@@ -1167,7 +1169,7 @@ index_body = f"""
    <h2>Solid ground.</h2>
   </div>
   <div class="player" id="player">
-   <video id="tf-trailer" playsinline preload="none" poster="/media/film-poster-v6.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
+   <video id="tf-trailer" playsinline preload="none" data-poster="/media/film-poster-v6.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
     <source src="/media/tierra-firme-film-v6.mp4" type="video/mp4">
    </video>
    <button type="button" class="play-big" id="tf-sound" aria-label="Play the film with sound"><span class="pb-icon" aria-hidden="true"></span><span class="pb-txt"><b>Play the film</b><small>3:38 · Sound on · Captioned</small></span></button>

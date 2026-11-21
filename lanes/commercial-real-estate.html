@@ -786,7 +786,7 @@ footer{border-top:3px solid var(--gold)}
 <div class="draft-banner">Draft for review: Murphy has not yet approved this page. Not indexed.</div><div class="event-bar"><div class="container"><span class="pre">Preliminary</span><span><b>Investor Lab 2027</b><span class="eb-long"> · Bogotá 3 days · Medellín 2 days</span> · 7 to 12 March</span><a href="/colombia-2027#invite">Get the information sheet</a></div></div>
 <header class="site-header">
  <div class="container nav-wrap">
-  <a href="/" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
+  <a href="/" class="brand"><img src="/img/logo-header.webp" alt="Tierra Firme" width="120" height="56"></a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
   <nav class="main-nav" id="main-nav" aria-label="Main"><a href="/">Home</a><a href="/colombia-2027">Colombia 2027</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/questions">Questions</a><a href="/newsletter" class="btn btn-gold">Free newsletter</a></nav>
  </div>
@@ -794,7 +794,7 @@ footer{border-top:3px solid var(--gold)}
 <main>
 <nav class="crumbbar" aria-label="Breadcrumb"><div class="container"><a class="back" href="/members">&larr; Back to Members</a><ol><li><a href="/">Home</a></li><li><a href="/members">Members</a></li><li aria-current="page">Commercial real estate</li></ol></div></nav>
 
-<section class="photo-hero"><picture><source media="(max-width:760px)" srcset="/img/bogota/downtown-from-torre-colpatria-m.webp" width="720" height="1200"><img class="ph-img" src="/img/bogota/downtown-from-torre-colpatria-960.webp" srcset="/img/bogota/downtown-from-torre-colpatria-960.webp 960w, /img/bogota/downtown-from-torre-colpatria-1920.webp 1920w" sizes="100vw" width="1920" height="1440" alt="Downtown Bogotá high-rises seen from the Torre Colpatria observation deck" fetchpriority="high"></picture><div class="container">
+<section class="photo-hero"><picture><source media="(max-width:760px)" srcset="/img/bogota/downtown-from-torre-colpatria-m.webp" width="600" height="1000"><img class="ph-img" src="/img/bogota/downtown-from-torre-colpatria-960.webp" srcset="/img/bogota/downtown-from-torre-colpatria-960.webp 960w, /img/bogota/downtown-from-torre-colpatria-1920.webp 1920w" sizes="100vw" width="1920" height="1440" alt="Downtown Bogotá high-rises seen from the Torre Colpatria observation deck" fetchpriority="high"></picture><div class="container">
   <span class="kicker">The Asset<span class="rule"></span>Commercial real estate · Murphy</span>
   <h1>Read the property before you buy it.</h1>
   <p class="lede">The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing.</p>
@@ -851,7 +851,7 @@ footer{border-top:3px solid var(--gold)}
 <footer>
  <div class="container">
   <div class="footer-grid">
-   <a href="/" class="brand"><img src="/img/logo-light.webp" alt="Tierra Firme" width="120" height="56"></a>
+   <a href="/" class="brand"><img src="/img/logo-header.webp" alt="Tierra Firme" width="120" height="56"></a>
    <nav class="footer-nav" aria-label="Footer"><a href="/">Home</a><a href="/colombia-2027">Colombia 2027</a><a href="/members">Members</a><a href="/the-show">The Show</a><a href="/questions">Questions</a><a href="/newsletter">Newsletter</a><a href="/credits">Photo credits</a></nav>
   </div>
   <p class="disclaimer">Educational content. Not investment, tax or legal advice.</p>
@@ -883,7 +883,9 @@ footer{border-top:3px solid var(--gold)}
  if(hv.length&&window.matchMedia&&matchMedia('(min-width:900px)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&!(navigator.connection&&navigator.connection.saveData)){
   window.addEventListener('load',function(){setTimeout(function(){hv.forEach(function(x){x.addEventListener('playing',function(){x.classList.add('on');});x.src=x.getAttribute('data-src');x.preload='auto';var q=x.play();if(q&&q.catch)q.catch(function(){});});},1200);});}
  var v=document.getElementById('tf-trailer');
- if(v){var sb=document.getElementById('tf-sound'),rb=document.getElementById('tf-replay');
+ if(v){var setPoster=function(){if(!v.poster)v.poster=v.getAttribute('data-poster');};
+  if('IntersectionObserver' in window){var pio=new IntersectionObserver(function(es){if(es[0].isIntersecting){setPoster();pio.disconnect();}},{rootMargin:'300px'});pio.observe(v);}else{setPoster();}
+  window.addEventListener('load',function(){setTimeout(setPoster,2500);});var sb=document.getElementById('tf-sound'),rb=document.getElementById('tf-replay');
   var go=function(){var p=v.play();if(p&&p.catch)p.catch(function(){});};
   var check=function(){if(v.paused)return;var r=v.getBoundingClientRect(),h=window.innerHeight||document.documentElement.clientHeight;var vis=Math.max(0,Math.min(r.bottom,h)-Math.max(r.top,0))/Math.max(1,r.height);if(vis<.15){v.pause();leave();}};
   window.addEventListener('scroll',check,{passive:true});
