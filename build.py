@@ -401,7 +401,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 @media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
 .pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
 /* ===== Motion and imagery layer ===== */
-.ph-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.ph-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transition:opacity 1.2s ease}.ph-video.on{opacity:1}
 .photo-hero picture{z-index:0}
 .photo-hero::after{z-index:1}
 @media (prefers-reduced-motion:reduce){.ph-video{display:none}}
@@ -686,10 +686,11 @@ def fig(p, cls='wide', sizes='(max-width:860px) 100vw, 50vw'):
     return f'<figure><div class="photo {cls}">{img(p, sizes)}</div><figcaption>{html.escape(PHOTOS[p]["title"])}. {credit(p)}</figcaption></figure>'
 
 def photo_hero(p, inner, video=None):
-    vid = (f'<video class="ph-video" muted loop playsinline preload="none" data-src="{video}.mp4" poster="{video}-poster.webp" aria-hidden="true">'
+    vid = (f'<video class="ph-video" muted loop playsinline preload="none" data-src="{video}.mp4" aria-hidden="true">'
            f'</video>') if video else ''
     cue = '<span class="scroll-cue" aria-hidden="true"></span>' if video else ''
-    return (f'<section class="photo-hero"><picture>{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
+    mob = f'<source media="(max-width:760px)" srcset="{PHOTOS[p]["base"]}-m.webp" width="720" height="1200">' if p in MOBILE_HERO else ''
+    return (f'<section class="photo-hero"><picture>{mob}{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
             f'<div class="container">{inner}</div>{cue}<p class="ph-credit">{"Film footage: Pexels. " if video else ""}{credit(p)}</p></section>')
 
 TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>Invitation</b> · exclusive group',
@@ -744,9 +745,15 @@ def quote_band(p, quote, sub, cta=''):
     return (f'<section class="quote-band">{img(p, "100vw", "qb-img")}<div class="container"><blockquote class="reveal">{quote}</blockquote>'
             f'<p class="reveal">{sub}</p>{cta}</div></section>')
 
+MOBILE_HERO = {'twilight', 'agora', 'downtown', 'medellin', 'towers'}  # have a 720px portrait crop at {base}-m.webp
+
 def hero_preload(p):
     x = PHOTOS[p]
     big, small = x['w']
+    if p in MOBILE_HERO:
+        return (f'<link rel="preload" as="image" href="{x["base"]}-m.webp" media="(max-width:760px)" fetchpriority="high">'
+                f'<link rel="preload" as="image" href="{x["base"]}-{small}.webp" imagesrcset="{x["base"]}-{small}.webp {small}w, '
+                f'{x["base"]}-{big}.webp {big}w" imagesizes="100vw" media="(min-width:761px)" fetchpriority="high">')
     return (f'<link rel="preload" as="image" href="{x["base"]}-{small}.webp" imagesrcset="{x["base"]}-{small}.webp {small}w, '
             f'{x["base"]}-{big}.webp {big}w" imagesizes="100vw" fetchpriority="high">')
 
@@ -997,7 +1004,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
  if(t&&n){{t.addEventListener('click',function(){{var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');}});}}
  var hv=document.querySelectorAll('.ph-video[data-src]');
  if(hv.length&&window.matchMedia&&matchMedia('(min-width:900px)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&!(navigator.connection&&navigator.connection.saveData)){{
-  window.addEventListener('load',function(){{setTimeout(function(){{hv.forEach(function(x){{x.src=x.getAttribute('data-src');x.preload='auto';var q=x.play();if(q&&q.catch)q.catch(function(){{}});}});}},1200);}});}}
+  window.addEventListener('load',function(){{setTimeout(function(){{hv.forEach(function(x){{x.addEventListener('playing',function(){{x.classList.add('on');}});x.src=x.getAttribute('data-src');x.preload='auto';var q=x.play();if(q&&q.catch)q.catch(function(){{}});}});}},1200);}});}}
  var v=document.getElementById('tf-trailer');
  if(v){{var sb=document.getElementById('tf-sound'),rb=document.getElementById('tf-replay');
   var go=function(){{var p=v.play();if(p&&p.catch)p.catch(function(){{}});}};
