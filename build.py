@@ -480,7 +480,7 @@ LANE = {l['id']: l for l in LANES}
 
 # Event: Tierra Firme Investor Lab, Bogotá. Dates and seat count come from the 2027 Investor Lab draft.
 EVENT = dict(name='Tierra Firme Investor Lab', city='Bogotá and Medellín', start='2027-03-07', end='2027-03-12',
-             dates='7 to 12 March 2027', short='March 2027', seats=30)
+             dates='7 to 12 March 2027', short='March 2027')
 PRELIM = 'Preliminary. Dates, cities and sessions may change while we put the program together.'
 
 # Photos: Wikimedia Commons. Licenses read on each File: page on 2026-11-20. BY and BY-SA need the credit line.
@@ -552,7 +552,7 @@ def photo_hero(p, inner, video=None):
     return (f'<section class="photo-hero"><picture>{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
             f'<div class="container">{inner}</div>{cue}<p class="ph-credit">{"Film footage: Pexels. " if video else ""}{credit(p)}</p></section>')
 
-TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>30</b> seats',
+TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>Invitation</b> · exclusive group',
                 '<b>US$46.0B</b> in deals tracked by Sovereo', '<b>US$3.84B</b> in Colombia alone', 'Boardroom mornings',
                 'Verified field visits', 'Cultural evenings', '<b>Three</b> practitioners · three lanes', 'Any currency · solid ground']
 def ticker():
@@ -585,7 +585,7 @@ def itin_card(cta='colombia-2027.html#invite'):
    <div class="ic-top"><span>Investor Lab 2027</span><span class="pre">Preliminary</span></div>
    <div class="ic-city"><span class="n">3</span><h3>Bogotá</h3><span class="d">Sun 7 to Wed 10 March, morning</span><p>Arrival, then the country, property and business.</p></div>
    <div class="ic-city"><span class="n">2</span><h3>Medellín</h3><span class="d">Wed 10 evening to Fri 12 March</span><p>Field visits and culture, then the decision framework.</p></div>
-   <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3</b><span>Lanes</span></div></div>
+   <div class="ic-facts"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b>3</b><span>Lanes</span></div></div>
    <a href="{cta}" class="btn btn-gold">Get the information sheet</a>
    <p class="fine">Dates, cities and sessions may change. Newsletter subscribers hear first.</p>
   </aside>"""
@@ -604,7 +604,7 @@ def cities_html():
 
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
-            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div></div>')
+            '<div><b>Exclusive</b><span>A private group of investors</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -619,7 +619,7 @@ FAQ = [
      "Murphy D. Cheatham II (commercial real estate), Shawn Christopher Leamon (business and family capital) and Todd Allyn "
      "(research). Each runs an independent practice and teaches his own lane."),
     ("What is the Investor Lab 2027?",
-     "A preliminary six-day, five-night program in Colombia for 30 people: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
+     "A preliminary six-day, five-night program in Colombia for an exclusive group of investors: three days in Bogotá and two in Medellín, 7 to 12 March 2027. Short boardroom briefings, verified field visits and cultural evenings. "
      "It is a seminar, not a sales event. Details go to newsletter subscribers first."),
     ("Who is Tierra Firme for?",
      "Individuals, families and family offices in the US, Canada and Europe who want to understand a market abroad before committing capital, "
@@ -963,7 +963,7 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
   <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
@@ -1362,8 +1362,8 @@ EVENT_FAQ = [
      "No. Everything is preliminary while we put the program together. Dates, cities, sessions and visits may change, and newsletter subscribers hear first."),
     ("Who is it for?",
      "People who earn in dollars, euros or another currency and are weighing property or a business in Colombia, and families thinking about how to hold what they build across borders."),
-    ("How many seats are there?",
-     "Thirty. The room is kept small so every question gets answered."),
+    ("How large is the group?",
+     "Small and exclusive, by design, so every question gets answered."),
     ("Will anyone sell me property or a business?",
      "No. There are no listings, no brokers in the room and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
     ("How do I get the information sheet?",
@@ -1376,7 +1376,7 @@ event_body = f"""
    <div>
     <span class="kicker">Investor Lab 2027<span class="rule"></span>Bogotá · Medellín · Preliminary</span>
     <h1>Two cities. Six days. <em>Solid ground.</em></h1>
-    <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, hosted by Tierra Firme with guest speakers.</p>
+    <p class="lede">A private program in Colombia for an exclusive group of investors placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, hosted by Tierra Firme with guest speakers.</p>
     <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get the information sheet</a><a href="#itinerary" class="btn btn-ghost">Preliminary itinerary</a></div>
    </div>
    {itin_card('#invite')}
@@ -1444,7 +1444,7 @@ event_body = f"""
    <dl class="facts">
     <div><dt>Dates</dt><dd>Arrive Sunday 7 March in Bogotá. Depart Friday 12 March afternoon or Saturday 13 March morning from Medellín</dd></div>
     <div><dt>Cities</dt><dd>Bogotá, Sunday to Wednesday morning. Medellín, Wednesday evening to Friday. The move may be Tuesday instead</dd></div>
-    <div><dt>Seats</dt><dd>30, so every question gets answered</dd></div>
+    <div><dt>Group</dt><dd>Exclusive and kept small, so every question gets answered</dd></div>
     <div><dt>Hotels</dt><dd>Upscale hotels in both cities, confirmed to registered attendees</dd></div>
     <div><dt>Airports</dt><dd>Arrive El Dorado, Bogotá (BOG). Depart José María Córdova, Medellín (MDE)</dd></div>
     <div><dt>Seats and pricing</dt><dd>Sent to newsletter subscribers first</dd></div>
@@ -1479,7 +1479,7 @@ event_body = f"""
 <section class="band-green" id="invite">
  <div class="container signup-band">
   <div>
-   <span class="eyebrow">30 seats · Bogotá and Medellín · March 2027</span>
+   <span class="eyebrow">Exclusive group · Bogotá and Medellín · March 2027</span>
    <h2>Get the information sheet.</h2>
    <p class="lede">Leave your email to receive the information sheet and the free Tierra Firme Newsletter. Subscribers get the final itinerary, seat details and pricing first.</p>
    <p class="hero-fine" style="color:rgba(255,255,255,.6)">{DISCLAIMER}</p>
@@ -1493,7 +1493,7 @@ event_schema = [
     {"@type": "EducationEvent", "@id": BASE + "/colombia-2027#event", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín",
      "description": "A six-day educational program in Bogotá and Medellín on commercial real estate, business and family capital, and country research for people placing capital across borders.",
      "startDate": EVENT['start'], "endDate": EVENT['end'], "eventStatus": "https://schema.org/EventScheduled",
-     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "maximumAttendeeCapacity": EVENT['seats'],
+     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
      "location": [{"@type": "Place", "name": "Bogotá (hotel confirmed to registered attendees)",
                    "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}},
                   {"@type": "Place", "name": "Medellín (hotel confirmed to registered attendees)",
@@ -1634,7 +1634,7 @@ PAGES = [
         "thumbnailUrl": BASE + "/media/film-poster.webp", "contentUrl": BASE + "/media/tierra-firme-film.mp4",
         "uploadDate": "2026-11-21", "duration": "PT3M36S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
-     'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
+     'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for an exclusive group of investors. Commercial real estate, business and family capital, and country research. Education, not advice.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
     ('credits.html', 'Photo Credits | Tierra Firme', 'Credits and licenses for the photographs used on the Tierra Firme site.',
      credits_body, [], [('', 'Home'), ('credits.html', 'Photo credits')], None),
@@ -1813,7 +1813,7 @@ llms = f"""# Tierra Firme
 - Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46.0 billion in business deals so far, including US$3.84 billion in Colombia (Sovereo Desk, The Global Deal Record). Professor of economics and decision science for over 24 years. Bogotá.
 
 ## Event
-- [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
+- [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. Exclusive group. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
 
 ## Pages
 - [Home]({BASE}/): what Tierra Firme is, the three lanes, the framework and FAQ.
