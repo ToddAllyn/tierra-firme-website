@@ -608,6 +608,35 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .stats b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;color:#fff;line-height:1.1}
 .stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* breadcrumb / back bar on inner pages */
+.crumbbar{background:#fbf7ee;border-bottom:1px solid var(--border);font-size:.86rem}
+.crumbbar .container{display:flex;gap:10px 16px;align-items:center;padding-block:9px;flex-wrap:wrap}
+.crumbbar a.back{font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.crumbbar a.back:hover{border-color:var(--gold)}
+.crumbbar ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;color:var(--muted);min-width:0}
+.crumbbar li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+.crumbbar li+li::before{content:"/";margin-right:6px;color:var(--muted-2)}
+.crumbbar li a{color:var(--muted);text-decoration:none}.crumbbar li a:hover{color:var(--gold-d)}
+/* light, refined pages */
+.hero-light{background:linear-gradient(180deg,#fbf7ee 0%,#f3ead6 100%);color:var(--ink);padding:clamp(52px,7vw,92px) 0 clamp(44px,6vw,72px);border-bottom:1px solid var(--border)}
+.hero-light .eyebrow{color:var(--gold-d)}
+.hero-light h1{color:var(--ink);font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem)}
+.hero-light .lede{color:var(--muted)}
+.hero-light .split{align-items:end}
+.panel{display:flex;justify-content:flex-end;padding-left:22px}
+.panel a{display:block;margin-left:-22px;transition:transform .2s}
+.panel a:hover{transform:translateY(-4px)}
+.panel img{display:block;width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 18px 40px rgba(6,19,39,.18)}
+@media (max-width:860px){.panel{justify-content:flex-start}}
+.profiles{background:#f8f2e4}
+.mprofile{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:clamp(22px,3vw,40px);box-shadow:0 24px 60px rgba(6,19,39,.07);margin-bottom:24px;scroll-margin-top:110px}
+.mprofile.rev{grid-template-columns:minmax(0,1fr) 300px}.mprofile.rev .mp-photo{order:2}
+.mp-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.mprofile h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:500;margin:6px 0 4px}
+.mprofile .role{margin:0 0 16px}
+.mprofile .lane-link{margin-top:6px}
+@media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
+.pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 </style>
@@ -622,55 +651,56 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  </div>
 </header>
 <main>
+<nav class="crumbbar" aria-label="Breadcrumb"><div class="container"><a class="back" href="/">&larr; Back to Home</a><ol><li><a href="/">Home</a></li><li aria-current="page">Members</li></ol></div></nav>
 
-<section class="hero">
- <div class="container">
-  <span class="eyebrow">The members</span>
-  <h1>Three practitioners. Equal seats.</h1>
-  <p class="lede">Tierra Firme brings together commercial real estate, business and family capital, and research. Each member runs an independent practice and teaches his own lane, and each view checks the other two.</p>
+<section class="hero-light">
+ <div class="container split">
+  <div>
+   <span class="eyebrow">The members</span>
+   <h1>Three practitioners. Equal seats.</h1>
+   <p class="lede">Commercial real estate, business and family capital, and research. Each member runs an independent practice and teaches his own lane, and each view checks the other two.</p>
+  </div>
+  <div class="panel"><a href="#cre" title="Murphy D. Cheatham II"><img src="/img/members/murphy-cheatham-320.webp" alt="Murphy D. Cheatham II" width="320" height="320" loading="lazy" decoding="async"></a><a href="#capital" title="Shawn Christopher Leamon"><img src="/img/members/shawn-leamon-320.webp" alt="Shawn Christopher Leamon" width="320" height="320" loading="lazy" decoding="async"></a><a href="#research" title="Todd Allyn"><img src="/img/members/todd-allyn-320.webp" alt="Todd Allyn" width="320" height="320" loading="lazy" decoding="async"></a></div>
  </div>
 </section>
-<section>
+<section class="profiles">
  <div class="container">
-  <article class="member" id="cre">
+  <article class="mprofile" id="cre">
+   <div class="mp-photo"><img src="/img/members/murphy-cheatham-portrait.webp" alt="Murphy D. Cheatham II" width="512" height="640" loading="lazy" decoding="async"></div>
    <div>
-    <img class="portrait " style="--ps:160px" src="/img/members/murphy-cheatham-320.webp" width="160" height="160" alt="Murphy D. Cheatham II" loading="lazy" decoding="async">
     <span class="tag tag-cre">The Asset · Commercial real estate</span>
     <h2>Murphy D. Cheatham II</h2>
     <p class="role">Private Clients Director, CBRE · Global</p>
-   </div>
-   <div>
     <p>Murphy D. Cheatham II is Private Clients Director at CBRE, a global role in which he advises private families and high net worth individuals on commercial real estate. In more than two decades he has sourced and serviced debt and equity, optimized portfolios and managed properties, led strategic planning on more than $300 million in mixed-use projects in partnership with HDR, and served as Chief of Housing and Business Development for the City of Shreveport. He holds a B.S. in Accounting from Grambling State University and a Master of Real Estate Development from Arizona State University, and helped create the real estate partnership between the two schools. He hosts The Murphy Cheatham Podcast.</p>
-    <p class="note"><strong>His lane:</strong> The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing. <a href="/lanes/commercial-real-estate">Read more</a></p>
+    <p class="note"><strong>His lane:</strong> The asset: how property is valued, owned and managed, and what a buyer from abroad should understand before committing.</p>
+    <a class="lane-link" href="/lanes/commercial-real-estate">The commercial real estate lane &rarr;</a>
    </div>
   </article>
-  <article class="member" id="capital">
+  <article class="mprofile rev" id="capital">
+   <div class="mp-photo"><img src="/img/members/shawn-leamon-portrait.webp" alt="Shawn Christopher Leamon" width="512" height="640" loading="lazy" decoding="async"></div>
    <div>
-    <img class="portrait " style="--ps:160px" src="/img/members/shawn-leamon-320.webp" width="160" height="160" alt="Shawn Christopher Leamon" loading="lazy" decoding="async">
     <span class="tag tag-capital">The Capital · Business and family capital</span>
     <h2>Shawn Christopher Leamon</h2>
     <p class="role">Founder and Managing Partner, LaGrande Global · Founder and CEO, Cielo.Travel · Bogotá</p>
-   </div>
-   <div>
     <p>Shawn Christopher Leamon is founder and managing partner of LaGrande Global, the investment firm he started in 2013, which manages close to $100 million across private equity, startups, real estate and public markets, with a focus on Latin America. Before that he worked in investment banking and wealth management on portfolios of more than $1 billion. He also built and sold a marketing agency, and is founder and CEO of Cielo.Travel, one of Colombia's largest digital travel networks. Born in Dallas, he has lived in Bogotá since 2023. He holds degrees in Economics and Philosophy from Dartmouth College and an MBA from IE Business School.</p>
-    <p class="note"><strong>His lane:</strong> The capital: how individuals and families build, run and hold a business abroad, what it costs to enter and what it takes to operate. <a href="/lanes/business-and-family-capital">Read more</a></p>
+    <p class="note"><strong>His lane:</strong> The capital: how individuals and families build, run and hold a business abroad, what it costs to enter and what it takes to operate.</p>
+    <a class="lane-link" href="/lanes/business-and-family-capital">The business and family capital lane &rarr;</a>
    </div>
   </article>
-  <article class="member" id="research">
+  <article class="mprofile" id="research">
+   <div class="mp-photo"><img src="/img/members/todd-allyn-portrait.webp" alt="Todd Allyn" width="512" height="640" loading="lazy" decoding="async"></div>
    <div>
-    <img class="portrait " style="--ps:160px" src="/img/members/todd-allyn-320.webp" width="160" height="160" alt="Todd Allyn" loading="lazy" decoding="async">
     <span class="tag tag-research">The Country · Research</span>
     <h2>Todd Allyn</h2>
     <p class="role">Research lead · Founding Director, Sovereo Intelligence Research · Bogotá</p>
-   </div>
-   <div>
-    <p>Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, a research company that tracks how geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo turns those conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its <a href="https://www.sovereo.com/deal-record" rel="noopener">Global Deal Record</a> has tracked US$46 billion in verified business deals across Latin America and the Caribbean in 2026, including US$3.8 billion in Colombia, each from an official source. He has been a professor of economics and decision science for over 24 years, and has lived in Bogotá since 2020.</p>
-    <p class="note"><strong>His lane:</strong> The country: the economic, currency and political conditions that decide what you keep, and the signals that they are changing. <a href="/lanes/research">Read more</a></p>
+    <p>Todd Allyn leads Tierra Firme research. He is Founding Director of Sovereo Intelligence Research, a research company that tracks how geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo turns those conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its <a href="https://www.sovereo.com/deal-record" rel="noopener">Global Deal Record</a> has tracked US$46.0 billion in business deals so far across Latin America and the Caribbean, including US$3.84 billion in Colombia, each from an official source. He has been a professor of economics and decision science for over 24 years, and has lived in Bogotá since 2020.</p>
+    <p class="note"><strong>His lane:</strong> The country: the economic, currency and political conditions that decide what you keep, and the signals that they are changing.</p>
+    <a class="lane-link" href="/lanes/research">The research lane &rarr;</a>
    </div>
   </article>
  </div>
 </section>
-<section class="alt">
+<section>
  <div class="container grid-2">
   <div>
    <span class="eyebrow">Why three</span>
@@ -680,25 +710,30 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
   <div>
    <span class="eyebrow">The name</span>
    <h2>Why "Tierra Firme"</h2>
-   <p>Tierra firme means solid ground. It was also the historic Spanish name for the South American mainland, a fit for a consortium built between North America and Latin America. Every episode is also produced in Spanish under the Despacho line.</p>
+   <p>Tierra firme means solid ground. It was also the historic Spanish name for the South American mainland, a fit for a consortium built between North America and Latin America.</p>
   </div>
  </div>
 </section>
-<section>
- <div class="container">
-  <p class="note">Members' individual business activities are independent of one another and of Tierra Firme. Tierra Firme does not list property, arrange transactions or take fees on what anyone buys.</p>
- </div>
-</section>
-<section class="dark">
- <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
-  <h2>Get Investor Lab seats and new episodes first.</h2>
-  <div class="signup-wrap"><form class="signup" id="signup" novalidate data-ok="You&#x27;re on the waitlist. Investor Lab details, new episodes and research come to you first." data-source="members">
+<section class="alt">
+ <div class="container signup-band">
+  <div>
+   <span class="eyebrow">Investor Lab 2027 · Preliminary</span>
+   <h2>Meet them in Bogotá and Medellín.</h2>
+   <p class="lede">Get the information sheet and join the mailing list. Seats and new episodes go to the list first.</p>
+  </div>
+  <div><div class="signup-wrap"><form class="signup" id="signup" novalidate data-ok="You&#x27;re on the waitlist. Investor Lab details, new episodes and research come to you first." data-source="members">
    <label class="sr" for="tf-email">Email address</label>
    <input id="tf-email" type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
-   <button type="submit" class="btn btn-gold">Join the community</button>
+   <button type="submit" class="btn btn-gold">Send me the information sheet</button>
    <fieldset class="lanes-pick"><legend>What interests you? Optional</legend><label><input type="checkbox" name="lanes" value="cre"> Commercial real estate</label><label><input type="checkbox" name="lanes" value="capital"> Business and family capital</label><label><input type="checkbox" name="lanes" value="research"> Research</label></fieldset>
   </form>
-  <p class="status" id="signup-status" role="status" aria-live="polite"></p></div>
+  <p class="status" id="signup-status" role="status" aria-live="polite"></p></div></div>
+ </div>
+</section>
+<section style="padding-top:0">
+ <div class="container">
+  <p class="note">Members' individual business activities are independent of one another and of Tierra Firme. Tierra Firme does not list property, arrange transactions or take fees on what anyone buys.</p>
+  <div class="pagefoot"><a href="/" class="btn btn-ink">&larr; Back to home</a><a href="/colombia-2027" class="btn btn-gold">Investor Lab 2027 &rarr;</a></div>
  </div>
 </section>
 

@@ -255,12 +255,12 @@
   },
   {
    "@type": "VideoObject",
-   "name": "Tierra Firme trailer",
-   "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
-   "thumbnailUrl": "https://www.tierrafirme.lat/media/trailer-poster.webp",
-   "contentUrl": "https://www.tierrafirme.lat/media/tierra-firme-trailer.mp4",
-   "uploadDate": "2026-10-23",
-   "duration": "PT1M3S",
+   "name": "Tierra Firme: Solid Ground",
+   "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
+   "thumbnailUrl": "https://www.tierrafirme.lat/media/film-poster.webp",
+   "contentUrl": "https://www.tierrafirme.lat/media/tierra-firme-film.mp4",
+   "uploadDate": "2026-11-21",
+   "duration": "PT3M37S",
    "inLanguage": "en",
    "publisher": {
     "@id": "https://www.tierrafirme.lat/#org"
@@ -623,6 +623,35 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .stats b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;color:#fff;line-height:1.1}
 .stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* breadcrumb / back bar on inner pages */
+.crumbbar{background:#fbf7ee;border-bottom:1px solid var(--border);font-size:.86rem}
+.crumbbar .container{display:flex;gap:10px 16px;align-items:center;padding-block:9px;flex-wrap:wrap}
+.crumbbar a.back{font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.crumbbar a.back:hover{border-color:var(--gold)}
+.crumbbar ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;color:var(--muted);min-width:0}
+.crumbbar li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+.crumbbar li+li::before{content:"/";margin-right:6px;color:var(--muted-2)}
+.crumbbar li a{color:var(--muted);text-decoration:none}.crumbbar li a:hover{color:var(--gold-d)}
+/* light, refined pages */
+.hero-light{background:linear-gradient(180deg,#fbf7ee 0%,#f3ead6 100%);color:var(--ink);padding:clamp(52px,7vw,92px) 0 clamp(44px,6vw,72px);border-bottom:1px solid var(--border)}
+.hero-light .eyebrow{color:var(--gold-d)}
+.hero-light h1{color:var(--ink);font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem)}
+.hero-light .lede{color:var(--muted)}
+.hero-light .split{align-items:end}
+.panel{display:flex;justify-content:flex-end;padding-left:22px}
+.panel a{display:block;margin-left:-22px;transition:transform .2s}
+.panel a:hover{transform:translateY(-4px)}
+.panel img{display:block;width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 18px 40px rgba(6,19,39,.18)}
+@media (max-width:860px){.panel{justify-content:flex-start}}
+.profiles{background:#f8f2e4}
+.mprofile{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:clamp(22px,3vw,40px);box-shadow:0 24px 60px rgba(6,19,39,.07);margin-bottom:24px;scroll-margin-top:110px}
+.mprofile.rev{grid-template-columns:minmax(0,1fr) 300px}.mprofile.rev .mp-photo{order:2}
+.mp-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.mprofile h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:500;margin:6px 0 4px}
+.mprofile .role{margin:0 0 16px}
+.mprofile .lane-link{margin-top:6px}
+@media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
+.pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 
@@ -648,6 +677,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  </div>
 </header>
 <main>
+
 
 <section class="photo-hero"><picture><img class="ph-img" src="/img/bogota/bogota-twilight-from-monserrate-960.webp" srcset="/img/bogota/bogota-twilight-from-monserrate-960.webp 960w, /img/bogota/bogota-twilight-from-monserrate-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="Bogotá at twilight, seen from Monserrate, city lights spreading toward the savanna" fetchpriority="high"></picture><div class="container">
   <div class="hero-split">
@@ -676,8 +706,8 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
    <a href="/colombia-2027#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   <div class="cities"><a class="city lift" href="/colombia-2027#itinerary"><img class="" src="/img/bogota/downtown-from-torre-colpatria-960.webp" srcset="/img/bogota/downtown-from-torre-colpatria-960.webp 960w, /img/bogota/downtown-from-torre-colpatria-1920.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1440" alt="Downtown Bogotá high-rises seen from the Torre Colpatria observation deck" loading="lazy" decoding="async"><span class="c-credit">Photo: Peter Chovanec, CC BY 2.0</span><div class="c-body"><span class="c-days">3 days · 8 to 10 March, morning</span><h3>Bogotá</h3><p>The capital, where the rules are made: the central bank, the tax authority, notaries and ministries. Briefings on the country, property and business.</p></div></a><a class="city lift" href="/colombia-2027#itinerary"><img class="" src="/img/bogota/medellin-towers-960.webp" srcset="/img/bogota/medellin-towers-960.webp 960w, /img/bogota/medellin-towers-1920.webp 1920w" sizes="(max-width:760px) 100vw, 50vw" width="1920" height="1280" alt="Residential and office towers of Medellín climbing the green slopes of the Aburrá Valley" loading="lazy" decoding="async"><span class="c-credit">Photo: Mussi Katz, CC0 1.0</span><div class="c-body"><span class="c-days">2 days · 10 March evening to 12 March</span><h3>Medellín</h3><p>Colombia's second-largest city. Arrive Wednesday evening, then verified field visits and the decision framework before you fly home.</p></div></a></div>
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>
-  <p class="trailer-fine" style="margin-top:10px">US$3.8 billion across 10 verified, priced business deals in Colombia in 2026, including property purchases, as of 20 November 2026. Source: <a href="https://www.sovereo.com/deal-record/colombia" rel="noopener">The Global Deal Record</a>.</p>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Deals tracked across Latin America and the Caribbean</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>Of that, in Colombia</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far across Latin America and the Caribbean, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
 
@@ -749,19 +779,19 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 <section class="trailer" id="trailer">
  <div class="container">
   <div class="section-head" style="margin-bottom:28px">
-   <span class="eyebrow">Official trailer</span>
-   <h2>See the gap before the market does.</h2>
+   <span class="eyebrow">The film · 3 minutes</span>
+   <h2>Solid ground.</h2>
   </div>
   <div class="player" id="player">
-   <video id="tf-trailer" muted playsinline preload="auto" poster="/media/trailer-poster.webp" width="1920" height="1080" aria-label="Tierra Firme trailer">
-    <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
+   <video id="tf-trailer" muted playsinline preload="metadata" poster="/media/film-poster.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
+    <source src="/media/tierra-firme-film.mp4" type="video/mp4">
    </video>
    <button type="button" class="sound" id="tf-sound" aria-label="Turn sound on">&#128266;&nbsp; Sound on</button>
    <button type="button" class="replay" id="tf-replay" aria-label="Replay trailer" hidden>&#8635;&nbsp; Replay</button>
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">1 minute. Footage from Bogotá, Cartagena, Medellín, Lima, Cusco, Montevideo, Santiago, Buenos Aires, Rio de Janeiro, São Paulo, Mexico City, Antigua, Panama City, Santo Domingo and Dallas.</p>
+  <p class="trailer-fine">3 minutes 37 seconds. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="/credits" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 
