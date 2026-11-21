@@ -571,6 +571,33 @@ footer{border-top:3px solid var(--gold)}
 .player .sound{font-size:17px;padding:14px 24px;animation:soundPulse 2.2s ease-in-out infinite}
 @keyframes soundPulse{0%,100%{box-shadow:0 6px 24px rgba(0,0,0,.45),0 0 0 0 rgba(212,161,58,.65)}50%{box-shadow:0 6px 24px rgba(0,0,0,.45),0 0 0 12px rgba(212,161,58,0)}}
 @media (prefers-reduced-motion:reduce){.player .sound{animation:none}}
+
+/* ---------- invitation home ---------- */
+.getlist{list-style:none;margin:0 0 30px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--gold)}
+.getlist li{padding:20px 22px 6px 0;border-right:1px solid var(--border);margin-right:22px}.getlist li:last-child{border-right:0;margin-right:0}
+.getlist .k{display:block;font:600 .7rem Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d)}
+.getlist b{display:block;font:500 1.3rem/1.2 Fraunces,serif;color:var(--ink);margin:6px 0}
+.getlist p{margin:0;font-size:.95rem;color:var(--muted)}
+@media (max-width:900px){.getlist{grid-template-columns:repeat(2,minmax(0,1fr))}.getlist li:nth-child(2){border-right:0;margin-right:0}}
+@media (max-width:560px){.getlist{grid-template-columns:1fr}.getlist li{border-right:0;margin-right:0;border-bottom:1px solid var(--border);padding-bottom:16px}}
+.pstrip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pstrip figure{margin:0;position:relative;overflow:hidden;border-radius:6px;aspect-ratio:4/5;background:var(--navy)}
+.pstrip img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s}.pstrip figure:hover img{transform:scale(1.05)}
+.pstrip figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:24px 12px 10px;background:linear-gradient(180deg,transparent,rgba(7,20,40,.85));color:#fff;font:500 .8rem Inter,sans-serif}
+@media (max-width:760px){.pstrip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hosts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.host{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--silver);border-radius:6px;padding:18px}
+.host b{display:block;font:500 1.15rem Fraunces,serif;color:var(--ink)}
+.host span{display:block;font:600 .68rem Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin:2px 0 4px}
+.host small{display:block;font-size:.85rem;color:var(--muted);line-height:1.4}
+@media (max-width:900px){.hosts{grid-template-columns:1fr}}
+.contact-line{margin-top:16px;color:rgba(255,255,255,.85)}.contact-line a{color:var(--gold-l)}
+.invite-faq .faq{max-width:820px}
+.invite-show{padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
+.show-band{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:24px 48px;align-items:center;border-top:2px solid var(--gold);border-bottom:1px solid var(--silver);padding-top:28px;padding-bottom:28px}
+.show-band h2{margin-bottom:8px}.show-cta{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+@media (max-width:860px){.show-band{grid-template-columns:1fr}}
+.more-links{margin-top:26px;font-size:.92rem;color:var(--muted)}.more-links a{color:var(--em-2)}
 """
 
 NAV = [('index.html', 'Home'), ('colombia-2027.html', 'Colombia 2027'), ('members.html', 'Members'), ('the-show.html', 'The Show'), ('questions.html', 'Questions')]
@@ -1146,21 +1173,100 @@ def why_html(alt=False):
 </section>"""
 
 # ---------- index ----------
+CONTACT_EMAIL = 'support@sovereo.com'
+
+HOME_FAQ = [
+    ("What is Tierra Firme?",
+     "A consortium of three practitioners in commercial real estate, business and family capital, and research. It produces a free show, sourced research and seminars for people placing capital across borders, starting with Latin America."),
+    ("When and where is it?",
+     "Preliminary dates are 7 to 12 March 2027. Arrive Sunday in Bogotá; Medellín from Wednesday evening; depart Friday afternoon or Saturday morning, depending on flights."),
+    ("How much does it cost?",
+     "Pricing is to be announced. People on the list receive dates and pricing first, before anything is published."),
+    ("Is anything sold during the week?",
+     "No. Tierra Firme does not list property, arrange transactions or take fees on what anyone buys. The program is educational, not investment, tax or legal advice."),
+    ("Can I ask a question first?",
+     f"Yes. Write to {CONTACT_EMAIL} and one of the hosts will reply."),
+]
+
+GET_ITEMS = [
+    ('Mornings', 'Boardroom briefings', 'The country, property, business and the decision, with Colombian counsel among the guest speakers.'),
+    ('Afternoons', 'Verified field visits', 'Districts, operators and sites in both cities that the hosts have walked themselves. Places, not units for sale.'),
+    ('Evenings', 'The culture', 'Dinners and evenings in Bogotá and Medellín with the hosts and a small group asking the same questions you are.'),
+    ('You leave with', 'A framework and a briefing', 'A decision framework, a written country briefing and every presentation from the week.'),
+]
+
+def hosts_row():
+    out = []
+    for m in MEMBERS:
+        out.append(f'<div class="host">{avatar(m, 84)}<div><b>{m["name"]}</b><span>{m["seat"]} · {m["area"]}</span>'
+                   f'<small>{html.escape(m["role"].split(" · ")[0] if m["key"] != "research" else "Founding Director, Sovereo Intelligence Research")}</small></div></div>')
+    return '<div class="hosts">' + ''.join(out) + '</div>'
+
+def photo_strip(keys):
+    return '<div class="pstrip">' + ''.join(
+        f'<figure>{img(k, "(max-width:760px) 50vw, 25vw")}<figcaption>{html.escape(PHOTOS[k]["title"])}</figcaption></figure>' for k in keys) + '</div>'
+
 index_body = f"""
 {photo_hero('twilight', f'''
   <div class="hero-split">
    <div>
-    <span class="kicker">Tierra Firme<span class="rule"></span>Any currency · Solid ground</span>
-    <h1>Read the country <em>before</em> you buy into it.</h1>
-    <p class="lede">A consortium of three practitioners in commercial real estate, business and family capital, and research. A private program in Colombia, a free show and sourced answers for people placing capital across borders.</p>
-    <div class="btn-row" style="margin-top:26px"><a href="colombia-2027.html#invite" class="btn btn-gold">Get the information sheet</a><a href="colombia-2027.html" class="btn btn-ghost">Investor Lab 2027</a><a href="#trailer" class="btn btn-ghost">&#9654;&nbsp; Watch the film</a></div>
-    <p class="hero-fine">{DISCLAIMER} No listings, no sales, no fees on what you buy.</p>
+    <span class="kicker">Tierra Firme<span class="rule"></span>Investor Lab 2027 · By invitation · Preliminary</span>
+    <h1>Six days in Bogotá and Medellín.</h1>
+    <p class="lede">March 2027. A private seminar for an exclusive group of people placing capital across borders, hosted by three practitioners who have done the work on the ground.</p>
+    <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get first access</a><a href="#trailer" class="btn btn-ghost">&#9654;&nbsp; Watch the film</a></div>
+    <p class="hero-fine">{DISCLAIMER}</p>
    </div>
-   {itin_card()}
+   {itin_card('#invite')}
   </div>
 ''', video='/media/hero-loop')}
 
-{ticker()}
+<section class="invite-get">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">What you get</span><h2>Brief. Walk. Gather.</h2></div>
+  <ul class="getlist">{''.join(f'<li><span class="k">{k}</span><b>{t}</b><p>{d}</p></li>' for k, t, d in GET_ITEMS)}</ul>
+  {photo_strip(['towers', 'metro_night', 'colon', 'botero'])}
+ </div>
+</section>
+
+<section class="alt invite-hosts">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">What Tierra Firme is</span><h2>Three practitioners at one table.</h2>
+   <p class="lede">Tierra Firme is a consortium of three practitioners in commercial real estate, business and family capital, and research. It produces a free show, sourced research and private seminars for people placing capital across borders, starting with Latin America. Investor Lab 2027 is its first program. Each host checks the other two.</p></div>
+  {hosts_row()}
+  <p class="note" style="margin-top:22px">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to the list.</p>
+ </div>
+</section>
+
+<section class="invite-show">
+ <div class="container show-band">
+  <div>
+   <span class="eyebrow">The Show · Season One · Free</span>
+   <h2>From the sidelines to a balance sheet abroad.</h2>
+   <p class="lede">Twelve biweekly episodes from the thesis, to the math, to a full case study. Free, in English and Spanish, on audio and video. The three hosts of Investor Lab 2027, one lane each.</p>
+  </div>
+  <div class="show-cta">{avatars(44)}<a href="the-show.html" class="btn btn-ink">See the episodes &rarr;</a></div>
+ </div>
+</section>
+
+<section class="band-green" id="invite">
+ <div class="container signup-band">
+  <div>
+   <span class="eyebrow">Investor Lab 2027 · Bogotá and Medellín</span>
+   <h2>Get first access to dates and pricing.</h2>
+   <p class="lede">Pricing is to be announced. People on the list hear first, before anything is published, along with the free Tierra Firme Newsletter.</p>
+   <p class="contact-line">Questions? Write to <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></p>
+  </div>
+  <div>{signup_block(btn='Get first access', source='home-invite', ok="You're on the list. Dates and pricing for Investor Lab 2027 come to you first.")}</div>
+ </div>
+</section>
+
+<section class="invite-faq">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">Before you ask</span><h2>Quick answers.</h2></div>
+  {faq_html(HOME_FAQ)}
+  <p class="more-links">More: <a href="colombia-2027.html">Full preliminary itinerary</a> · <a href="members.html">The hosts</a> · <a href="questions.html">Sourced answers on Colombia</a> · <a href="newsletter.html">The newsletter</a></p>
+ </div>
+</section>
 
 <section class="trailer" id="trailer">
  <div class="container">
@@ -1178,71 +1284,6 @@ index_body = f"""
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
   <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
- </div>
-</section>
-
-<section class="ink">
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Investor Lab 2027 · Preliminary</span><h2 style="margin:0">Bogotá, then Medellín.</h2></div>
-   <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
-  </div>
-  {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>Private</b><span>Exclusive group</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
-  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
- </div>
-</section>
-
-<section class="frames-sec" id="frames">
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Colombia in frames</span><h2 style="margin:0">Two cities, one journey.</h2></div>
-   <p class="lede" style="margin:0;max-width:46ch">Bogotá, where the rules are made, and Medellín, where the valley meets the mountains. Explore the places on the route.</p>
-  </div>
-  {frames_html()}
- </div>
-</section>
-
-<section>
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Three members · Three lanes</span><h2 style="margin:0">Practitioners, not promoters.</h2></div>
-   <a href="members.html" class="btn btn-ink">Meet the members</a>
-  </div>
-  {seat_cards()}
- </div>
-</section>
-
-{why_html(alt=True)}
-
-
-<section>
- <div class="container">
-  <div class="section-head" style="max-width:none;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
-   <div><span class="eyebrow">Questions investors ask</span><h2 style="margin:0">Sourced answers before you commit.</h2></div>
-   <a href="questions.html" class="btn btn-ink">All questions</a>
-  </div>
-  <div class="qlist">QCARDS</div>
- </div>
-</section>
-
-{quote_band('twilight', 'Know the ground <em>before</em> you stand on it.', 'Bogotá and Medellín · March 2027 · Preliminary', '<a href="colombia-2027.html" class="btn btn-gold reveal" style="margin-top:22px">See the Investor Lab</a>')}
-
-<section class="alt">
- <div class="container">
-  <div class="section-head"><span class="eyebrow">Straight answers</span><h2>Questions people ask first.</h2></div>
-  <div class="faq cols">{''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in FAQ)}</div>
- </div>
-</section>
-
-<section class="band-green">
- <div class="container signup-band">
-  <div>
-   <span class="eyebrow">Investor Lab 2027 · Episodes · Research</span>
-   <h2>Know the ground before you stand on it.</h2>
-   <p class="lede">Get the Investor Lab information sheet and the free Tierra Firme Newsletter. Subscribers hear about seats, new episodes and research first.</p>
-  </div>
-  <div>{signup_block(btn='Send me the information sheet', source='home')}</div>
  </div>
 </section>
 """
@@ -1839,7 +1880,7 @@ credits_body = f"""
 PAGES = [
     ('index.html', 'Tierra Firme | Real Estate, Business and Research for Capital Abroad',
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
-     index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
+     index_body, [faq_schema(HOME_FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
         "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
         "thumbnailUrl": BASE + "/media/film-poster-v6.webp", "contentUrl": BASE + "/media/tierra-firme-film-v6.mp4",
         "uploadDate": "2026-11-21", "duration": "PT3M38S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
