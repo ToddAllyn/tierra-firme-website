@@ -58,11 +58,11 @@ export async function onRequestPost({ request, env }) {
         body: JSON.stringify({
           from: env.NEWSLETTER_FROM,
           to: email,
-          subject: "You're on the Tierra Firme list",
+          subject: "Welcome to the Tierra Firme Newsletter",
           headers: { 'List-Unsubscribe': `<${unsub}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
           html: `<div style="font-family:Georgia,serif;max-width:560px;color:#13212f">
-            <h2 style="font-weight:600">Welcome to Tierra Firme.</h2>
-            <p>You will hear from us when a new episode goes live, when new research is out, and before seminar dates open to anyone else.</p>
+            <h2 style="font-weight:600">Welcome to the Tierra Firme Newsletter.</h2>
+            <p>You will receive short, sourced briefings on Colombia and Latin America, and every Investor Lab 2027 update before anyone else. It is free.</p>
             <p>Tierra Firme is educational content. Nothing we send is investment, tax or legal advice.</p>
             <p style="font-size:13px;color:#56616e">Don't want these? <a href="${unsub}">Unsubscribe in one click</a>.<br>${env.MAILING_ADDRESS || ''}</p>
           </div>`,
