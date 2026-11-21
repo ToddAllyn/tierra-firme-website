@@ -1189,7 +1189,7 @@ HOME_FAQ = [
 ]
 
 GET_ITEMS = [
-    ('Mornings', 'Boardroom briefings', 'The country, property, business and the decision, with Colombian counsel among the guest speakers.'),
+    ('Mornings', 'Boardroom briefings', 'The country, property, business and the decision, with Colombian practitioners on hand to answer questions and share local know-how.'),
     ('Afternoons', 'Verified field visits', 'Districts, operators and sites in both cities that the hosts have walked themselves. Places, not units for sale.'),
     ('Evenings', 'The culture', 'Dinners and evenings in Bogotá and Medellín with the hosts and a small group asking the same questions you are.'),
     ('You leave with', 'A framework and a briefing', 'A decision framework, a written country briefing and every presentation from the week.'),
@@ -1233,7 +1233,7 @@ index_body = f"""
   <div class="section-head"><span class="eyebrow">What Tierra Firme is</span><h2>Three practitioners at one table.</h2>
    <p class="lede">Tierra Firme is a consortium of three practitioners in commercial real estate, business and family capital, and research. It produces a free show, sourced research and private seminars for people placing capital across borders, starting with Latin America. Investor Lab 2027 is its first program. Each host checks the other two.</p></div>
   {hosts_row()}
-  <p class="note" style="margin-top:22px">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to the list.</p>
+  <p class="note" style="margin-top:22px">Guest speakers, including Colombian practitioners who work every day in property, tax and foreign investment, will be announced to the list.</p>
  </div>
 </section>
 
@@ -1276,14 +1276,14 @@ index_body = f"""
   </div>
   <div class="player" id="player">
    <video id="tf-trailer" playsinline preload="none" data-poster="/media/film-poster-v6.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
-    <source src="/media/tierra-firme-film-v6.mp4" type="video/mp4">
+    <source src="/media/tierra-firme-film-v7.mp4" type="video/mp4">
    </video>
-   <button type="button" class="play-big" id="tf-sound" aria-label="Play the film with sound"><span class="pb-icon" aria-hidden="true"></span><span class="pb-txt"><b>Play the film</b><small>3:38 · Sound on · Captioned</small></span></button>
+   <button type="button" class="play-big" id="tf-sound" aria-label="Play the film with sound"><span class="pb-icon" aria-hidden="true"></span><span class="pb-txt"><b>Play the film</b><small>3:41 · Sound on · Captioned</small></span></button>
    <button type="button" class="replay" id="tf-replay" aria-label="Replay trailer" hidden>&#8635;&nbsp; Replay</button>
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
+  <p class="trailer-fine">3 minutes 41 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 """
@@ -1680,7 +1680,7 @@ event_body = f"""
 
 <section class="ink" id="faculty">
  <div class="container">
-  <div class="section-head"><span class="eyebrow">Hosts</span><h2>Hosted by Tierra Firme.</h2><p class="lede">Guest speakers, including Colombian counsel on property, tax and foreign investment, will be announced to newsletter subscribers.</p></div>
+  <div class="section-head"><span class="eyebrow">Hosts</span><h2>Hosted by Tierra Firme.</h2><p class="lede">Guest speakers, including Colombian practitioners who work every day in property, tax and foreign investment, will be announced to newsletter subscribers.</p></div>
   {faculty_html()}
  </div>
 </section>
@@ -1882,8 +1882,8 @@ PAGES = [
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
      index_body, [faq_schema(HOME_FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
         "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
-        "thumbnailUrl": BASE + "/media/film-poster-v6.webp", "contentUrl": BASE + "/media/tierra-firme-film-v6.mp4",
-        "uploadDate": "2026-11-21", "duration": "PT3M38S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
+        "thumbnailUrl": BASE + "/media/film-poster-v6.webp", "contentUrl": BASE + "/media/tierra-firme-film-v7.mp4",
+        "uploadDate": "2026-11-21", "duration": "PT3M41S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
      'Preliminary: six days in Bogotá and Medellín, 7 to 12 March 2027, for an exclusive group of investors. Property, business capital and country research.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
@@ -2080,7 +2080,8 @@ llms = f"""# Tierra Firme
 """
 open(os.path.join(OUT, 'llms.txt'), 'w').write(llms)
 
-redirects = """/media/tierra-firme-film.mp4 /media/tierra-firme-film-v6.mp4 302
+redirects = """/media/tierra-firme-film.mp4 /media/tierra-firme-film-v7.mp4 302
+/media/tierra-firme-film-v6.mp4 /media/tierra-firme-film-v7.mp4 302
 /the-seats.html /members 301
 /the-seats /members 301
 /get-the-read.html /newsletter 301
