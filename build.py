@@ -483,7 +483,7 @@ def cities_html():
 
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
-            '<div><b>30 seats</b><span>An intimate room</span></div><div><b>0</b><span>Properties for sale</span></div></div>')
+            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -804,7 +804,8 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b>0</b><span>Properties for sale</span></div></div>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$3.8 billion across 10 verified, priced business deals in Colombia in 2026, including property purchases, as of 20 November 2026. Source: <a href="https://www.sovereo.com/deal-record/colombia" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
 
