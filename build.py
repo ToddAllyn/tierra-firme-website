@@ -1002,7 +1002,7 @@ index_body = f"""
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">3 minutes 36 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
+  <p class="trailer-fine">3 minutes 38 seconds. Captioned. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 
@@ -1632,7 +1632,7 @@ PAGES = [
      index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
         "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
         "thumbnailUrl": BASE + "/media/film-poster.webp", "contentUrl": BASE + "/media/tierra-firme-film.mp4",
-        "uploadDate": "2026-11-21", "duration": "PT3M36S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
+        "uploadDate": "2026-11-21", "duration": "PT3M38S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
      'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for an exclusive group of investors. Commercial real estate, business and family capital, and country research. Education, not advice.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
