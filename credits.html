@@ -525,6 +525,35 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .stats b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;color:#fff;line-height:1.1}
 .stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* breadcrumb / back bar on inner pages */
+.crumbbar{background:#fbf7ee;border-bottom:1px solid var(--border);font-size:.86rem}
+.crumbbar .container{display:flex;gap:10px 16px;align-items:center;padding-block:9px;flex-wrap:wrap}
+.crumbbar a.back{font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.crumbbar a.back:hover{border-color:var(--gold)}
+.crumbbar ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;color:var(--muted);min-width:0}
+.crumbbar li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+.crumbbar li+li::before{content:"/";margin-right:6px;color:var(--muted-2)}
+.crumbbar li a{color:var(--muted);text-decoration:none}.crumbbar li a:hover{color:var(--gold-d)}
+/* light, refined pages */
+.hero-light{background:linear-gradient(180deg,#fbf7ee 0%,#f3ead6 100%);color:var(--ink);padding:clamp(52px,7vw,92px) 0 clamp(44px,6vw,72px);border-bottom:1px solid var(--border)}
+.hero-light .eyebrow{color:var(--gold-d)}
+.hero-light h1{color:var(--ink);font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem)}
+.hero-light .lede{color:var(--muted)}
+.hero-light .split{align-items:end}
+.panel{display:flex;justify-content:flex-end;padding-left:22px}
+.panel a{display:block;margin-left:-22px;transition:transform .2s}
+.panel a:hover{transform:translateY(-4px)}
+.panel img{display:block;width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 18px 40px rgba(6,19,39,.18)}
+@media (max-width:860px){.panel{justify-content:flex-start}}
+.profiles{background:#f8f2e4}
+.mprofile{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:clamp(22px,3vw,40px);box-shadow:0 24px 60px rgba(6,19,39,.07);margin-bottom:24px;scroll-margin-top:110px}
+.mprofile.rev{grid-template-columns:minmax(0,1fr) 300px}.mprofile.rev .mp-photo{order:2}
+.mp-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.mprofile h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:500;margin:6px 0 4px}
+.mprofile .role{margin:0 0 16px}
+.mprofile .lane-link{margin-top:6px}
+@media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
+.pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 </style>
@@ -539,6 +568,7 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  </div>
 </header>
 <main>
+<nav class="crumbbar" aria-label="Breadcrumb"><div class="container"><a class="back" href="/">&larr; Back to Home</a><ol><li><a href="/">Home</a></li><li aria-current="page">Photo credits</li></ol></div></nav>
 
 <section class="hero">
  <div class="container">
@@ -551,6 +581,9 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
  <div class="container">
   <ul class="checks"><li><strong>Bogotá at twilight from Monserrate</strong>. Danielcgold, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Dan-gold-bogota-city-night-montserrate.jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li><li><strong>Central Bogotá towers below Monserrate</strong>. Jos Cuevasc, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Monserrate_y_centro_de_Bogota.jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li><li><strong>Downtown Bogotá from the Torre Colpatria observation deck</strong>. Peter Chovanec, <a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Bogota_z_Mirador_Torre_Colpatria_(34553345656).jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li><li><strong>Torre Colpatria at night</strong>. ProtoplasmaKid, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_Bogot%C3%A1_-_15_-_Torre_Colpatria.jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li><li><strong>Medellín</strong>. Mussi Katz, <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Colombia_Medellin.jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li><li><strong>Bogotá, general view</strong>. Raul Cuellar, <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener">CC0 1.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Bogota_general_view_2015.jpg" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li></ul>
   <p class="note" style="margin-top:28px">Adapted versions of CC BY-SA photographs are shared under the same license. Trailer footage credits are listed with the trailer wherever it is posted.</p>
+  <h2 style="margin-top:40px">The film: Solid Ground</h2>
+  <p>Narration and music produced with vidIQ. Stock footage from Pexels:</p>
+  <ul class="checks"><li><strong>Andes mountains, Colombia</strong>. Juan Castelblanco, <a href="https://www.pexels.com/video/drone-video-of-the-andes-mountains-in-colombia-15747549/" rel="noopener">Pexels</a>.</li><li><strong>Globe</strong>. Martina Tomšič, <a href="https://www.pexels.com/video/close-up-view-of-a-globe-4696463/" rel="noopener">Pexels</a>.</li><li><strong>Counting money</strong>. Saif Abdulraheem, <a href="https://www.pexels.com/video/person-counting-money-4275306/" rel="noopener">Pexels</a>.</li><li><strong>Clouds from an airplane window</strong>. Alexandr Shorban, <a href="https://www.pexels.com/video/clouds-seen-from-airplane-window-10691579/" rel="noopener">Pexels</a>.</li><li><strong>Bogotá aerials and the Colombian flag</strong>. Juan David Palacio Mesa, <a href="https://www.pexels.com/video/bogota-vista-aerea-19593286/" rel="noopener">Pexels</a>.</li><li><strong>Conference room</strong>. Werner Pfennig, <a href="https://www.pexels.com/video/man-speaking-in-conference-room-6951601/" rel="noopener">Pexels</a>.</li><li><strong>Modern apartments, aerial</strong>. Yunus Terk, <a href="https://www.pexels.com/video/stunning-aerial-view-of-modern-luxury-apartments-38235767/" rel="noopener">Pexels</a>.</li><li><strong>Business owner in a café</strong>. Ron Lach, <a href="https://www.pexels.com/video/close-up-video-of-a-woman-holding-a-clipboard-8441634/" rel="noopener">Pexels</a>.</li><li><strong>Financial analyst</strong>. Jakub Zerdzicki, <a href="https://www.pexels.com/video/financial-analyst-calculating-market-trends-38597877/" rel="noopener">Pexels</a>.</li><li><strong>Airplane wing in flight</strong>. Camilo Carrò, <a href="https://www.pexels.com/video/airplane-wing-while-flying-in-the-sky-6472910/" rel="noopener">Pexels</a>.</li><li><strong>Signing a document</strong>. Thirdman, <a href="https://www.pexels.com/video/close-up-video-of-a-person-signing-a-document-8471105/" rel="noopener">Pexels</a>.</li><li><strong>Plaza de Bolívar and Bogotá walkways</strong>. Julián Armando Santos, <a href="https://www.pexels.com/video/historic-plaza-bolivar-in-bogota-colombia-37151628/" rel="noopener">Pexels</a>.</li><li><strong>Modern high-rise buildings</strong>. Nothing Ahead, <a href="https://www.pexels.com/video/modern-high-rise-buildings-exterior-view-35082942/" rel="noopener">Pexels</a>.</li><li><strong>Notebook</strong>. Polina Kovaleva, <a href="https://www.pexels.com/video/closeup-video-of-writings-on-a-notebook-5546876/" rel="noopener">Pexels</a>.</li><li><strong>Bogotá at twilight and city aerials</strong>. Juan Camilo Trujillo Botero, <a href="https://www.pexels.com/video/aerial-view-of-bogota-at-twilight-40369496/" rel="noopener">Pexels</a>.</li><li><strong>Medellín skyline at dusk</strong>. ME UP, <a href="https://www.pexels.com/video/aerial-view-of-medellin-skyline-at-dusk-40130401/" rel="noopener">Pexels</a>.</li><li><strong>Business meeting</strong>. Vlada Karpovich, <a href="https://www.pexels.com/video/people-having-business-meeting-7552419/" rel="noopener">Pexels</a>.</li><li><strong>Medellín with mountains</strong>. Federico Molina, <a href="https://www.pexels.com/video/aerial-view-of-urban-landscape-with-mountains-40437627/" rel="noopener">Pexels</a>.</li><li><strong>Salsa, Cali</strong>. E CG, <a href="https://www.pexels.com/video/salsa-colorful-shoes-19851286/" rel="noopener">Pexels</a>.</li><li><strong>Evening glassware</strong>. Naresh Babu, <a href="https://www.pexels.com/video/elegant-nighttime-glassware-with-ambient-lighting-37482114/" rel="noopener">Pexels</a>.</li><li><strong>Professionals reviewing documents</strong>. Mikhail Nilov, <a href="https://www.pexels.com/video/professionals-looking-carefully-on-documents-8847933/" rel="noopener">Pexels</a>.</li><li><strong>City and mountains at sunset</strong>. Alex Moliski, <a href="https://www.pexels.com/video/an-aerial-view-of-a-city-and-mountains-at-sunset-26775139/" rel="noopener">Pexels</a>.</li></ul>
  </div>
 </section>
 

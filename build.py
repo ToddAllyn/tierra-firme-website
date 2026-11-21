@@ -361,6 +361,35 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .stats b{display:block;font-family:'Fraunces',serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;color:#fff;line-height:1.1}
 .stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+/* breadcrumb / back bar on inner pages */
+.crumbbar{background:#fbf7ee;border-bottom:1px solid var(--border);font-size:.86rem}
+.crumbbar .container{display:flex;gap:10px 16px;align-items:center;padding-block:9px;flex-wrap:wrap}
+.crumbbar a.back{font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.crumbbar a.back:hover{border-color:var(--gold)}
+.crumbbar ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;color:var(--muted);min-width:0}
+.crumbbar li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60vw}
+.crumbbar li+li::before{content:"/";margin-right:6px;color:var(--muted-2)}
+.crumbbar li a{color:var(--muted);text-decoration:none}.crumbbar li a:hover{color:var(--gold-d)}
+/* light, refined pages */
+.hero-light{background:linear-gradient(180deg,#fbf7ee 0%,#f3ead6 100%);color:var(--ink);padding:clamp(52px,7vw,92px) 0 clamp(44px,6vw,72px);border-bottom:1px solid var(--border)}
+.hero-light .eyebrow{color:var(--gold-d)}
+.hero-light h1{color:var(--ink);font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem)}
+.hero-light .lede{color:var(--muted)}
+.hero-light .split{align-items:end}
+.panel{display:flex;justify-content:flex-end;padding-left:22px}
+.panel a{display:block;margin-left:-22px;transition:transform .2s}
+.panel a:hover{transform:translateY(-4px)}
+.panel img{display:block;width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 18px 40px rgba(6,19,39,.18)}
+@media (max-width:860px){.panel{justify-content:flex-start}}
+.profiles{background:#f8f2e4}
+.mprofile{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);padding:clamp(22px,3vw,40px);box-shadow:0 24px 60px rgba(6,19,39,.07);margin-bottom:24px;scroll-margin-top:110px}
+.mprofile.rev{grid-template-columns:minmax(0,1fr) 300px}.mprofile.rev .mp-photo{order:2}
+.mp-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.mprofile h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:500;margin:6px 0 4px}
+.mprofile .role{margin:0 0 16px}
+.mprofile .lane-link{margin-top:6px}
+@media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
+.pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
@@ -483,7 +512,7 @@ def cities_html():
 
 def event_strip():
     return ('<div class="event-strip"><div><b>6 days</b><span>5 nights · 7 to 12 March 2027</span></div><div><b>3 lanes</b><span>Asset · Capital · Country</span></div>'
-            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>')
+            '<div><b>30 seats</b><span>An intimate room</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Deals tracked across Latin America and the Caribbean</span></div></div>')
 
 LEGAL = ("Tierra Firme is educational content and seminars. Nothing here is investment, tax or legal advice, "
          "an offer to sell, or a solicitation of an offer to buy any security or property. Cross-border investing "
@@ -557,8 +586,8 @@ MEMBERS = [
               "geopolitics, currencies and policy change the options open to families and firms placing capital across borders. Sovereo turns those "
               "conditions into a read a decision-maker can act on: a daily SITREP on what changed, Country Dossiers on the places they are weighing, "
               "and the Decision Forecast, a public record of forecasts scored against what actually happened, so the track record can be checked. Its "
-              "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> has tracked US$46 billion in verified business "
-              "deals across Latin America and the Caribbean in 2026, including US$3.8 billion in Colombia, each from an official source. "
+              "<a href=\"https://www.sovereo.com/deal-record\" rel=\"noopener\">Global Deal Record</a> has tracked US$46.0 billion in business "
+              "deals so far across Latin America and the Caribbean, including US$3.8 billion in Colombia, each from an official source. "
               "He has been a professor of economics and decision science for over 24 years, and has lived in Bogotá since 2020."),
          person={"@type": "Person", "name": "Todd Allyn", "jobTitle": "Founding Director", "image": BASE + "/img/members/todd-allyn-640.webp",
                  "worksFor": {"@type": "Organization", "name": "Sovereo Intelligence Research", "url": "https://www.sovereo.com"},
@@ -607,6 +636,14 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
         {"@type": "WebPage", "@id": url + "#page", "url": url, "name": title, "description": desc,
          "isPartOf": {"@id": BASE + "/#website"}, "about": {"@id": BASE + "/#org"}, "dateModified": "2026-11-20"},
     ]
+    crumbbar = ''
+    if crumbs and fname != 'index.html':
+        parent = crumbs[-2] if len(crumbs) > 1 else ('', 'Home')
+        ph = '/' + parent[0].replace('.html', '') if parent[0] else '/'
+        trail = ''.join((f'<li><a href="/{h.replace(".html", "") if h else ""}">{html.escape(n)}</a></li>' if k < len(crumbs) - 1
+                         else f'<li aria-current="page">{html.escape(n)}</li>') for k, (h, n) in enumerate(crumbs))
+        crumbbar = (f'<nav class="crumbbar" aria-label="Breadcrumb"><div class="container"><a class="back" href="{ph}">&larr; Back to {html.escape(parent[1])}</a>'
+                    f'<ol>{trail}</ol></div></nav>')
     if crumbs:
         graph.append({"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + '/' + h.replace('.html', '')} for i, (h, n) in enumerate(crumbs)]})
@@ -652,6 +689,7 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
  </div>
 </header>
 <main>
+{crumbbar}
 {body}
 </main>
 <footer>
@@ -805,8 +843,8 @@ index_body = f"""
    <a href="colombia-2027.html#itinerary" class="btn btn-ghost">Preliminary itinerary &rarr;</a>
   </div>
   {cities_html()}
-  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b>3 + 2</b><span>Days in Bogotá + Medellín</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Colombia deals logged in 2026</span></div></div>
-  <p class="trailer-fine" style="margin-top:10px">US$3.8 billion across 10 verified, priced business deals in Colombia in 2026, including property purchases, as of 20 November 2026. Source: <a href="https://www.sovereo.com/deal-record/colombia" rel="noopener">The Global Deal Record</a>.</p>
+  <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Deals tracked across Latin America and the Caribbean</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.8B</a></b><span>Of that, in Colombia</span></div></div>
+  <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far across Latin America and the Caribbean, including US$3.8 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
  </div>
 </section>
 
@@ -825,19 +863,19 @@ index_body = f"""
 <section class="trailer" id="trailer">
  <div class="container">
   <div class="section-head" style="margin-bottom:28px">
-   <span class="eyebrow">Official trailer</span>
-   <h2>See the gap before the market does.</h2>
+   <span class="eyebrow">The film · 3 minutes</span>
+   <h2>Solid ground.</h2>
   </div>
   <div class="player" id="player">
-   <video id="tf-trailer" muted playsinline preload="auto" poster="/media/trailer-poster.webp" width="1920" height="1080" aria-label="Tierra Firme trailer">
-    <source src="/media/tierra-firme-trailer.mp4" type="video/mp4">
+   <video id="tf-trailer" muted playsinline preload="metadata" poster="/media/film-poster.webp" width="1280" height="720" aria-label="Tierra Firme film: Solid Ground">
+    <source src="/media/tierra-firme-film.mp4" type="video/mp4">
    </video>
    <button type="button" class="sound" id="tf-sound" aria-label="Turn sound on">&#128266;&nbsp; Sound on</button>
    <button type="button" class="replay" id="tf-replay" aria-label="Replay trailer" hidden>&#8635;&nbsp; Replay</button>
   </div>
   <div class="theater-dim" id="tf-dim" aria-hidden="true"></div>
   <button type="button" class="theater-exit" id="tf-exit">&#10005;&nbsp; Close</button>
-  <p class="trailer-fine">1 minute. Footage from Bogotá, Cartagena, Medellín, Lima, Cusco, Montevideo, Santiago, Buenos Aires, Rio de Janeiro, São Paulo, Mexico City, Antigua, Panama City, Santo Domingo and Dallas.</p>
+  <p class="trailer-fine">3 minutes 37 seconds. Why Latin America, why Colombia, why now, and what participants leave with. Footage from Bogotá, Medellín and the Colombian Andes. <a href="credits.html" style="color:inherit">Credits</a>.</p>
  </div>
 </section>
 
@@ -871,33 +909,42 @@ index_body = f"""
 """
 
 # ---------- members ----------
+def _mphoto(m, size=640):
+    if not m.get('photo'):
+        return portrait(m, 280)
+    if size == 640:  # tall profile portrait from the uncropped original
+        return f'<img src="{m["photo"]}-portrait.webp" alt="{html.escape(m["name"])}" width="512" height="640" loading="lazy" decoding="async">'
+    return f'<img src="{m["photo"]}-{size}.webp" alt="{html.escape(m["name"])}" width="{size}" height="{size}" loading="lazy" decoding="async">'
+
 member_rows = ''.join(f"""
-  <article class="member" id="{m['key']}">
+  <article class="mprofile{' rev' if k % 2 else ''}" id="{m['key']}">
+   <div class="mp-photo">{_mphoto(m)}</div>
    <div>
-    {portrait(m, 160)}
     <span class="tag tag-{m['key']}">{m['seat']} · {m['area']}</span>
     <h2>{m['name']}</h2>
     <p class="role">{m['role']}</p>
-   </div>
-   <div>
     <p>{m['bio']}</p>
-    <p class="note"><strong>His lane:</strong> {m['show']} <a href="/lanes/{LANE[m['lane']]['slug']}">Read more</a></p>
+    <p class="note"><strong>His lane:</strong> {m['show']}</p>
+    <a class="lane-link" href="/lanes/{LANE[m['lane']]['slug']}">The {m['area'].lower()} lane &rarr;</a>
    </div>
-  </article>""" for m in MEMBERS)
+  </article>""" for k, m in enumerate(MEMBERS))
 
 members_body = f"""
-<section class="hero">
- <div class="container">
-  <span class="eyebrow">The members</span>
-  <h1>Three practitioners. Equal seats.</h1>
-  <p class="lede">Tierra Firme brings together commercial real estate, business and family capital, and research. Each member runs an independent practice and teaches his own lane, and each view checks the other two.</p>
+<section class="hero-light">
+ <div class="container split">
+  <div>
+   <span class="eyebrow">The members</span>
+   <h1>Three practitioners. Equal seats.</h1>
+   <p class="lede">Commercial real estate, business and family capital, and research. Each member runs an independent practice and teaches his own lane, and each view checks the other two.</p>
+  </div>
+  <div class="panel">{''.join(f'<a href="#{m["key"]}" title="{html.escape(m["name"])}">{_mphoto(m, 320)}</a>' for m in MEMBERS)}</div>
  </div>
 </section>
-<section>
+<section class="profiles">
  <div class="container">{member_rows}
  </div>
 </section>
-<section class="alt">
+<section>
  <div class="container grid-2">
   <div>
    <span class="eyebrow">Why three</span>
@@ -907,19 +954,24 @@ members_body = f"""
   <div>
    <span class="eyebrow">The name</span>
    <h2>Why "Tierra Firme"</h2>
-   <p>Tierra firme means solid ground. It was also the historic Spanish name for the South American mainland, a fit for a consortium built between North America and Latin America. Every episode is also produced in Spanish under the Despacho line.</p>
+   <p>Tierra firme means solid ground. It was also the historic Spanish name for the South American mainland, a fit for a consortium built between North America and Latin America.</p>
   </div>
  </div>
 </section>
-<section>
- <div class="container">
-  <p class="note">Members' individual business activities are independent of one another and of Tierra Firme. Tierra Firme does not list property, arrange transactions or take fees on what anyone buys.</p>
+<section class="alt">
+ <div class="container signup-band">
+  <div>
+   <span class="eyebrow">Investor Lab 2027 · Preliminary</span>
+   <h2>Meet them in Bogotá and Medellín.</h2>
+   <p class="lede">Get the information sheet and join the mailing list. Seats and new episodes go to the list first.</p>
+  </div>
+  <div>{signup_block(btn='Send me the information sheet', source='members')}</div>
  </div>
 </section>
-<section class="dark">
- <div class="container text-center" style="display:flex;flex-direction:column;align-items:center">
-  <h2>Get Investor Lab seats and new episodes first.</h2>
-  {signup_block(source='members')}
+<section style="padding-top:0">
+ <div class="container">
+  <p class="note">Members' individual business activities are independent of one another and of Tierra Firme. Tierra Firme does not list property, arrange transactions or take fees on what anyone buys.</p>
+  <div class="pagefoot"><a href="/" class="btn btn-ink">&larr; Back to home</a><a href="/colombia-2027" class="btn btn-gold">Investor Lab 2027 &rarr;</a></div>
  </div>
 </section>
 """
@@ -1359,6 +1411,8 @@ credit_rows = ''.join(
     f'<li><strong>{html.escape(p["title"])}</strong>. {html.escape(p["author"])}, <a href="{p["lic_url"]}" rel="noopener">{p["lic"]}</a>. '
     f'<a href="{p["src"]}" rel="noopener">Source on Wikimedia Commons</a>. Resized and converted to WebP.</li>'
     for k, p in PHOTOS.items() if not p.get('ill'))
+FILM_CREDITS = [('Juan Castelblanco', 'Andes mountains, Colombia', 'https://www.pexels.com/video/drone-video-of-the-andes-mountains-in-colombia-15747549/'), ('Martina Tomšič', 'Globe', 'https://www.pexels.com/video/close-up-view-of-a-globe-4696463/'), ('Saif Abdulraheem', 'Counting money', 'https://www.pexels.com/video/person-counting-money-4275306/'), ('Alexandr Shorban', 'Clouds from an airplane window', 'https://www.pexels.com/video/clouds-seen-from-airplane-window-10691579/'), ('Juan David Palacio Mesa', 'Bogotá aerials and the Colombian flag', 'https://www.pexels.com/video/bogota-vista-aerea-19593286/'), ('Werner Pfennig', 'Conference room', 'https://www.pexels.com/video/man-speaking-in-conference-room-6951601/'), ('Yunus Terk', 'Modern apartments, aerial', 'https://www.pexels.com/video/stunning-aerial-view-of-modern-luxury-apartments-38235767/'), ('Ron Lach', 'Business owner in a café', 'https://www.pexels.com/video/close-up-video-of-a-woman-holding-a-clipboard-8441634/'), ('Jakub Zerdzicki', 'Financial analyst', 'https://www.pexels.com/video/financial-analyst-calculating-market-trends-38597877/'), ('Camilo Carrò', 'Airplane wing in flight', 'https://www.pexels.com/video/airplane-wing-while-flying-in-the-sky-6472910/'), ('Thirdman', 'Signing a document', 'https://www.pexels.com/video/close-up-video-of-a-person-signing-a-document-8471105/'), ('Julián Armando Santos', 'Plaza de Bolívar and Bogotá walkways', 'https://www.pexels.com/video/historic-plaza-bolivar-in-bogota-colombia-37151628/'), ('Nothing Ahead', 'Modern high-rise buildings', 'https://www.pexels.com/video/modern-high-rise-buildings-exterior-view-35082942/'), ('Polina Kovaleva', 'Notebook', 'https://www.pexels.com/video/closeup-video-of-writings-on-a-notebook-5546876/'), ('Juan Camilo Trujillo Botero', 'Bogotá at twilight and city aerials', 'https://www.pexels.com/video/aerial-view-of-bogota-at-twilight-40369496/'), ('ME UP', 'Medellín skyline at dusk', 'https://www.pexels.com/video/aerial-view-of-medellin-skyline-at-dusk-40130401/'), ('Vlada Karpovich', 'Business meeting', 'https://www.pexels.com/video/people-having-business-meeting-7552419/'), ('Federico Molina', 'Medellín with mountains', 'https://www.pexels.com/video/aerial-view-of-urban-landscape-with-mountains-40437627/'), ('E CG', 'Salsa, Cali', 'https://www.pexels.com/video/salsa-colorful-shoes-19851286/'), ('Naresh Babu', 'Evening glassware', 'https://www.pexels.com/video/elegant-nighttime-glassware-with-ambient-lighting-37482114/'), ('Mikhail Nilov', 'Professionals reviewing documents', 'https://www.pexels.com/video/professionals-looking-carefully-on-documents-8847933/'), ('Alex Moliski', 'City and mountains at sunset', 'https://www.pexels.com/video/an-aerial-view-of-a-city-and-mountains-at-sunset-26775139/')]
+film_rows = ''.join(f'<li><strong>{html.escape(w)}</strong>. {html.escape(a)}, <a href="{u}" rel="noopener">Pexels</a>.</li>' for a, w, u in FILM_CREDITS)
 credits_body = f"""
 <section class="hero">
  <div class="container">
@@ -1371,6 +1425,9 @@ credits_body = f"""
  <div class="container">
   <ul class="checks">{credit_rows}</ul>
   <p class="note" style="margin-top:28px">Adapted versions of CC BY-SA photographs are shared under the same license. Trailer footage credits are listed with the trailer wherever it is posted.</p>
+  <h2 style="margin-top:40px">The film: Solid Ground</h2>
+  <p>Narration and music produced with vidIQ. Stock footage from Pexels:</p>
+  <ul class="checks">{film_rows}</ul>
  </div>
 </section>
 """
@@ -1378,10 +1435,10 @@ credits_body = f"""
 PAGES = [
     ('index.html', 'Tierra Firme | Real Estate, Business and Research for Capital Abroad',
      'Tierra Firme is a consortium in commercial real estate, business and intelligence research. A free show, research and seminars for people placing capital across borders, starting with Latin America.',
-     index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme trailer",
-        "description": "Every market has a gap. Tierra Firme, a consortium in commercial real estate, business and intelligence research, on reading the currency, political and structural arbitrage across Latin America before it becomes common knowledge.",
-        "thumbnailUrl": BASE + "/media/trailer-poster.webp", "contentUrl": BASE + "/media/tierra-firme-trailer.mp4",
-        "uploadDate": "2026-10-23", "duration": "PT1M3S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
+     index_body, [faq_schema(FAQ), {"@id": BASE + "/colombia-2027#event", "@type": "EducationEvent", "name": "Tierra Firme Investor Lab 2027, Bogotá and Medellín", "startDate": EVENT['start'], "endDate": EVENT['end'], "url": BASE + "/colombia-2027", "location": {"@type": "Place", "name": "Bogotá", "address": {"@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO"}}}, {"@type": "VideoObject", "name": "Tierra Firme: Solid Ground",
+        "description": "Solid Ground: a short film on Tierra Firme, why Latin America and Colombia, why now, and what participants in the preliminary Investor Lab 2027 in Bogotá and Medellín leave with.",
+        "thumbnailUrl": BASE + "/media/film-poster.webp", "contentUrl": BASE + "/media/tierra-firme-film.mp4",
+        "uploadDate": "2026-11-21", "duration": "PT3M37S", "inLanguage": "en", "publisher": {"@id": BASE + "/#org"}}], None, 'twilight'),
     ('colombia-2027.html', 'Investor Lab 2027: Bogotá and Medellín | Tierra Firme',
      'Tierra Firme Investor Lab 2027 (preliminary): three days in Bogotá and two in Medellín, 7 to 12 March 2027, for 30 people. Commercial real estate, business and family capital, and country research. Education, not advice.',
      event_body, event_schema, [('', 'Home'), ('colombia-2027.html', 'Colombia 2027')], 'downtown'),
@@ -1559,7 +1616,7 @@ llms = f"""# Tierra Firme
 ## Members and lanes
 - Murphy D. Cheatham II, The Asset (commercial real estate): Private Clients Director at CBRE, a global role advising private families and high net worth individuals.
 - Shawn Christopher Leamon, The Capital (business and family capital): founder and managing partner of LaGrande Global (since 2013), an investment firm managing close to $100 million with a focus on Latin America, and founder and CEO of Cielo.Travel, Bogotá.
-- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46 billion in verified business deals across Latin America and the Caribbean in 2026, including US$3.8 billion in Colombia. Professor of economics and decision science for over 24 years. Bogotá.
+- Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) has tracked US$46.0 billion in business deals so far across Latin America and the Caribbean, including US$3.8 billion in Colombia (Sovereo Desk, The Global Deal Record). Professor of economics and decision science for over 24 years. Bogotá.
 
 ## Event
 - [Tierra Firme Investor Lab 2027]({BASE}/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
