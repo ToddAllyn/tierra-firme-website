@@ -4,7 +4,7 @@ import json, os, html, re
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 os.makedirs(OUT, exist_ok=True)
-BASE = 'https://tierra-firme.pages.dev'  # switch to https://tierrafirme.com once the domain is attached
+BASE = 'https://www.tierrafirme.lat'
 SHARE = BASE + '/tierra-firme-share.jpg'
 
 CSS = r"""
@@ -1121,7 +1121,7 @@ EVENT_FAQ = [
     ("How many seats are there?",
      "Thirty. The room is kept small so every question gets answered."),
     ("Will anyone sell me property or a business?",
-     "No. There are no listings, no sponsors pitching from the stage and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
+     "No. There are no listings, no brokers in the room and no referral fees. Site visits show places, not units for sale. It is education, not advice."),
     ("How do I get the information sheet?",
      "Leave your email on this page. You will receive the information sheet and join the mailing list; the final schedule, seat details and pricing go to the list before anyone else."),
 ]
@@ -1214,7 +1214,7 @@ event_body = f"""
    <span class="eyebrow">What this is not</span>
    <ul class="checks">
     <li>No listings: field visits show places, not units for sale</li>
-    <li>No brokers in the room and no sponsors on the stage</li>
+    <li>No brokers in the room and no sales pitches</li>
     <li>No referral fees: we earn nothing from what you buy or where</li>
     <li>Education, not advice: the decision stays yours</li>
    </ul>
