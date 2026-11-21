@@ -4,7 +4,7 @@ import json, os, html, re
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 os.makedirs(OUT, exist_ok=True)
-BASE = 'https://tierrafirme.lat'
+BASE = 'https://tierra-firme.pages.dev'  # switch to https://tierrafirme.com once the domain is attached
 SHARE = BASE + '/tierra-firme-share.jpg'
 
 CSS = r"""

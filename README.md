@@ -11,4 +11,4 @@ Static site for the Tierra Firme consortium. Hosted on Cloudflare Pages, auto-de
 ## Cloudflare Pages settings
 - Framework preset: None. Build command: none. Output directory: `/`
 - KV binding: `TF_SUBSCRIBERS`
-- Env vars: `RESEND_API_KEY` (secret), `UNSUB_SECRET` (secret), `NEWSLETTER_FROM` (e.g. `Tierra Firme <list@tierrafirme.lat>`), `MAILING_ADDRESS`
+- Env vars: `RESEND_API_KEY` (secret), `UNSUB_SECRET` (secret), `NEWSLETTER_FROM` (e.g. `Tierra Firme <list@tierrafirme.co>`), `MAILING_ADDRESS`

@@ -8,23 +8,23 @@
 - Todd Allyn, The Country (research): leads Tierra Firme research. Founding Director of Sovereo Intelligence Research (https://www.sovereo.com), whose Global Deal Record (https://www.sovereo.com/deal-record) tracks business deals worldwide from official sources, with US$46 billion in verified deals logged in 2026. Bogotá.
 
 ## Event
-- [Tierra Firme Investor Lab 2027](https://tierrafirme.lat/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
+- [Tierra Firme Investor Lab 2027](https://tierra-firme.pages.dev/colombia-2027): preliminary. 6 days, 5 nights, 7 to 12 March 2027: 3 days in Bogotá, 2 in Medellín. 30 seats. Short boardroom briefings, verified field visits, cultural evenings. Education, not advice.
 
 ## Pages
-- [Home](https://tierrafirme.lat/): what Tierra Firme is, the three lanes, the framework and FAQ.
-- [Members](https://tierrafirme.lat/members): full bios of the three members.
-- [The Show](https://tierrafirme.lat/the-show): Season One, twelve biweekly episodes in English and Spanish.
-- [Membership](https://tierrafirme.lat/membership): the community waitlist (curriculum, office hours, forum), opening soon. The only signup on the site.
+- [Home](https://tierra-firme.pages.dev/): what Tierra Firme is, the three lanes, the framework and FAQ.
+- [Members](https://tierra-firme.pages.dev/members): full bios of the three members.
+- [The Show](https://tierra-firme.pages.dev/the-show): Season One, twelve biweekly episodes in English and Spanish.
+- [Membership](https://tierra-firme.pages.dev/membership): the community waitlist (curriculum, office hours, forum), opening soon. The only signup on the site.
 
 ## Questions investors ask (sourced answers)
-- [Can foreigners buy property in Colombia?](https://tierrafirme.lat/questions/can-foreigners-buy-property-in-colombia): Yes, with the same ownership rights as Colombians, if the money comes in through the formal exchange market and is registered.
-- [Why do you have to register a foreign investment in Colombia?](https://tierrafirme.lat/questions/register-foreign-investment-in-colombia): Registration with Banco de la República is what protects your right to move the money and the sale proceeds back out.
-- [What taxes do foreigners pay on property in Colombia?](https://tierrafirme.lat/questions/taxes-foreigners-pay-on-property-in-colombia): Closing costs when you buy, annual predial while you own, tax on rent, and 15% capital gains tax when you sell after two years.
-- [How does the exchange rate change your return on property abroad?](https://tierrafirme.lat/questions/how-the-exchange-rate-changes-your-real-estate-return): Your return is the local price change plus or minus the currency move. A strong local gain can disappear when converted home.
-- [Can buying property in Colombia get you a visa?](https://tierrafirme.lat/questions/colombia-investor-visa-through-real-estate): It can support an M investor visa if the property is worth at least 350 monthly minimum wages, in your name, and registered with the central bank.
-- [What is propiedad horizontal in Colombia?](https://tierrafirme.lat/questions/what-is-propiedad-horizontal-in-colombia): The legal regime for buildings and gated communities: you own your unit, share the common areas, and pay a mandatory administration fee.
-- [What are currency, political and structural arbitrage?](https://tierrafirme.lat/questions/currency-political-and-structural-arbitrage): Three reasons the same money can buy more abroad, and three matching risks that decide whether the gap is real.
-- [How do you evaluate a country before investing there?](https://tierrafirme.lat/questions/how-to-evaluate-a-country-before-investing): Information, evaluation, interpretation, then action: gather sourced facts, test them, read what they mean for you, and only then commit.
+- [Can foreigners buy property in Colombia?](https://tierra-firme.pages.dev/questions/can-foreigners-buy-property-in-colombia): Yes, with the same ownership rights as Colombians, if the money comes in through the formal exchange market and is registered.
+- [Why do you have to register a foreign investment in Colombia?](https://tierra-firme.pages.dev/questions/register-foreign-investment-in-colombia): Registration with Banco de la República is what protects your right to move the money and the sale proceeds back out.
+- [What taxes do foreigners pay on property in Colombia?](https://tierra-firme.pages.dev/questions/taxes-foreigners-pay-on-property-in-colombia): Closing costs when you buy, annual predial while you own, tax on rent, and 15% capital gains tax when you sell after two years.
+- [How does the exchange rate change your return on property abroad?](https://tierra-firme.pages.dev/questions/how-the-exchange-rate-changes-your-real-estate-return): Your return is the local price change plus or minus the currency move. A strong local gain can disappear when converted home.
+- [Can buying property in Colombia get you a visa?](https://tierra-firme.pages.dev/questions/colombia-investor-visa-through-real-estate): It can support an M investor visa if the property is worth at least 350 monthly minimum wages, in your name, and registered with the central bank.
+- [What is propiedad horizontal in Colombia?](https://tierra-firme.pages.dev/questions/what-is-propiedad-horizontal-in-colombia): The legal regime for buildings and gated communities: you own your unit, share the common areas, and pay a mandatory administration fee.
+- [What are currency, political and structural arbitrage?](https://tierra-firme.pages.dev/questions/currency-political-and-structural-arbitrage): Three reasons the same money can buy more abroad, and three matching risks that decide whether the gap is real.
+- [How do you evaluate a country before investing there?](https://tierra-firme.pages.dev/questions/how-to-evaluate-a-country-before-investing): Information, evaluation, interpretation, then action: gather sourced facts, test them, read what they mean for you, and only then commit.
 
 ## Notes
 - Tierra Firme does not list property, arrange transactions or take fees on what anyone buys.
