@@ -390,6 +390,54 @@ a.card:hover,.lift:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(
 .mprofile .lane-link{margin-top:6px}
 @media (max-width:860px){.mprofile,.mprofile.rev{grid-template-columns:1fr}.mprofile.rev .mp-photo{order:0}.mp-photo img{max-width:300px}}
 .pagefoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+/* ===== Motion and imagery layer ===== */
+.ph-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.photo-hero picture{z-index:0}
+.photo-hero::after{z-index:1}
+@media (prefers-reduced-motion:reduce){.ph-video{display:none}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes kenburns{from{transform:scale(1.0)}to{transform:scale(1.08)}}
+.photo-hero .ph-img{animation:kenburns 22s ease-out both}
+.photo-hero .kicker,.photo-hero h1,.photo-hero .lede,.photo-hero .btn-row,.photo-hero .hero-fine,.photo-hero .itin-card{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.photo-hero h1{animation-delay:.12s}.photo-hero .lede{animation-delay:.24s}.photo-hero .btn-row{animation-delay:.36s}.photo-hero .hero-fine{animation-delay:.46s}.photo-hero .itin-card{animation-delay:.5s}
+.photo-hero h1 em{font-style:italic;background:linear-gradient(90deg,#f3c76a,#e9a825 60%,#fff2cc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scroll-cue{position:absolute;left:50%;bottom:18px;z-index:3;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.55);border-radius:14px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#f3c76a;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+@media (max-width:980px){.scroll-cue{display:none}}
+/* ticker */
+.ticker{background:#040c1a;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:0;animation:marquee 48s linear infinite;padding-block:14px}
+.ticker span{font:500 .82rem Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);padding:0 26px}
+.ticker span b{color:#f3c76a;font-weight:600}
+.ticker span::after{content:"\25C6";color:#e9a825;margin-left:52px;font-size:.6rem;vertical-align:middle}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+/* reveal on scroll (only when JS is on) */
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+/* mosaic */
+.mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,230px);gap:10px}
+.mosaic figure{position:relative;overflow:hidden;margin:0;background:var(--navy)}
+.mosaic figure.w2{grid-column:span 2}.mosaic figure.h2{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.mosaic figure:hover img{transform:scale(1.07);filter:saturate(1.15)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:28px 14px 10px;background:linear-gradient(180deg,transparent,rgba(4,12,26,.85));color:#fff;font:500 .82rem Inter,sans-serif;letter-spacing:.04em}
+.mosaic figcaption small{display:block;font-size:.66rem;color:rgba(255,255,255,.6);letter-spacing:0;margin-top:2px}
+@media (max-width:760px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.mosaic figure.w2{grid-column:span 2}}
+/* full-bleed quote band */
+.quote-band{position:relative;padding:clamp(96px,14vw,180px) 0;color:#fff;overflow:hidden;background:#061327}
+.quote-band .qb-img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;will-change:transform}
+.quote-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,26,.55),rgba(4,12,26,.78))}
+.quote-band .container{position:relative;z-index:2;text-align:center}
+.quote-band blockquote{margin:0 auto;font:500 clamp(2rem,5vw,4rem)/1.12 Fraunces,serif;max-width:18ch;letter-spacing:-.01em}
+.quote-band blockquote em{color:#f3c76a}
+.quote-band p{color:rgba(255,255,255,.75);margin-top:18px}
+/* card glow */
+.ink .card,.dark .card{position:relative}
+.dark .card:hover,.ink .card:hover{border-color:rgba(233,168,37,.6);box-shadow:0 0 0 1px rgba(233,168,37,.25),0 30px 60px rgba(0,0,0,.35)}
+.stats b{font-variant-numeric:tabular-nums}
 .signup-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (max-width:860px){.signup-band{grid-template-columns:1fr}}
 """
@@ -478,9 +526,34 @@ def img(p, sizes='100vw', cls='', eager=False):
 def fig(p, cls='wide', sizes='(max-width:860px) 100vw, 50vw'):
     return f'<figure><div class="photo {cls}">{img(p, sizes)}</div><figcaption>{html.escape(PHOTOS[p]["title"])}. {credit(p)}</figcaption></figure>'
 
-def photo_hero(p, inner):
-    return (f'<section class="photo-hero"><picture>{img(p, "100vw", "ph-img", eager=True)}</picture>'
-            f'<div class="container">{inner}</div><p class="ph-credit">{credit(p)}</p></section>')
+def photo_hero(p, inner, video=None):
+    vid = (f'<video class="ph-video" autoplay muted loop playsinline preload="metadata" poster="{video}-poster.webp" aria-hidden="true">'
+           f'<source src="{video}.mp4" type="video/mp4"></video>') if video else ''
+    cue = '<span class="scroll-cue" aria-hidden="true"></span>' if video else ''
+    return (f'<section class="photo-hero"><picture>{img(p, "100vw", "ph-img", eager=True)}</picture>{vid}'
+            f'<div class="container">{inner}</div>{cue}<p class="ph-credit">{"Film footage: Pexels. " if video else ""}{credit(p)}</p></section>')
+
+TICKER_ITEMS = ['<b>Bogotá</b> · 3 days', '<b>Medellín</b> · 2 days', '<b>March 2027</b> · preliminary', '<b>30</b> seats',
+                '<b>US$46.0B</b> in deals tracked by Sovereo', '<b>US$3.84B</b> in Colombia alone', 'Boardroom mornings',
+                'Verified field visits', 'Cultural evenings', '<b>Three</b> practitioners · three lanes', 'Any currency · solid ground']
+def ticker():
+    items = ''.join(f'<span>{t}</span>' for t in TICKER_ITEMS)
+    return f'<div class="ticker" aria-hidden="true"><div class="track">{items}{items}</div></div>'
+
+MOSAIC = [('towers', 'w2 h2', 'Bogotá, below Monserrate'), ('colpatria', 'h2', 'Torre Colpatria at night'),
+          ('medellin', '', 'Medellín'), ('ballroom', '', 'The room (illustrative)'),
+          ('downtown', 'w2', 'Downtown Bogotá'), ('boardroom', '', 'The boardroom (illustrative)'), ('lobby', '', 'The lobby (illustrative)')]
+def mosaic_html():
+    out = []
+    for p, cls, cap in MOSAIC:
+        x = PHOTOS[p]
+        small_credit = '' if x.get('ill') else f'<small>{html.escape(x["author"])}, {x["lic"]}</small>'
+        out.append(f'<figure class="{cls} reveal">{img(p, "(max-width:760px) 50vw, 25vw")}<figcaption>{html.escape(cap)}{small_credit}</figcaption></figure>')
+    return '<div class="mosaic">' + ''.join(out) + '</div>'
+
+def quote_band(p, quote, sub, cta=''):
+    return (f'<section class="quote-band">{img(p, "100vw", "qb-img")}<div class="container"><blockquote class="reveal">{quote}</blockquote>'
+            f'<p class="reveal">{sub}</p>{cta}</div></section>')
 
 def hero_preload(p):
     x = PHOTOS[p]
@@ -704,6 +777,22 @@ def page(fname, title, desc, body, schema_extra=(), crumbs=None, preload=None, n
 </footer>
 <script>
 (function(){{
+ var root=document.documentElement;root.classList.add('js');
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ var sel='.section-head,.card,.dcard,.city,.mprofile,.qcard,.faq details,.photo,.day,.step,.facts,.format>div,.stats>div,.signup-band>div,.checks';
+ var els=Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function(e){{return !e.closest('.photo-hero')&&!e.closest('.ticker');}});
+ els.forEach(function(e,i){{e.classList.add('reveal');var sib=e.parentElement?Array.prototype.indexOf.call(e.parentElement.children,e):0;e.style.transitionDelay=(Math.min(sib,5)*0.08)+'s';}});
+ var all=document.querySelectorAll('.reveal');
+ if(reduce||!('IntersectionObserver' in window)){{all.forEach(function(e){{e.classList.add('in');}});}}
+ else{{var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('in');io.unobserve(en.target);}}}});}},{{rootMargin:'0px 0px -8% 0px',threshold:0.08}});all.forEach(function(e){{io.observe(e);}});}}
+ /* count-up numbers in stat rows */
+ var nums=document.querySelectorAll('.stats b, .ic-facts b');
+ var countUp=function(b){{var el=b.querySelector('a')||b;var txt=el.textContent;var m=txt.match(/([0-9]+(?:[.][0-9]+)?)/);if(!m)return;var end=parseFloat(m[1]);var dec=(m[1].split('.')[1]||'').length;var pre=txt.slice(0,m.index),post=txt.slice(m.index+m[1].length);var t0=null;
+  var step=function(ts){{if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1400);var e=1-Math.pow(1-k,3);el.textContent=pre+(end*e).toFixed(dec)+post;if(k<1)requestAnimationFrame(step);}};requestAnimationFrame(step);}};
+ if(!reduce&&'IntersectionObserver' in window){{var io2=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{countUp(en.target);io2.unobserve(en.target);}}}});}},{{threshold:0.5}});nums.forEach(function(n){{io2.observe(n);}});}}
+ /* gentle parallax on quote bands */
+ var bands=document.querySelectorAll('.quote-band .qb-img');
+ if(bands.length&&!reduce){{var par=function(){{bands.forEach(function(im){{var r=im.parentElement.getBoundingClientRect();var p=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.transform='translateY('+(p*-60).toFixed(1)+'px)';}});}};addEventListener('scroll',par,{{passive:true}});par();}}
  var t=document.querySelector('.nav-toggle'),n=document.getElementById('main-nav');
  if(t&&n){{t.addEventListener('click',function(){{var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');}});}}
  var v=document.getElementById('tf-trailer');
@@ -826,14 +915,16 @@ index_body = f"""
   <div class="hero-split">
    <div>
     <span class="kicker">Tierra Firme<span class="rule"></span>Any currency · Solid ground</span>
-    <h1>Read the country before you buy into it.</h1>
+    <h1>Read the country <em>before</em> you buy into it.</h1>
     <p class="lede">A consortium of three practitioners in commercial real estate, business and family capital, and research. A private program in Colombia, a free show and sourced answers for people placing capital across borders.</p>
     <div class="btn-row" style="margin-top:26px"><a href="colombia-2027.html#invite" class="btn btn-gold">Get the information sheet</a><a href="colombia-2027.html" class="btn btn-ghost">Investor Lab 2027</a><a href="#player" class="btn btn-ghost">&#9654;&nbsp; Trailer</a></div>
     <p class="hero-fine">{DISCLAIMER} No listings, no sales, no fees on what you buy.</p>
    </div>
    {itin_card()}
   </div>
-''')}
+''', video='/media/hero-loop')}
+
+{ticker()}
 
 <section class="ink">
  <div class="container">
@@ -844,6 +935,13 @@ index_body = f"""
   {cities_html()}
   <div class="stats" style="margin-top:22px"><div><b>6 days</b><span>5 nights</span></div><div><b>30</b><span>Seats</span></div><div><b><a href="https://www.sovereo.com/deal-record" rel="noopener" style="color:inherit;text-decoration:none">US$46.0B</a></b><span>Business deals tracked by Sovereo</span></div><div><b><a href="https://www.sovereo.com/deal-record/colombia" rel="noopener" style="color:inherit;text-decoration:none">US$3.84B</a></b><span>In Colombia alone</span></div></div>
   <p class="trailer-fine" style="margin-top:10px">US$46.0 billion in business deals tracked so far by Sovereo, including US$3.84 billion in Colombia. Source: Sovereo Desk, <a href="https://www.sovereo.com/deal-record" rel="noopener">The Global Deal Record</a>.</p>
+ </div>
+</section>
+
+<section class="ink" style="padding-top:0">
+ <div class="container">
+  <div class="section-head"><span class="eyebrow">Colombia in frames</span><h2 style="margin:0">Where the program happens.</h2></div>
+  {mosaic_html()}
  </div>
 </section>
 
@@ -887,6 +985,8 @@ index_body = f"""
   <div class="qlist">QCARDS</div>
  </div>
 </section>
+
+{quote_band('twilight', 'Know the ground <em>before</em> you stand on it.', 'Bogotá and Medellín · March 2027 · Preliminary', '<a href="colombia-2027.html" class="btn btn-gold reveal" style="margin-top:22px">See the Investor Lab</a>')}
 
 <section class="alt">
  <div class="container">
@@ -1191,13 +1291,15 @@ event_body = f"""
   <div class="hero-split">
    <div>
     <span class="kicker">Investor Lab 2027<span class="rule"></span>Bogotá · Medellín · Preliminary</span>
-    <h1>Two cities. Six days. Solid ground.</h1>
+    <h1>Two cities. Six days. <em>Solid ground.</em></h1>
     <p class="lede">A private program in Colombia for thirty people placing capital across borders: three days in Bogotá, two in Medellín. Short boardroom briefings, verified field visits and cultural evenings, taught by the three members of Tierra Firme.</p>
     <div class="btn-row" style="margin-top:26px"><a href="#invite" class="btn btn-gold">Get the information sheet</a><a href="#itinerary" class="btn btn-ghost">Preliminary itinerary</a></div>
    </div>
    {itin_card('#invite')}
   </div>
-''')}
+''', video='/media/event-loop')}
+
+{ticker()}
 
 <nav class="subnav" aria-label="On this page"><div class="container">
  <a href="#itinerary">Itinerary</a><a href="#cities">Cities</a><a href="#format">Format</a><a href="#faculty">Faculty</a><a href="#why">Why Colombia</a><a href="#details">Details</a><a href="#faq">FAQ</a><a href="#invite" class="cta">Information sheet</a>
